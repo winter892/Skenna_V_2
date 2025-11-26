@@ -74,14 +74,42 @@
   <footer>
   <p>© 2025 Sknna.ma – Tous droits réservés.</p>
 </footer>
-<script>
-// Dark mode functionality
-document.addEventListener("DOMContentLoaded", () => {
 
+<script>
+// ========== MENU BURGER FONCTIONNEL ==========
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav');
+    const menu = document.querySelector('.menu');
+
+    // Menu burger functionality
+    if (menuToggle && nav) {
+        menuToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            nav.classList.toggle('active');
+        });
+
+        // Fermer le menu en cliquant ailleurs
+        document.addEventListener('click', function(e) {
+            if (!nav.contains(e.target)) {
+                nav.classList.remove('active');
+            }
+        });
+
+        // Empêcher la fermeture quand on clique dans le menu
+        if (menu) {
+            menu.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        }
+    }
+
+    // ========== DARK MODE TOGGLE ==========
     const header = document.querySelector("header"); 
     const modeBtn = document.createElement("button");
     modeBtn.id = "darkModeToggle";
-    modeBtn.classList.add("dark-toggle-btn"); // ← important !
+    modeBtn.classList.add("dark-toggle-btn");
+    
     modeBtn.innerHTML = `<i class="fa-regular fa-moon"></i>`;
     modeBtn.style.marginLeft = "15px";
     header.appendChild(modeBtn);
