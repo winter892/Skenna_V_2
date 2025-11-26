@@ -1,0 +1,385 @@
+/* =====================================================
+   RESET & BASE
+===================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #FFD3D5;
+  color: #333;
+  line-height: 1.6;
+  transition: background-color 0.4s, color 0.4s;
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+header {
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  height: 50px;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #E49BA6;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li {
+  margin-left: 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+nav ul.menu li a:hover {
+  background-color: #540863;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+@media (max-width: 1000px) {
+  nav ul.menu {
+    display: none;
+  }
+  .menu-toggle {
+    display: block;
+    font-size: 28px;
+    color: #540863;
+    cursor: pointer;
+  }
+}
+
+/* =====================================================
+   HERO
+===================================================== */
+.hero {
+  text-align: center;
+  background: linear-gradient(135deg, #540863, #E49BA6);
+  color: #fff;
+  padding: 60px 20px;
+  margin-bottom: 40px;
+  border-radius: 0 0 50px 50px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  animation: fadeInDown 1s ease-out;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+  animation: fadeIn 1.5s ease-out;
+}
+
+/* Slider images */
+.hero-slider {
+  overflow: hidden;
+  width: 100%;
+  padding: 20px 0;
+  margin-top: 20px;
+}
+
+.hero-track {
+  display: flex;
+  gap: 20px;
+  animation: slide 30s linear infinite;
+}
+
+.hero-img { 
+  width: 28%; /* largeur fixe */ 
+  height: auto; border-radius: 15px;
+   box-shadow: 0 8px 20px rgba(0,0,0,0.2); 
+   transition: transform 0.4s ease;
+   } 
+.hero-img:hover { 
+  transform: scale(0.9,0.9 ); 
+  /* zoom au survol */ }
+/* =====================================================
+   BOUTONS & LIENS RAPIDES
+===================================================== */
+.quick-links {
+  text-align: center;
+  margin: 30px 0;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+.quick-links .btn {
+  background: rgb(80, 12, 93);
+  color: #fff;
+  padding: 15px 25px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.quick-links .btn:hover {
+  background-color: #540863;
+  transform: translateY(-3px) scale(1.05);
+}
+
+/* =====================================================
+   FORMULAIRE
+===================================================== */
+.recherche {
+  max-width: 950px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 25px 20px;
+  border-radius: 25px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.recherche h2 {
+  text-align: center;
+  color: #540863;
+  margin-bottom: 25px;
+}
+
+.form-row {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+select, button {
+  padding: 12px 15px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+select:focus, button:hover {
+  border-color: #540863;
+  box-shadow: 0 0 8px rgba(106,13,173,0.3);
+}
+
+button {
+  cursor: pointer;
+  background-color: #540863;
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+button:hover {
+  background-color: #540863;
+  transform: translateY(-2px);
+}
+
+.form-row button[type="submit"] {
+  margin-bottom: 10px;
+}
+
+.info {
+  text-align: center;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+/* =====================================================
+   AVANTAGES
+===================================================== */
+.avantages, .pourquoi, .temoignages {
+  max-width: 950px;
+  margin: 50px auto;
+  text-align: center;
+}
+
+.grid-avantages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 25px;
+  margin: 25px;
+}
+
+.grid-avantages div {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.23);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.grid-avantages div:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.grid-avantages img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+footer {
+  background-color: #92487A;
+  color: #fff;
+  text-align: center;
+  padding: 25px 10px;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+footer a:hover {
+  color: #e0e0e0;
+  text-decoration: underline;
+}
+
+/* =====================================================
+   ANIMATIONS
+===================================================== */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* =====================================================
+   DARK MODE (DOIT TOUJOURS ÊTRE EN BAS)
+===================================================== */
+body.dark-mode {
+  background-color: #540863 !important;
+  color: #f5f5f5 !important;
+}
+
+body.dark-mode header {
+  background-color: #470550ff;
+}
+body.dark-mode .hero {
+  text-align: center;
+  background: linear-gradient(120deg, #000000ff, #812494ff);
+  color: #fff;
+  padding: 60px 20px;
+  margin-bottom: 40px;
+  border-radius: 0 0 50px 50px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+body.dark-mode .recherche,
+body.dark-mode .grid-avantages div {
+  background-color: #92487A;
+  color: #eee;
+}
+body.dark-mode .hero-img { 
+  width: 28%; /* largeur fixe */ 
+  height: auto; border-radius: 15px;
+   box-shadow: 0 8px 20px rgba(0,0,0,0.2); 
+   transition: transform 0.4s ease;
+   } 
+body.dark-mode .hero-img:hover { 
+  transform: scale(0.9,0.9 ); 
+  /* zoom au survol */ }
+body.dark-mode nav ul li a {
+  color: #f5f5f5;
+}
+body.dark-mode .logo {
+  height: 45px;
+  margin: 2px 0;
+}
+body.dark-mode nav ul.menu li a:hover {
+  background-color: #92487A;
+  color: #fff;
+  transform: scale(1.05);
+}
+body.dark-mode .quick-links .btn {
+  background: rgba(255, 255, 255, 1);
+  color: #4f0654ff;
+  padding: 15px 25px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+body.dark-mode .recherche {
+  max-width: 950px;
+  margin: 40px auto;
+  background: #cfc7cc80;
+  padding: 25px 20px;
+  border-radius: 25px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+body.dark-mode .hero p{
+  color : #fff;
+}
+body.dark-mode footer {
+  background-color: #111;
+}
+
+#darkModeToggle {
+    background: #eb79e93d;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: #6b4fa0; /* Violet doux de ta palette */
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: 0.3s;
+}
+
+#darkModeToggle i {
+    font-size: 18px;
+}
+body.dark-mode #darkModeToggle {
+    background: #6b4fa04b;
+    color: #ffffffff;
+}

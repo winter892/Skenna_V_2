@@ -1,0 +1,244 @@
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", sans-serif;
+    background:rgb(255, 255, 255);
+    color: #540863;
+    
+    transition: all 0.5s ease;
+}
+
+/* Mode sombre */
+body.dark-mode {
+    background: #923333ff;
+    color: #FFD3D5;
+}
+body.dark-mode h1{
+ color: #fff;
+}
+
+/* ================================
+   BOUTON MODE SOMBRE / CLAIR
+================================ */
+#toggleTheme {
+    display: block;            /* <-- corrige le problème du même niveau */
+    margin: 0 auto 25px auto;  /* centré + espace */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    background: #540863;
+    color: #FFD3D5;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+#toggleTheme:hover {
+    background: #92487A;
+}
+
+/* ================================
+        TITRE PRINCIPAL
+================================ */
+h1 {
+    font-size: 36px;
+    font-weight: 900;
+    color: #540863;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+/* barre animée sous le titre */
+h1::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 60%;
+    height: 4px;
+    background: linear-gradient(90deg, #540863, #92487A, #E49BA6);
+    transform: translateX(-50%);
+    border-radius: 10px;
+    animation: slideBar 2s infinite alternate ease-in-out;
+}
+
+@keyframes slideBar {
+    from { width: 40%; }
+    to   { width: 70%; }
+}
+
+/* ================================
+      LIEN RETOUR À L'ACCUEIL
+================================ */
+a.back-link {
+    display: inline-block;
+    position: relative;
+    color: #540863;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 8px 20px;
+    border: 2px solid #92487A;
+    border-radius: 12px;
+    background: #FFD3D5;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+a.back-link::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(228, 155, 166, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease;
+    z-index: 0;
+}
+
+a.back-link:hover {
+    color: #FFF;
+    background: #540863;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(84,8,99,0.3);
+}
+
+a.back-link:hover::after {
+    width: 300%;
+    height: 300%;
+}
+
+/* ================================
+               HR
+================================ */
+hr {
+    border: none;
+    height: 3px;
+    width: 70%;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    background: linear-gradient(90deg, #E49BA6, #92487A, #540863);
+    border-radius: 10px;
+    animation: fadeInBar 1.5s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInBar {
+    to { opacity: 1; }
+}
+
+/* ================================
+        FORMULAIRE
+================================ */
+form {
+    background: rgba(255, 211, 213, 0.6);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    width: 70%;
+    max-width: 700px;
+    margin: auto;
+    transition: all 0.8s ease;
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+form.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Inputs */
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    border: 2px solid #92487A;
+    background: rgba(255,255,255,0.8);
+    transition: all 0.3s ease;
+    font-size: 15px;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #E49BA6;
+    box-shadow: 0 0 10px rgba(228,155,166,0.5);
+    outline: none;
+}
+
+/* ================================
+          BOUTONS FORMULAIRE
+================================ */
+button[type="submit"], button[type="reset"] {
+    width: 100%;
+    padding: 14px;
+    margin-top: 10px;
+    border-radius: 12px;
+    background: #540863;
+    color: #FFD3D5;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    animation: pulse 2s infinite;
+}
+
+button[type="submit"]:hover, button[type="reset"]:hover {
+    background: #92487A;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255,211,213,0.5);
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+
+/* ================================
+          PRÉVISUALISATION PHOTO
+================================ */
+#imgPreview {
+    max-width: 200px;
+    display: none;
+    margin-top: 10px;
+    border-radius: 12px;
+}
+
+/* ================================
+          COMPTEUR CARACTÈRES
+================================ */
+#charCount {
+    display: block;
+    text-align: right;
+    font-size: 14px;
+    color: #540863;
+}
+
+/* ================================
+              RESPONSIVE
+================================ */
+@media (max-width: 900px) {
+    form {
+        width: 90%;
+        padding: 20px;
+    }
+}

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Logements - Sknna.ma</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel ="stylesheet" href="style_acceuill.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+/* Palette */
+:root {
+  --c1: #540863;
+  --c2: #92487A;
+  --c3: #E49BA6;
+  --c4: #FFD3D5;
+  --text: #222;
+  --bg: #f7f7f7;
+}
+
+.dark {
+  --text: #f1f1f1;
+  --bg: #1a1a1a;
+}
+body {
+  background-color: #ffffff;
+  color: #333;
+  line-height: 1.6;
+  transition: background-color 0.4s, color 0.4s;
+}
+/* Title */
+.section-title {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 26px;
+  color: var(--c1);
+  opacity: 0;
+}
+
+/* Grid */
+.logement-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+  gap: 20px;
+  padding: 30px;
+  width: 90%;
+  margin: auto;
+}
+
+/* Reveal */
+.reveal {
+  opacity: 0;
+  filter: blur(8px);
+  transform: translateY(30px);
+  transition: .8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* Cards */
+.logement-card {
+  background: var(--c4);
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,.1);
+  transition: .4s;
+  transform-style: preserve-3d;
+}
+
+.logement-card:hover {
+  transform: rotateX(8deg) rotateY(-8deg) scale(1.03);
+  box-shadow: 0 20px 30px rgba(0,0,0,.2);
+}
+
+.dark .logement-card {
+  background: #2b2b2b;
+}
+
+/* Photos */
+.photos {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.photos img {
+  width: 45%;
+  border-radius: 6px;
+  opacity: 0;
+  animation: imgReveal 1s forwards;
+}
+
+@keyframes imgReveal {
+  from { opacity:0; transform:scale(1.05); filter:blur(6px); }
+  to   { opacity:1; transform:scale(1); filter:blur(0); }
+}
+
+/* Video */
+video {
+  width: 100%;
+  border-radius: 10px;
+  opacity: 0;
+  animation: videoReveal 1s forwards;
+}
+
+@keyframes videoReveal {
+  from { opacity: 0; transform: scale(1.05); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* Button */
+.card-btn {
+  display: inline-block;
+  margin-top: 10px;
+  background: var(--c1);
+  color: white;
+  padding: 10px;
+  border-radius: 6px;
+  transition: .3s;
+  text-decoration: none;
+}
+
+.card-btn:hover {
+  background: var(--c2);
+  transform: scale(1.05);
+}
+
+/* Infos administrateur */
+.admin-info {
+  margin-top: 10px;
+  padding: 10px;
+  background: white;
+  border-radius: 6px;
+  font-size: 14px;
+  color: black;
+}
+
+.dark .admin-info {
+  background: #3a3a3a;
+  color: white;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: var(--c1);
+  color: white;
+  margin-top: 20px;
+  animation: fadeUp 1s ease forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+footer a { color: var(--c4); text-decoration: none; }
+footer a:hover { color:white; }
+body.dark-mode h3 {
+  background-color: #111;
+}
+body.dark-mode h3,b{
+  color: #5d0a79;
+  background-color: transparent;
+}
+</style>
+</head>
+
+<body>
+<header>
+<a href="aceuill.html">
+    <img id="siteLogo" src="IMAGES/Logo_mode_light.png" alt="Logo Sknna.ma" class="logo">
+</a>
+
+  <nav>
+    <ul class="menu">
+      <li><a href="logements.html">Logements</a></li>
+      <li><a href="Colocation.html">Colocation</a></li>
+      <li><a href="publier_annonce.html">Publier une annonce</a></li>
+      <li><a href="publier_demande.html">Lancer une demande</a></li>
+      <li><a href="Demandes.html">Demandes</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="presentation.html">Présentation</a></li>
+      <li><a href="Se_Connecter.html">Se connecter</a></li>
+      <li><a href="creation_Compt.html">S'inscrire</a></li>
+    </ul>
+  </nav>
+  <div class="menu-toggle">
+    <i class="fas fa-bars"></i>
+  </div>
+  
+</header>
+
+
+<h3 class="section-title">Appartements et studios récents</h3>
+
+<div class="logement-container">
+
+  <div class="logement-card reveal">
+    <div class="photos">
+      <img src="IMAGES/photo1.jpg">
+      <img src="IMAGES/photo2.jpg">
+      <img src="IMAGES/photo3.jpg">
+      <img src="IMAGES/photo4.jpg">
+      <img src="IMAGES/photo5.jpg">
+      <img src="IMAGES/photo6.jpg">
+    </div>
+    <h3>Appartement - Agadir</h3>
+    <b>1000 /personne</b><br>
+
+    <!-- Infos admin -->
+    <div class="admin-info">
+      <p><b>Sexe :</b> female</p>
+      <p><b>Logement occupé </b> 
+      <p><b>nombre max :</b> 5 personnes</p>
+      <p><b>Type :</b> Luxe</p>
+    </div>
+
+    <a class="card-btn" href="contact.html">Contacter</a>
+  </div>
+
+  <!-- LOGEMENT 2 -->
+  <div class="logement-card reveal">
+    <div class="photos">
+      <img src="IMAGES/appart2.jpg">
+      <img src="IMAGES/appart1.jpg">
+    </div>
+    <h3>studio - Marrakech</h3>
+    <b>500 MAD / personnes</b><br>
+
+    <div class="admin-info">
+      <p><b>Sexe :</b>female </p>
+      <p><b>nombre max :</b> 2 personnes</p>
+      <p><b>Étage :</b> 2éme</p>
+      <p><b>Type :</b> Normal </p>
+
+      <p><b>nombre max:</b> 2 personnes</p>
+      <p><b>Étage:</b> 2éme</p>
+      <p><b>Type:</b> Normal </p>
+
+    </div>
+
+    <a class="card-btn" href="contact.html">Contacter</a>
+  </div>
+
+  <!-- LOGEMENT 3 -->
+  <div class="logement-card reveal">
+    <div class="photos">
+      <img src="IMAGES/1.jpeg">
+      <img src="IMAGES/2.jpg">
+
+    </div>
+    <h3>studio - Rabat</h3>
+    <b>1000 MAD / personne</b><br>
+
+    <div class="admin-info">
+      <p><b>Sexe :</b> female</p>
+      <p><b>nombre max :</b>1 PERSONNE</p>
+      <p><b>Étage :</b> 3éme</p>
+      <p><b>Type :</b> Luxe </p>
+
+      <p><b>nombre max:</b>1 PERSONNE</p>
+      <p><b>Étage:</b> 3éme</p>
+      <p><b>Type:</b> Luxe </p>
+
+    </div>
+
+    <a class="card-btn" href="contact.html">Contacter</a>
+  </div>
+
+  <!-- LOGEMENT 4 -->
+  <div class="logement-card reveal">
+    <video controls>
+      <source src="VIDEO/video.mp4" type="video/mp4">
+    </video>
+    <h3>Appartement- Rabat</h3>
+    <b>1500 MAD / personnes</b><br>
+
+    <div class="admin-info">
+      <p><b>Sexe :</b> male</p>
+      <p><b>nombre max  :</b> 4 personnes</p>
+      <p><b>Étage :</b>2éme</p>
+      <p><b>Type :</b> normal</p>
+    </div>
+
+    <a class="card-btn" href="contact.html">Contacter</a>
+  </div>
+
+  <!-- LOGEMENT 5 -->
+  <div class="logement-card reveal">
+    <div class="photos">
+      <img src="IMAGES/11.jpeg">
+      <img src="IMAGES/22.avif">
+      <img src="IMAGES/0.jpeg">
+    </div>
+    <h3>studio - Rabat</h3>
+    <b>2000 MAD / personne</b><br>
+
+    <div class="admin-info">
+      <p><b>Sexe :</b> male</p>
+      <p><b></b> nombre max:</b> 1 personne</p>
+      <p><b>Étage :</b> 1er </p>
+      <p><b>Type :</b>  Normal</p>
+    </div>
+
+    <a class="card-btn" href="contact.html">Contacter</a>
+  </div>
+
+</div>
+
+<footer>
+  <p>Suivez-nous sur :
+    <a href="#">Facebook</a> |
+    <a href="#">Instagram</a> |
+    <a href="#">LinkedIn</a>
+  </p>
+  <p>© 2025 Sknna.ma</p>
+</footer>
+
+<!-- Dark Mode -->
+<script>
+document.getElementById("darkToggle").onclick = () => {
+
+  document.body.classList.toggle("dark");
+
+  darkToggle.textContent = document.body.classList.contains("dark")
+    ? "☀️ Mode clair"
+    : "🌙 Mode sombre";
+
+  /* Logo automatique */
+  document.getElementById("logo").src =
+    document.body.classList.contains("dark")
+      ? "IMAGES/Logo_mode_sombre.png"
+      : "IMAGES/Logo_mode_light.png";
+};
+</script>
+
+<!-- Scroll reveal -->
+<script>
+const R = document.querySelectorAll(".reveal");
+const revealScroll = () => {
+  R.forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+      el.classList.add("visible");
+    }
+  });
+};
+window.addEventListener("scroll", revealScroll);
+revealScroll();
+</script>
+
+<!-- Typing effect -->
+<script>
+let TT = document.querySelector(".section-title");
+let T = TT.textContent;
+TT.textContent = "";
+let ii = 0;
+
+(function type2() {
+  if (ii < T.length) {
+    TT.textContent += T.charAt(ii);
+    ii++;
+    setTimeout(type2, 80);
+  }
+})();
+
+  document.addEventListener("DOMContentLoaded", () => {
+
+    const header = document.querySelector("header"); 
+    const modeBtn = document.createElement("button");
+    modeBtn.id = "darkModeToggle";
+
+    // Icône + texte
+    modeBtn.innerHTML = `<i class="fa-regular fa-moon"></i> `;
+    modeBtn.style.marginLeft = "15px";
+    header.appendChild(modeBtn);
+
+    const logo = document.getElementById("siteLogo");
+
+    modeBtn.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+        const isDark = document.body.classList.contains("dark-mode");
+
+        // Icônes professionnelles
+        modeBtn.innerHTML = isDark 
+            ? `<i class="fa-regular fa-sun"></i> `
+            : `<i class="fa-regular fa-moon"></i> `;
+
+        // Logo dynamique
+        logo.src = isDark
+            ? "IMAGES/Logo_mode_dark.png"
+            : "IMAGES/Logo_mode_light.png";
+    });
+});
+</script>
+
+</body>
+</html>

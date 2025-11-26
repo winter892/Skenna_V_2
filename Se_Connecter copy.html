@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Connexion - Sknna.ma</title>
+    <link rel="stylesheet" href="style_conexion_sinscrire.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<header>
+<a href="aceuill.html">
+    <img id="siteLogo" src="IMAGES/Logo_mode_light.png" alt="Logo Sknna.ma" class="logo">
+</a>
+
+  <nav>
+    <ul class="menu">
+      <li><a href="logements.html">Logements</a></li>
+      <li><a href="Colocation.html">Colocation</a></li>
+      <li><a href="publier_annonce.html">Publier une annonce</a></li>
+      <li><a href="publier_demande.html">Lancer une demande</a></li>
+      <li><a href="Demandes.html">Demandes</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="presentation.html">Présentation</a></li>
+      <li><a href="Se_Connecter.html">Se connecter</a></li>
+      <li><a href="creation_Compt.html">S'inscrire</a></li>
+    </ul>
+  </nav>
+  <div class="menu-toggle">
+    <i id="menuIcon" class="fas fa-bars"></i>
+  </div>
+  
+</header>
+ 
+
+  <!-- Container -->
+  <div class="container">
+
+    <div class="form-image-wrapper">
+
+      <!-- Formulaire -->
+      <div class="form-section">
+        <h1>Connexion</h1>
+        <form action="aceuill.html" method="post">
+          <label for="email">Email :</label>
+          <input type="email" id="email" name="email" required>
+
+          <label for="password">Mot de passe :</label>
+          <input type="password" id="password" name="password" required>
+
+          <button id="btn" type="submit">Se connecter</button>
+        </form>
+
+        <p class="center-text">Pas encore inscrit ? <a href="creation_Compt.html">Créer un compte</a></p>
+      </div>
+
+      <div class="image-section">
+        <img src="IMAGES/img_conexion.png" alt="Étudiants heureux">
+      </div>
+
+    </div>
+  
+
+  </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    const header = document.querySelector("header"); 
+    const modeBtn = document.createElement("button");
+    modeBtn.id = "darkModeToggle";
+    modeBtn.classList.add("dark-toggle-btn"); // ← important !
+    modeBtn.innerHTML = `<i class="fa-regular fa-moon"></i>`;
+    modeBtn.style.marginLeft = "15px";
+    header.appendChild(modeBtn);
+
+    const logo = document.getElementById("siteLogo");
+
+    modeBtn.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+        const isDark = document.body.classList.contains("dark-mode");
+
+        modeBtn.innerHTML = isDark 
+            ? `<i class="fa-regular fa-sun"></i>`
+            : `<i class="fa-regular fa-moon"></i>`;
+
+        logo.src = isDark
+            ? "IMAGES/Logo_mode_dark.png"
+            : "IMAGES/Logo_mode_light.png";
+    });
+});
+</script>
+
+</body>
+
+</html>
