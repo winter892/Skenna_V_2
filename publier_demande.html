@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Lancer une demande - Sknna.ma</title>
+    <link rel="stylesheet" href="style_puplier_demande.css">
+</head>
+
+<body>
+
+<header>
+  <a href="aceuill.html"><img src="IMAGES/Logo_mode_light1.png" alt="Logo Sknna.ma" class="logo"></a>
+
+  <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+  <nav>
+      <ul class="menu">
+          <li><a href="logements.html">Logements</a></li>
+          <li><a href="Colocation.html">Colocation</a></li>
+          <li><a href="publier_annonce.html">Publier une annonce</a></li>
+          <li><a href="publier_demande.html">Lancer une demande</a></li>
+          <li><a href="Demandes.html">Demandes</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="presentation.html">Présentation</a></li>
+          <li><a href="Se_Connecter.html">Se connecter</a></li>
+          <li><a href="creation_Compt.html">S'inscrire</a></li>
+      </ul>
+  </nav>
+</header>
+
+<section class="container">
+
+    <h1>Lancer une demande de colocation</h1>
+    <p class="subtitle">Remplissez ce formulaire pour trouver des colocataires compatibles.</p>
+
+    <form class="demande-form">
+
+        <h2>Informations personnelles</h2>
+
+        <label>Prénom :</label>
+        <input type="text" name="prenom" required>
+
+        <label>Âge :</label>
+        <input type="number" name="age" min="16" max="50" required>
+
+        <label>Genre :</label>
+        <label><input type="radio" name="genre" value="Femme" required> Femme</label>
+        <label><input type="radio" name="genre" value="Homme"> Homme</label>
+
+        <label>Email :</label>
+        <input type="email" name="email" required>
+
+        <label>Téléphone :</label>
+        <input type="text" name="telephone" required>
+
+        <label>Ville de recherche :</label>
+        <input type="text" name="ville" required>
+
+        <label>École :</label>
+        <input type="text" name="ecole" required>
+
+        <h2>Préférences de colocation</h2>
+
+        <label>Budget maximum (DH) :</label>
+        <input type="number" name="budget" required>
+
+        <label>Type de logement recherché :</label>
+        <select name="typeLogement" required>
+            <option>Studio</option>
+            <option>Appartement</option>
+            <option>Chambre en colocation</option>
+        </select>
+
+        <label>Nombre de colocataires souhaités :</label>
+        <input type="number" name="nbColoc" min="1" required>
+
+        <label>Vos préférences :</label>
+        <div class="multi-select">
+            <label><input type="checkbox" value="calme"> Calme</label>
+            <label><input type="checkbox" value="non-fumeur"> Non-fumeur</label>
+            <label><input type="checkbox" value="fumeur"> Fumeur</label>
+            <label><input type="checkbox" value="etudiants"> Étudiant(e)s uniquement</label>
+            <label><input type="checkbox" value="mixte"> Mixte</label>
+            <label><input type="checkbox" value="appartement-equipe"> Appartement équipé</label>
+            <label><input type="checkbox" value="meuble"> Meublé</label>
+            <label><input type="checkbox" value="ascenseur"> Ascenseur</label>
+            <label><input type="checkbox" value="parking"> Parking</label>
+            <label><input type="checkbox" value="climatisation"> Climatisation</label>
+            <label><input type="checkbox" value="chauffage"> Chauffage</label>
+            <label><input type="checkbox" value="internet"> Internet / Fibre</label>
+            <label><input type="checkbox" value="machine-a-laver"> Machine à laver</label>
+            <label><input type="checkbox" value="balcon"> Balcon / Terrasse</label>
+            <label><input type="checkbox" value="proche-transports"> Proche des transports</label>
+            <label><input type="checkbox" value="proche-centre"> Proche du centre-ville</label>
+            <label><input type="checkbox" value="animaux-ok"> Animaux acceptés</label>
+            <label><input type="checkbox" value="animaux-ko"> Pas d’animaux</label>
+            <label><input type="checkbox" value="cuisine-equipee"> Cuisine équipée</label>
+            <label><input type="checkbox" value="court-sejour"> Court séjour possible</label>
+            <label><input type="checkbox" value="long-sejour"> Long séjour</label>
+        </div>
+
+        <label>Description :</label>
+        <textarea name="description" rows="5" max="500" placeholder="Décrivez vos attentes, style de vie, horaires..."></textarea>
+
+        <button type="submit" class="submit-btn">Envoyer la demande</button>
+
+    </form>
+
+</section>
+
+<script>
+    // Menu toggle
+    const toggle = document.querySelector(".menu-toggle");
+    const nav = document.querySelector("nav");
+
+    toggle.addEventListener("click", () => {
+        nav.classList.toggle("active");
+    });
+
+    // Gestion du formulaire statique
+    const form = document.querySelector(".demande-form");
+
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        // Récupérer les valeurs
+        const formData = new FormData(form);
+        const preferences = [];
+        form.querySelectorAll('input[type="checkbox"]:checked').forEach(cb => preferences.push(cb.value));
+
+        const demande = {
+            prenom: formData.get("prenom"),
+            age: formData.get("age"),
+            genre: formData.get("genre"),
+            email: formData.get("email"),
+            telephone: formData.get("telephone"),
+            ville: formData.get("ville"),
+            ecole: formData.get("ecole"), 
+            budget: formData.get("budget"),
+            typeLogement: formData.get("typeLogement"),
+            nbColoc: formData.get("nbColoc"),
+            preferences: preferences,
+            description: formData.get("description")
+        };
+
+        // Stocker dans le localStorage
+        const demandes = JSON.parse(localStorage.getItem("demandes") || "[]");
+        demandes.push(demande);
+        localStorage.setItem("demandes", JSON.stringify(demandes));
+
+        alert("Votre demande a été enregistrée !");
+        form.reset();
+    });
+</script>
+
+</body>
+</html>

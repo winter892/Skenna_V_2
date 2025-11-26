@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liste des demandes - Sknna.ma</title>
+  <link rel="stylesheet" href="style_demandes.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<header>
+  <a href="aceuill.html"><img src="IMAGES/Logo_mode_light1.png" alt="Logo Sknna.ma" class="logo"></a>
+
+  <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+  <nav>
+      <ul class="menu">
+          <li><a href="logements.html">Logements</a></li>
+          <li><a href="Colocation.html">Colocation</a></li>
+          <li><a href="publier_annonce.html">Publier une annonce</a></li>
+          <li><a href="publier_demande.html">Lancer une demande</a></li>
+          <li><a href="Demandes.html">Demandes</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="presentation.html">Présentation</a></li>
+          <li><a href="Se_Connecter.html">Se connecter</a></li>
+          <li><a href="creation_Compt.html">S'inscrire</a></li>
+      </ul>
+  </nav>
+</header>
+
+<main class="container">
+  <h1>Liste des demandes de colocation</h1>
+  <div id="demandesList" class="demandes-list">
+    <!-- Les demandes seront ajoutées ici par JavaScript -->
+  </div>
+</main>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const demandesList = document.getElementById('demandesList');
+    const demandes = JSON.parse(localStorage.getItem('demandes')) || [];
+
+    // Si aucune demande n'est trouvée
+    if (demandes.length === 0) {
+      demandesList.innerHTML = `
+        <div class="no-demandes">
+          <i class="fas fa-search"></i>
+          <h3>Aucune demande trouvée</h3>
+          <p>Il n'y a actuellement aucune demande de colocation.</p>
+          <a href="publier_demande.html" class="contact-btn">Créer une demande</a>
+        </div>
+      `;
+      return;
+    }
+
+    // Afficher chaque demande
+    demandes.forEach((demande, index) => {
+      const div = document.createElement('div');
+      div.classList.add('demande-item');
+      
+      // Ajout de classe selon le genre
+      if(demande.genre && demande.genre.toLowerCase() === 'femme') {
+        div.classList.add('femme');
+      } else if(demande.genre && demande.genre.toLowerCase() === 'homme') {
+        div.classList.add('homme');
+      }
+
+      // Formater la date
+      const date = new Date(demande.date || Date.now());
+      const dateStr = date.toLocaleDateString('fr-FR', {day:'2-digit', month:'2-digit', year:'numeric'});
+
+      // Créer les badges pour les préférences principales (3 premières)
+      let preferencesHTML = '';
+      if (demande.preferences && Array.isArray(demande.preferences)) {
+        const mainPreferences = demande.preferences.slice(0, 3);
+        const extraCount = demande.preferences.length - 3;
+        
+        preferencesHTML = `
+          <div class="preferences-badges">
+            ${mainPreferences.map(pref => `<span class="preference-badge">${pref}</span>`).join('')}
+            ${extraCount > 0 ? `<span class="preference-badge">+${extraCount} autres</span>` : ''}
+          </div>
+        `;
+      }
+
+      // Préparer la description (première phrase seulement)
+      const description = demande.description || 'Aucune description fournie.';
+      
+      // Extraire la première phrase (jusqu'au premier point)
+      let shortDescription = description;
+      const firstSentenceEnd = description.indexOf('.');
+      if (firstSentenceEnd !== -1) {
+        shortDescription = description.substring(0, firstSentenceEnd + 1);
+      }
+      
+      // Si la première phrase est trop longue, la tronquer
+      if (shortDescription.length > 30) {
+        shortDescription = shortDescription.substring(0, 30) + '...';
+      }
+
+      div.innerHTML = `
+          <div class="demande-header">
+              <h2>${demande.prenom || 'Non spécifié'}, ${demande.age || 'N/A'} ans</h2>
+              <span class="demande-date"><i class="fa-regular fa-calendar"></i> ${dateStr}</span>
+          </div>
+          <p><i class="fa-solid fa-graduation-cap"></i> <b>École:</b> ${demande.ecole || 'Non spécifié'}</p>
+          <p><i class="fa-solid fa-venus-mars"></i> <b>Genre:</b> ${demande.genre || 'Non spécifié'}</p>
+          <p><i class="fa-solid fa-city"></i> <b>Ville:</b> ${demande.ville || 'Non spécifié'}</p>
+          <p><i class="fa-solid fa-money-bill-wave"></i> <b>Budget max:</b> ${demande.budget || 'N/A'} DH</p>
+          <p><i class="fa-solid fa-house"></i> <b>Type logement:</b> ${demande.typeLogement || 'Non spécifié'}</p>
+          <p><i class="fa-solid fa-list-check"></i> <b>Préférences:</b> ${preferencesHTML}</p>
+          
+          <div class="description-container">
+            <p><i class="fa-solid fa-pen"></i> <b>Description:</b></p>
+            <div class="description-short">
+              ${shortDescription}
+            </div>
+          </div>
+          
+          <div class="action-buttons">
+            <a href="mailto:${demande.email || '#'}" class="contact-btn"><i class="fa-solid fa-envelope"></i> Contacter</a>
+            <a href="demande_detaill.html?id=${index}" class="voir-plus-btn"><i class="fa-solid fa-eye"></i> Voir Détails</a>
+          </div>
+      `;
+      demandesList.appendChild(div);
+    });
+
+    // Menu mobile
+    const toggle = document.querySelector(".menu-toggle");
+    const nav = document.querySelector("nav");
+    toggle.addEventListener("click", () => {
+        nav.classList.toggle("active");
+    });
+  });
+</script>
+
+</body>
+</html>

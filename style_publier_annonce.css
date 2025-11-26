@@ -1,0 +1,255 @@
+/* ------------------------------ */
+/* RESET BASIQUE                  */
+/* ------------------------------ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #FFD3D5;
+  color: #540863;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Mode sombre */
+body.dark {
+  background:  #2c1a3b;
+  color: #92487A;
+}
+
+/* ------------------------------ */
+/* HEADER                         */
+/* ------------------------------ */
+
+header {
+  width: 100%;
+  padding: 12px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border-bottom: 2px solid #FFD3D5;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+
+  /* Effet glow IA */
+  box-shadow: 0 0 18px #92487A;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+/* TITRES DES INPUTS */
+label{
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* INPUTS + SELECT + TEXTAREA */
+
+select,
+textarea{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #92487A;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+/* Mode sombre header */
+body.dark header {
+  background: rgba(40, 0, 50, 0.7);
+  border-bottom: 2px solid #92487A;
+  box-shadow: 0 0 18px #540863;
+}
+
+.logo {
+  height: 55px;
+  transition: transform 0.3s;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+/* MENU */
+nav ul.menu {
+  list-style: none;
+  display: flex;
+  gap: 18px;
+}
+
+nav ul.menu li a {
+  text-decoration: none;
+  color: #540863;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: 0.3s;
+
+  /* petit glow sélection IA */
+  position: relative;
+}
+
+body.dark nav ul.menu li a {
+  color: #E49BA6;
+}
+
+nav ul.menu li a:hover {
+  background: #FFD3D5;
+  color: #540863;
+  box-shadow: 0 0 10px #92487A;
+}
+
+body.dark nav ul.menu li a:hover {
+  background: #540863;
+  color: white;
+  box-shadow: 0 0 10px #92487A;
+}
+
+/* MENU BURGER */
+.menu-toggle {
+  display: none;
+  font-size: 30px;
+  cursor: pointer;
+  color: #540863;
+}
+
+body.dark .menu-toggle {
+  color: #E49BA6;
+}
+
+/* ------------------------------ */
+/* RESPONSIVE HEADER              */
+/* ------------------------------ */
+
+@media (max-width: 880px) {
+
+  nav ul.menu {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    width: 65%;
+    background: white;
+    flex-direction: column;
+    padding: 20px;
+    gap: 10px;
+    border-bottom-left-radius: 12px;
+    border-left: 1px solid #FFD3D5;
+    border-bottom: 1px solid #FFD3D5;
+
+    display: none; /* caché par défaut */
+  }
+
+  body.dark nav ul.menu {
+    background: #540863;
+  }
+
+  nav ul.menu.show {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
+/* ------------------------------ */
+/* PAGE                           */
+/* ------------------------------ */
+
+center h1 {
+  margin-top: 25px;
+  margin-bottom: 10px;
+  font-size: 2.2em;
+  text-shadow: 0 0 6px #92487A;
+}
+
+center p a {
+  text-decoration: none;
+  color: #540863;
+  font-weight: bold;
+}
+
+body.dark center p a {
+  color: #92487A;
+}
+
+/* FORMULAIRE */
+form table {
+  margin-top: 20px;
+  background: white;
+  padding: 25px;
+  border-radius: 18px;
+  border: 2px solid #ffb2da;
+  box-shadow: 0 0 12px rgba(255, 150, 200, 0.2);
+}
+
+body.dark form table {
+  background: #2a0033;
+  border: 2px solid #92487A;
+}
+
+input, select, textarea {
+  width: 90%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid #92487A;
+  outline: none;
+  transition: 0.2s;
+}
+
+body.dark input,
+body.dark select,
+body.dark textarea {
+  background: #3b0048;
+  color: white;
+  border: 2px solid #540863;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #E49BA6;
+  box-shadow: 0 0 8px #92487A;
+}
+
+button[type="submit"], button[type="reset"] {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 12px;
+  background: #540863;
+  color: white;
+  cursor: pointer;
+  margin: 10px;
+  transition: 0.3s;
+}
+
+button[type="submit"]:hover,
+button[type="reset"]:hover {
+  background: #92487A;
+  box-shadow: 0 0 10px #540863;
+}
+
+body.dark button {
+  background: #E49BA6;
+}
+
+body.dark button:hover {
+  background: #FFD3D5;
+}
+
+/* Compteur caractères description */
+#charCount {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Footer */
+center small {
+  margin-top: 20px;
+  opacity: 0.7;
+}
