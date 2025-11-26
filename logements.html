@@ -315,31 +315,8 @@ body.dark-mode h3,b{
 </div>
 
 <footer>
-  <p>Suivez-nous sur :
-    <a href="#">Facebook</a> |
-    <a href="#">Instagram</a> |
-    <a href="#">LinkedIn</a>
-  </p>
-  <p>© 2025 Sknna.ma</p>
+  <p>© 2025 Sknna.ma – Tous droits réservés.</p>
 </footer>
-
-<!-- Dark Mode -->
-<script>
-document.getElementById("darkToggle").onclick = () => {
-
-  document.body.classList.toggle("dark");
-
-  darkToggle.textContent = document.body.classList.contains("dark")
-    ? "☀️ Mode clair"
-    : "🌙 Mode sombre";
-
-  /* Logo automatique */
-  document.getElementById("logo").src =
-    document.body.classList.contains("dark")
-      ? "IMAGES/Logo_mode_sombre.png"
-      : "IMAGES/Logo_mode_light.png";
-};
-</script>
 
 <!-- Scroll reveal -->
 <script>

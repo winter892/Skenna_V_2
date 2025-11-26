@@ -1,446 +1,151 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<title>Colocations - Sknna.ma</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
-/* Palette */
-:root {
-  --c1: #540863;
-  --c2: #92487A;
-  --c3: #E49BA6;
-  --c4: #FFD3D5;
-  --text: #222;
-  --bg: #f7f7f7;
-}
-
-.dark {
-  --text: #f1f1f1;
-  --bg: #1a1a1a;
-}
-
-body {
-  font-family: "Poppins", sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  margin: 0;
-  padding: 0;
-  transition: background 0.5s, color 0.5s;
-}
-
-/* Header */
-header {
-  text-align: center;
-  padding: 20px;
-  animation: fadeDown 1s ease forwards;
-  opacity: 0;
-}
-
-@keyframes fadeDown {
-  from { transform: translateY(-20px); opacity: 0; }
-  to   { transform: translateY(0); opacity: 1; }
-}
-
-header img {
-  width: 180px;
-}
-
-h2 { color: var(--c1); }
-
-/* Navbar */
-nav {
-  background: var(--c1);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding: 10px;
-}
-
-nav a {
-  color: white;
-  padding: 10px 15px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: .3s;
-}
-
-nav a:hover {
-  color: var(--c4);
-  transform: scale(1.1);
-}
-
-/* Dark mode */
-#darkToggle {
-  background: var(--c2);
-  border: none;
-  padding: 8px 15px;
-  border-radius: 6px;
-  color: white;
-  margin-left: 10px;
-  cursor: pointer;
-  transition: transform .3s, background .3s;
-}
-
-#darkToggle:hover {
-  transform: scale(1.1);
-  background: var(--c3);
-}
-
-/* Title */
-.section-title {
-  text-align: center;
-  margin-top: 20px;
-  font-size: 26px;
-  color: var(--c1);
-  opacity: 0;
-}
-
-/* Cards container */
-.coloc-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-  padding: 30px;
-  width: 90%;
-  margin: auto;
-}
-
-/* Reveal */
-.reveal {
-  opacity: 0;
-  filter: blur(8px);
-  transform: translateY(30px);
-  transition: all 0.8s ease;
-}
-
-.reveal.visible {
-  opacity: 1;
-  filter: blur(0);
-  transform: translateY(0);
-}
-
-/* Cards */
-.coloc-card {
-  background: var(--c4);
-  border-radius: 10px;
-  padding: 15px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: 0.4s ease;
-  transform-style: preserve-3d;
-}
-
-.dark .coloc-card {
-  background: #2b2b2b;
-}
-
-.coloc-card:hover {
-  transform: rotateX(8deg) rotateY(-8deg) scale(1.03);
-  box-shadow: 0 20px 30px rgba(0,0,0,0.2);
-}
-
-/* Photos */
-.photos {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  justify-content: center;
-}
-
-.photos img {
-  width: 45%;
-  border-radius: 6px;
-  object-fit: cover;
-  opacity: 0;
-  animation: imgReveal 1s forwards;
-}
-
-@keyframes imgReveal {
-  from { opacity: 0; transform: scale(1.05); filter: blur(6px); }
-  to   { opacity: 1; transform: scale(1); filter: blur(0); }
-}
-
-.photos img:hover {
-  transform: scale(1.08);
-}
-
-/* Button */
-.card-btn {
-  display: inline-block;
-  margin-top: 10px;
-  background: var(--c1);
-  color: white;
-  padding: 10px;
-  border-radius: 5px;
-  text-decoration: none;
-  transition: .3s;
-}
-
-.card-btn:hover {
-  background: var(--c2);
-  transform: scale(1.05);
-}
-
-/* Admin info box */
-.admin-info {
-  background: rgba(255,255,255,0.5);
-  padding: 12px;
-  border-radius: 8px;
-  margin-top: 15px;
-  font-size: 15px;
-  line-height: 22px;
-}
-
-.dark .admin-info {
-  background: rgba(0,0,0,0.25);
-}
-
-.admin-info b { color: var(--c1); }
-.dark .admin-info b { color: var(--c3); }
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 20px;
-  background: var(--c1);
-  color: white;
-  animation: fadeUp 1s ease forwards;
-  opacity: 0;
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-footer a {
-  color: var(--c4);
-  text-decoration: none;
-}
-
-footer a:hover {
-  color: white;
-}
-</style>
+    <meta charset="UTF-8">
+    <title>Colocations - Sknna.ma</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel ="stylesheet" href="style_acceuill.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style_colocation.css">
 </head>
 
 <body>
+    <header>
+<a href="aceuill.html">
+    <img id="siteLogo" src="IMAGES/Logo_mode_light.png" alt="Logo Sknna.ma" class="logo">
+</a>
 
-<header>
-  <picture>
-    <source srcset="IMAGES/Logo_mode_sombre.png" media="(prefers-color-scheme: dark)">
-    <img id="logo" src="IMAGES/Logo_mode_light.png" alt="Logo">
-  </picture>
-
+  <nav>
+    <ul class="menu">
+      <li><a href="logements.html">Logements</a></li>
+      <li><a href="Colocation.html">Colocation</a></li>
+      <li><a href="publier_annonce.html">Publier une annonce</a></li>
+      <li><a href="publier_demande.html">Lancer une demande</a></li>
+      <li><a href="Demandes.html">Demandes</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="presentation.html">Présentation</a></li>
+      <li><a href="Se_Connecter.html">Se connecter</a></li>
+      <li><a href="creation_Compt.html">S'inscrire</a></li>
+    </ul>
+  </nav>
+  <div class="menu-toggle">
+    <i class="fas fa-bars"></i>
+  </div>
+  
 </header>
 
 
+    <h2 class="page-subtitle">Recherche de colocataires supplémentaires</h2>
 
-<!-- ⭐⭐⭐ TEXTE AJOUTÉ ⭐⭐⭐ -->
-<h2 style="
-  text-align:center;n
-  <img id="logo" src="IMAGES/Logo_mode_light.png" alt="Logo"
-</header>
 
-<!-- ⭐⭐⭐ TEXTE AJOUTÉ ⭐⭐⭐ -->
-<h2 style="
-  text-align:center;
-  font-weight:bold;
-  color:var(--c1);
-  margin-top:-10px;
-  animation: fadeDown 1.2s ease forwards;
-  opacity:0;
-">
-  Recherche de colocataires supplémentaires
-</h2>
+    <h3 class="section-title">Offres de colocation récentes</h3>
 
-<nav>
-  <a href="aceuill.html">Accueil</a>
-  <a href="logements.html">Logements</a>
-  <a href="colocation.html">Colocation</a>
-  <a href="publier_annonce.html">publier une annonce</a>
-  <a href="publier_demande.html">lancer une demande</a>
-  <a href="Demandes.html">Demandes</a>
-  <a href="contact.html">Contact</a>
-  <a href="presentation.html">présentation</a>
-  <a href="Se_Connecter.html">se connecter</a>
-  <a href="creation_Compt.html">s'inscrire</a>
-  <a href="login.html">Se connecter</a>
-  <a href="register.html">S’inscrire</a>
-  <button id="darkToggle">🌙 Mode sombre</button>
-</nav>
+    <div class="coloc-container">
+        <!-- CARD 1 -->
+        <div class="coloc-card reveal">
+            <div class="photos">
+                <img src="IMAGES/apart1.jpg" alt="Appartement">
+                <img src="IMAGES/apart2.jpg" alt="Appartement">
+                <img src="IMAGES/apart4.jpg" alt="Appartement">
+                <img src="IMAGES/apart3.jpg" alt="Appartement">
+            </div>
+            <h3>Appartement - Agadir</h3>
+            <p>2 Chambre partagée, proche université.</p>
+            <b>500 MAD / personne</b>
+            <div class="admin-info">
+                <b>Sexe :</b> Female<br>
+                <b>Âge :</b> +20<br>
+                <b>Institut académique :</b> ENSA<br>
+                <b>Nombre d'habitants :</b> 2<br>
+                <b>Nombre de personnes voulues :</b> 2<br>
+            </div>
+            <a class="card-btn" href="contact.html">Contacter</a>
+        </div>
 
-<h3 class="section-title">Offres de colocation récentes</h3>
+        <!-- CARD 2 -->
+        <div class="coloc-card reveal">
+            <div class="photos">
+                <img src="IMAGES/apart1p.jpg" alt="Colocation">
+                <img src="IMAGES/apart2p.jpg" alt="Colocation">
+                <img src="IMAGES/apart4p.jpg" alt="Colocation">
+            </div>
+            <h3>Colocation mixte - Casablanca</h3>
+            <b>400 MAD / personne</b>
+            <div class="admin-info">
+                <b>Sexe :</b> Male<br>
+                <b>Âge :</b> +18<br>
+                <b>Institut académique :</b> Faculté<br>
+                <b>Nombre d'habitants :</b> 1<br>
+                <b>Nombre de personnes voulues :</b> 1<br>
+            </div>
+            <a class="card-btn" href="contact.html">Contacter</a>
+        </div>
 
-<div class="coloc-container">
+        <!-- CARD 3 -->
+        <div class="coloc-card reveal">
+            <div class="photos">
+                <img src="IMAGES/111.jpeg" alt="Appartement">
+                <img src="IMAGES/222.jpeg" alt="Appartement">
+                <img src="IMAGES/333.jpeg" alt="Appartement">
+                <img src="IMAGES/444.jpeg" alt="Appartement">
+            </div>
+            <h3>Appartement - Khouribga</h3>
+            <b>2500 MAD / mois</b>
+            <div class="admin-info">
+                <b>Sexe :</b> Female<br>
+                <b>Âge :</b> +21<br>
+                <b>Institut académique :</b> ENSA<br>
+                <b>Nombre d'habitants :</b> 1<br>
+                <b>Nombre de personnes voulues :</b> 2<br>
+            </div>
+            <a class="card-btn" href="contact.html">Contacter</a>
+        </div>
 
-  <!-- ⭐ CARD 1 -->
-  <div class="coloc-card reveal">
-    <div class="photos">
-      <img src="IMAGES/apart1.jpg"><img src="IMAGES/apart2.jpg">
-      <img src="IMAGES/apart4.jpg"><img src="IMAGES/apart3.jpg">
-    </div>
-    <h3>appartement - Agadir</h3>
-    <p>2 Chambre partagée, proche université.</p>
-    <b>500 MAD / personne</b>
+        <!-- CARD 4 -->
+        <div class="coloc-card reveal">
+            <div class="photos">
+                <img src="IMAGES/12.jpeg" alt="Colocation">
+                <img src="IMAGES/13.jpg" alt="Colocation">
+                <img src="IMAGES/14.jpeg" alt="Colocation">
+            </div>
+            <h3>Colocation - Marrakech</h3>
+            <p>Appartement moderne, Wi-Fi inclus.</p>
+            <b>700 MAD / personne</b>
+            <div class="admin-info">
+                <b>Sexe :</b> Female<br>
+                <b>Âge :</b> +18<br>
+                <b>Institut académique :</b> Faculté<br>
+                <b>Nombre d'habitants :</b> 2<br>
+                <b>Nombre de personnes voulues :</b> 1<br>
+            </div>
+            <a class="card-btn" href="contact.html">Contacter</a>
+        </div>
 
-    <!-- Infos admin -->
-    <div class="admin-info">
-      <b>Sexe :</b> female<br>
-      <b>Âge :</b> +20 <br>
-      <b>Institut académique :</b> ENSA <br>
-      <b>Nombre d'habitants :</b> 2<br>
-      <b>Nombre de personnes voulues :</b> 2 <br>
-    </div>
-
-    <a class="card-btn" href="contact.html">Contacter</a>
-  </div>
-
-  <!-- ⭐ CARD 2 -->
-  <div class="coloc-card reveal">
-    <div class="photos">
-      <img src="IMAGES/apart1p.jpg"><img src="IMAGES/apart2p.jpg">
-      <img src="IMAGES/apart4p.jpg">
-    </div>
-    <h3>Colocation mixte - Casablanca</h3>
-    <b>400 MAD / personne</b>
-
-    <div class="admin-info">
-      <b>Sexe :</b> male <br>
-      <b>Âge :</b> +18 <br>
-      <b>Institut académique :</b> Faculté<br>
-      <b>Nombre d'habitants :</b> 1 <br>
-      <b>Nombre de personnes voulues :</b> 1 <br>
-    </div>
-
-    <a class="card-btn" href="contact.html">Contacter</a>
-  </div>
-
-  <!-- ⭐ CARD 3 -->
-  <div class="coloc-card reveal">
-    <div class="photos">
-      <img src="IMAGES/111.jpeg">
-      <img src="IMAGES/222.jpeg">
-      <img src="IMAGES/333.jpeg">
-      <img src="IMAGES/444.jpeg">
-    </div>
-    <h3>Appartement - khouribga</h3>
-    <b>2500 MAD / mois</b>
-
-    <div class="admin-info">
-      <b>Sexe :</b> female<br>
-      <b>Âge :</b> +21 <br>
-      <b>Institut académique :</b> ensa<br>
-      <b>Nombre d'habitants :</b> 1<br>
-      <b>Nombre de personnes voulues :</b> 2 <br>
-    </div>
-    <a class="card-btn" href="contact.html">Contacter</a>
-  </div>
-
-  <!-- ⭐ CARD 4 -->
-  <div class="coloc-card reveal">
-    <div class="photos">
-      <img src="IMAGES/12.jpeg">
-      <img src="IMAGES/13.jpg">
-      <img src="IMAGES/14.jpeg">
-
-    </div>
-    <h3>Colocation - Marrakech</h3>
-    <p>Appartement moderne, Wi-Fi inclus.</p>
-    <b>700 MAD / personne</b>
-
-    <div class="admin-info">
-      <b>Sexe :</b> female<br>
-      <b>Âge :</b> +18 <br>
-      <b>Institut académique :</b> faculté <br>
-      <b>Nombre d'habitants :</b> 2 <br>
-      <b>Nombre de personnes voulues :</b> 1 <br>
+        <!-- CARD 5 -->
+        <div class="coloc-card reveal">
+            <div class="photos">
+                <img src="IMAGES/0.jpeg" alt="Colocation">
+                <img src="IMAGES/00.jpeg" alt="Colocation">
+                <img src="IMAGES/000.jpeg" alt="Colocation">
+            </div>
+            <h3>Colocation - Agadir</h3>
+            <p>Appartement moderne, Wi-Fi exclus.</p>
+            <b>500 MAD / personne</b>
+            <div class="admin-info">
+                <b>Sexe :</b> Female<br>
+                <b>Âge :</b> +18<br>
+                <b>Institut académique :</b> ENSA<br>
+                <b>Nombre d'habitants :</b> 3<br>
+                <b>Nombre de personnes voulues :</b> 1<br>
+            </div>
+            <a class="card-btn" href="contact.html">Contacter</a>
+        </div>
     </div>
 
-    <a class="card-btn" href="contact.html">Contacter</a>
-  </div>
+    <footer>
+  <p>© 2025 Sknna.ma – Tous droits réservés.</p>
+    </footer>
 
-  <!-- ⭐ CARD 5 -->
-  <div class="coloc-card reveal">
-    <div class="photos">
-      <img src="IMAGES/0.jpeg">
-      <img src="IMAGES/00.jpeg">
-      <img src="IMAGES/000.jpeg">
-    </div>
-    <h3>Colocation - Agadir</h3>
-    <p>Appartement moderne, Wi-Fi exclus.</p>
-    <b>500 MAD / personne</b>
-
-    <div class="admin-info">
-      <b>Sexe :</b> female <br>
-      <b>Âge :</b> +18 <br>
-      <b>Institut académique :</b> ensa <br>
-      <b>Nombre d'habitants :</b> 3 <br>
-      <b>Nombre de personnes voulues :</b> 1 <br>
-    </div>
-
-    <a class="card-btn" href="contact.html">Contacter</a>
-  </div>
-
-</div>
-
-<footer>
-  <p>Suivez-nous sur :
-    <a href="#">Facebook</a> |
-    <a href="#">Instagram</a> |
-    <a href="#">LinkedIn</a>
-  </p>
-  <p>© 2025 Sknna.ma</p>
-</footer>
-
-<!-- Dark mode -->
-<script>
-const toggle = document.getElementById("darkToggle");
-const logo = document.getElementById("logo");
-
-toggle.onclick = () => {
-  document.body.classList.toggle("dark");
-
-  toggle.textContent = document.body.classList.contains("dark")
-    ? "☀️ Mode clair"
-    : "🌙 Mode sombre";
-
-  logo.src = document.body.classList.contains("dark")
-    ? "IMAGES/Logo_mode_dark.png"
-    : "IMAGES/Logo_mode_light.png";
-};
-</script>
-
-<!-- Scroll reveal -->
-<script>
-const rEls = document.querySelectorAll(".reveal");
-const showOnScroll = () => {
-  rEls.forEach(el => {
-    if (el.getBoundingClientRect().top < window.innerHeight - 100) {
-      el.classList.add("visible");
-    }
-  });
-};
-window.addEventListener("scroll", showOnScroll);
-showOnScroll();
-</script>
-
-<!-- Typing effect -->
-<script>
-let t = document.querySelector(".section-title");
-let txt = t.textContent;
-t.textContent = "";
-let i = 0;
-
-(function type() {
-  if (i < txt.length) {
-    t.textContent += txt.charAt(i);
-    i++;
-    setTimeout(type, 80);
-  }
-})();
-</script>
-
+    <script src="js_colocation.js"></script>
 </body>
 </html>

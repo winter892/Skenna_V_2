@@ -201,24 +201,15 @@ button#btn:hover {
   border-radius: 8px;
 }
 
-// footer 
 footer {
-  background-color: #92487A;
-  color: #000000ff;
   text-align: center;
-  padding: 25px 10px;
+  padding: 20px;
+  background: #540863;
+  color: white;
+  animation: fadeUp 1s ease forwards;
+  opacity: 0;
 }
 
-footer a {
-  color: #770968ff;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-footer a:hover {
-  color: #e0e0e0;
-  text-decoration: underline;
-} 
 /* Animation auto-scroll */
 @keyframes scroll {
   0% { transform: translateX(0); }

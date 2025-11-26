@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Contact - Sknna.ma</title>
   <link rel="stylesheet" href="style_contact.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
@@ -57,8 +58,8 @@
           <label for="message">Message :</label>
           <textarea id="message" name="message" rows="5" required placeholder="Votre message..."></textarea>
 
-          <button type="submit">Envoyer</button>
-          <button type="reset">Effacer</button>
+          <button id="btn" type="submit">Envoyer</button>
+          <button id="resetBtn" type="reset">Effacer</button>
         </form>
 
       </div>
@@ -71,23 +72,17 @@
     </div>
 </main>
   <footer>
-  <p>Suivez-nous sur : <a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">LinkedIn</a></p>
   <p>© 2025 Sknna.ma – Tous droits réservés.</p>
 </footer>
 <script>
-const toggleBtn = document.getElementById('darkModeToggle');
-toggleBtn.addEventListener('click', () => {
-  document.body.classList.toggle('dark-mode');
-});
-
-  document.addEventListener("DOMContentLoaded", () => {
+// Dark mode functionality
+document.addEventListener("DOMContentLoaded", () => {
 
     const header = document.querySelector("header"); 
     const modeBtn = document.createElement("button");
     modeBtn.id = "darkModeToggle";
-
-    // Icône + texte
-    modeBtn.innerHTML = `<i class="fa-regular fa-moon"></i> `;
+    modeBtn.classList.add("dark-toggle-btn"); // ← important !
+    modeBtn.innerHTML = `<i class="fa-regular fa-moon"></i>`;
     modeBtn.style.marginLeft = "15px";
     header.appendChild(modeBtn);
 
@@ -97,12 +92,10 @@ toggleBtn.addEventListener('click', () => {
         document.body.classList.toggle("dark-mode");
         const isDark = document.body.classList.contains("dark-mode");
 
-        // Icônes professionnelles
         modeBtn.innerHTML = isDark 
-            ? `<i class="fa-regular fa-sun"></i> `
-            : `<i class="fa-regular fa-moon"></i> `;
+            ? `<i class="fa-regular fa-sun"></i>`
+            : `<i class="fa-regular fa-moon"></i>`;
 
-        // Logo dynamique
         logo.src = isDark
             ? "IMAGES/Logo_mode_dark.png"
             : "IMAGES/Logo_mode_light.png";
