@@ -106,7 +106,7 @@ nav ul.menu li a:hover {
   width: 100%;
   padding: 25px;
   border-radius: 12px;
-  background-color: #ffffff;
+  background-color: rgba(255, 211, 213, 0.6);
   border: 2px solid #da43bbff;
   box-shadow: 10px 10px 20px rgba(138, 21, 144, 0.47);
   margin: 20px auto;  /* ← espace autour du bloc au lieu du body */
