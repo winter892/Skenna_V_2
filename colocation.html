@@ -4,50 +4,52 @@
     <meta charset="UTF-8">
     <title>Colocations - Sknna.ma</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel ="stylesheet" href="style_acceuill.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style_acceuill.css">
     <link rel="stylesheet" href="style_colocation.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
     <header>
-<a href="aceuill.html">
-    <img id="siteLogo" src="IMAGES/Logo_mode_light.png" alt="Logo Sknna.ma" class="logo">
-</a>
+        <a href="aceuill.html">
+            <img id="siteLogo" src="IMAGES/Logo_mode_light.png" alt="Logo Sknna.ma" class="logo">
+        </a>
 
-  <nav>
-    <ul class="menu">
-      <li><a href="logements.html">Logements</a></li>
-      <li><a href="Colocation.html">Colocation</a></li>
-      <li><a href="publier_annonce.html">Publier une annonce</a></li>
-      <li><a href="publier_demande.html">Lancer une demande</a></li>
-      <li><a href="Demandes.html">Demandes</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="presentation.html">Présentation</a></li>
-      <li><a href="Se_Connecter.html">Se connecter</a></li>
-      <li><a href="creation_Compt.html">S'inscrire</a></li>
-    </ul>
-  </nav>
-  <div class="menu-toggle">
-    <i class="fas fa-bars"></i>
-  </div>
-  
-</header>
-
+        <nav>
+            <ul class="menu">
+                <li><a href="logements.html">Logements</a></li>
+                <li><a href="Colocation.html">Colocation</a></li>
+                <li><a href="publier_annonce.html">Publier une annonce</a></li>
+                <li><a href="publier_demande.html">Lancer une demande</a></li>
+                <li><a href="Demandes.html">Demandes</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="presentation.html">Présentation</a></li>
+                <li><a href="Se_Connecter.html">Se connecter</a></li>
+                <li><a href="creation_Compt.html">S'inscrire</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
 
     <h2 class="page-subtitle">Recherche de colocataires supplémentaires</h2>
-
 
     <h3 class="section-title">Offres de colocation récentes</h3>
 
     <div class="coloc-container">
         <!-- CARD 1 -->
         <div class="coloc-card reveal">
-            <div class="photos">
-                <img src="IMAGES/apart1.jpg" alt="Appartement">
-                <img src="IMAGES/apart2.jpg" alt="Appartement">
-                <img src="IMAGES/apart4.jpg" alt="Appartement">
-                <img src="IMAGES/apart3.jpg" alt="Appartement">
+            <div class="carousel">
+                <div class="carousel-images">
+                    <img src="IMAGES/apart1.jpg" alt="Appartement" class="active">
+                    <img src="IMAGES/apart2.jpg" alt="Appartement">
+                    <img src="IMAGES/apart4.jpg" alt="Appartement">
+                    <img src="IMAGES/apart3.jpg" alt="Appartement">
+                </div>
+                <button class="carousel-btn prev">&#10094;</button>
+                <button class="carousel-btn next">&#10095;</button>
+                <div class="carousel-dots"></div>
             </div>
             <h3>Appartement - Agadir</h3>
             <p>2 Chambre partagée, proche université.</p>
@@ -64,10 +66,15 @@
 
         <!-- CARD 2 -->
         <div class="coloc-card reveal">
-            <div class="photos">
-                <img src="IMAGES/apart1p.jpg" alt="Colocation">
-                <img src="IMAGES/apart2p.jpg" alt="Colocation">
-                <img src="IMAGES/apart4p.jpg" alt="Colocation">
+            <div class="carousel">
+                <div class="carousel-images">
+                    <img src="IMAGES/apart1p.jpg" alt="Colocation" class="active">
+                    <img src="IMAGES/apart2p.jpg" alt="Colocation">
+                    <img src="IMAGES/apart4p.jpg" alt="Colocation">
+                </div>
+                <button class="carousel-btn prev">&#10094;</button>
+                <button class="carousel-btn next">&#10095;</button>
+                <div class="carousel-dots"></div>
             </div>
             <h3>Colocation mixte - Casablanca</h3>
             <b>400 MAD / personne</b>
@@ -83,11 +90,16 @@
 
         <!-- CARD 3 -->
         <div class="coloc-card reveal">
-            <div class="photos">
-                <img src="IMAGES/111.jpeg" alt="Appartement">
-                <img src="IMAGES/222.jpeg" alt="Appartement">
-                <img src="IMAGES/333.jpeg" alt="Appartement">
-                <img src="IMAGES/444.jpeg" alt="Appartement">
+            <div class="carousel">
+                <div class="carousel-images">
+                    <img src="IMAGES/111.jpeg" alt="Appartement" class="active">
+                    <img src="IMAGES/222.jpeg" alt="Appartement">
+                    <img src="IMAGES/333.jpeg" alt="Appartement">
+                    <img src="IMAGES/444.jpeg" alt="Appartement">
+                </div>
+                <button class="carousel-btn prev">&#10094;</button>
+                <button class="carousel-btn next">&#10095;</button>
+                <div class="carousel-dots"></div>
             </div>
             <h3>Appartement - Khouribga</h3>
             <b>2500 MAD / mois</b>
@@ -103,10 +115,15 @@
 
         <!-- CARD 4 -->
         <div class="coloc-card reveal">
-            <div class="photos">
-                <img src="IMAGES/12.jpeg" alt="Colocation">
-                <img src="IMAGES/13.jpg" alt="Colocation">
-                <img src="IMAGES/14.jpeg" alt="Colocation">
+            <div class="carousel">
+                <div class="carousel-images">
+                    <img src="IMAGES/12.jpeg" alt="Colocation" class="active">
+                    <img src="IMAGES/13.jpg" alt="Colocation">
+                    <img src="IMAGES/14.jpeg" alt="Colocation">
+                </div>
+                <button class="carousel-btn prev">&#10094;</button>
+                <button class="carousel-btn next">&#10095;</button>
+                <div class="carousel-dots"></div>
             </div>
             <h3>Colocation - Marrakech</h3>
             <p>Appartement moderne, Wi-Fi inclus.</p>
@@ -123,10 +140,15 @@
 
         <!-- CARD 5 -->
         <div class="coloc-card reveal">
-            <div class="photos">
-                <img src="IMAGES/0.jpeg" alt="Colocation">
-                <img src="IMAGES/00.jpeg" alt="Colocation">
-                <img src="IMAGES/000.jpeg" alt="Colocation">
+            <div class="carousel">
+                <div class="carousel-images">
+                    <img src="IMAGES/0.jpeg" alt="Colocation" class="active">
+                    <img src="IMAGES/00.jpeg" alt="Colocation">
+                    <img src="IMAGES/000.jpeg" alt="Colocation">
+                </div>
+                <button class="carousel-btn prev">&#10094;</button>
+                <button class="carousel-btn next">&#10095;</button>
+                <div class="carousel-dots"></div>
             </div>
             <h3>Colocation - Agadir</h3>
             <p>Appartement moderne, Wi-Fi exclus.</p>
@@ -143,7 +165,7 @@
     </div>
 
     <footer>
-  <p>© 2025 Sknna.ma – Tous droits réservés.</p>
+        <p>© 2025 Sknna.ma – Tous droits réservés.</p>
     </footer>
 
     <script src="js_colocation.js"></script>

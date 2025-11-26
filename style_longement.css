@@ -1,0 +1,249 @@
+  /* ===========================
+   PALETTE + MODE SOMBRE
+=========================== */
+:root {
+  --c1: #540863;
+  --c2: #92487A;
+  --c3: #E49BA6;
+  --c4: #FFD3D5;
+
+  --text: #222;
+  --bg: #f8f5f8;
+
+  --card-bg: #ffffff;
+  --card-bg-dark: #2b2b2b;
+}
+
+body.dark-mode {
+  --text: #eee;
+  --bg: #121212;
+}
+
+/* ===========================
+   GLOBAL STYLE
+=========================== */
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  transition: background .4s, color .4s;
+}
+
+h3.section-title {
+  text-align: center;
+  font-size: 28px;
+  margin: 25px 0;
+  color: var(--c1);
+  opacity: 0;
+}
+
+/* ===========================
+   LOGEMENTS GRID
+=========================== */
+.logement-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+  gap: 25px;
+  width: 90%;
+  margin: auto;
+  padding-bottom: 30px;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: .7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===========================
+   CARDS
+=========================== */
+.logement-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* espace entre image et bouton */
+  gap: 10px;
+  background: var(--card-bg);
+  padding: 18px;
+  border-radius: 14px;
+  box-shadow: 0 6px 12px rgba(0,0,0,.08);
+  transition: .35s;
+  min-height: 520px; /* ou ajuste selon ton contenu */
+}
+
+
+body.dark-mode .logement-card {
+  background: var(--card-bg-dark);
+}
+
+.logement-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 25px rgba(0,0,0,.18);
+}
+
+/* ===========================
+   PHOTOS
+=========================== */
+.photos {
+  position: relative;
+  width: 100%;
+  height: 220px; /* augmenter si nécessaire pour un aspect plus uniforme */
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.photos img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* garde le cadrage propre, remplissage complet */
+  border-radius: 12px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity .5s ease;
+}
+
+
+/* flèches */
+.photos button.prev,
+.photos button.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(84, 8, 99, 0.26);
+  color: white;
+  border: none;
+  font-size: 24px;
+  padding: 6px 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.photos button.prev { left: 10px; }
+.photos button.next { right: 10px; }
+
+.photos button:hover {
+  background: rgba(200, 39, 189, 0.33);
+}
+
+@keyframes fadeImg {
+  from { opacity: 0; transform: scale(1.04); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ===========================
+   VIDEO
+=========================== */
+video {
+  width: 100%;
+  border-radius: 12px;
+  opacity: 0;
+  animation: fadeVid 1s forwards;
+}
+
+@keyframes fadeVid {
+  from { opacity: 0; transform: scale(1.05); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ===========================
+   INFORMATIONS
+=========================== */
+.admin-info {
+  background: var(--c4);
+  color: #000;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+body.dark-mode .admin-info {
+  background: #3a3a3a;
+  color: #fff;
+}
+
+/* ===========================
+   BUTTON
+=========================== */
+.card-btn {
+  background: var(--c1);
+  color: #fff;
+  padding: 12px 15px;
+  text-align: center;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: .25s;
+}
+
+.card-btn:hover {
+  background: var(--c2);
+  transform: translateY(-2px);
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+footer {
+  margin-top: 25px;
+  background: var(--c1);
+  color: #fff;
+  padding: 22px;
+  text-align: center;
+}
+
+/* ===========================
+   RESPONSIVE MENU MOBILE
+=========================== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background: white;
+}
+
+.menu {
+  display: flex;
+  list-style: none;
+  gap: 18px;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+@media (max-width: 850px) {
+  .menu {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    left: 0;
+    background: white;
+    flex-direction: column;
+    padding: 20px;
+    display: none;
+  }
+
+  .menu.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
+/* Dark mode menu */
+body.dark-mode header {
+  background: #1c1c1c;
+}
