@@ -61,5 +61,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-
+// Ajoutez ce code JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+    const menuButton = document.querySelector('.menu-button');
+    const menuList = document.querySelector('.menu-list');
+    
+    if (menuButton && menuList) {
+        menuButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            menuList.classList.toggle('show');
+        });
+        
+        // Fermer le menu en cliquant ailleurs
+        document.addEventListener('click', function(e) {
+            if (!menuButton.contains(e.target) && !menuList.contains(e.target)) {
+                menuList.classList.remove('show');
+            }
+        });
+    }
+});
 
