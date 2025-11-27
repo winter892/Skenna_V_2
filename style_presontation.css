@@ -245,12 +245,19 @@ footer a:hover {
   margin: 0 auto;
 }
 
-.values-title {
+.values-header  {
   text-align: center;
-  font-size: 2rem;
-  font-weight: 800;
   color: #540863;
-  margin-bottom: 40px;
+  margin-bottom: 15px;
+  padding: 40px 20px;
+  background-color: #FFD3D5;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.values-header h2 {
+  font-weight: bold;
+  font-size: 2rem; 
 }
 
 .values-container {
@@ -327,7 +334,7 @@ body.dark-mode .home-btn:hover {
 
 /* INTRO TEAM */
 body.dark-mode .intro-team {
-  background-color: #1e1e1e;
+  background-color: #92487A;
   color: #fff;
   box-shadow: 0 4px 12px rgba(0,0,0,0.6);
 }
@@ -349,7 +356,7 @@ body.dark-mode .team-members h2 {
 
 /* MEMBRES - Cards */
 body.dark-mode .member {
-  background-color: #1e1e1e;
+  background-color: #a67095;
   border-color: #2c2c2c;
   color: #fff;
   box-shadow: 0 4px 12px rgba(0,0,0,0.5);
@@ -371,7 +378,7 @@ body.dark-mode .member img {
 
 /* MESSAGE FINAL */
 body.dark-mode .team-message {
-  background-color: #1e1e1e;
+  background-color: #92487A;
   box-shadow: 0 4px 12px rgba(0,0,0,0.6);
 }
 
@@ -381,12 +388,14 @@ body.dark-mode .team-message p {
 }
 
 /* VALEURS - Section */
-body.dark-mode .values-title {
+body.dark-mode .values-header {
   color: #fff;
+  background-color: #92487A;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
 }
 
 body.dark-mode .value-card {
-  background-color: #1e1e1e;
+  background-color: #a67095;
   border-left: 6px solid #2c2c2c;
   box-shadow: 0 4px 12px rgba(0,0,0,0.6);
 }
