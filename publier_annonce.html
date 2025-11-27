@@ -81,6 +81,130 @@
     h1 {
       color: var(--violet-dark);
     }
+    
+/* ------------------------------ */
+/* HEADER                         */
+/* ------------------------------ */
+
+header {
+  width: 100%;
+  padding: 12px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border-bottom: 2px solid #FFD3D5;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+
+  /* Effet glow IA */
+  box-shadow: 0 0 18px #92487A;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+/* TITRES DES INPUTS */
+label{
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* INPUTS + SELECT + TEXTAREA */
+
+select,
+textarea{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #92487A;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+/* Mode sombre header */
+body.dark header {
+  background: rgba(40, 0, 50, 0.7);
+  border-bottom: 2px solid #92487A;
+  box-shadow: 0 0 18px #540863;
+}
+
+.logo {
+  height: 55px;
+  transition: transform 0.3s;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+/* MENU */
+nav ul.menu {
+  list-style: none;
+  display: flex;
+  gap: 18px;
+}
+
+nav ul.menu li a {
+  text-decoration: none;
+  color: #540863;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: 0.3s;
+
+  /* petit glow sélection IA */
+  position: relative;
+}
+
+body.dark nav ul.menu li a {
+  color: #E49BA6;
+}
+
+nav ul.menu li a:hover {
+  background: #FFD3D5;
+  color: #540863;
+  box-shadow: 0 0 10px #92487A;
+}
+
+body.dark nav ul.menu li a:hover {
+  background: #540863;
+  color: white;
+  box-shadow: 0 0 10px #92487A;
+}
+
+/* MENU BURGER */
+.menu-toggle {
+  display: none;
+  font-size: 30px;
+  cursor: pointer;
+  color: #540863;
+}
+
+body.dark .menu-toggle {
+  color: #E49BA6;
+}
+
+/* ------------------------------ */
+/* RESPONSIVE HEADER              */
+/* ------------------------------ */
+
+@media (max-width: 880px) {
+
+  nav ul.menu {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    width: 65%;
+    background: white;
+    flex-direction: column;
+    padding: 20px;
+    gap: 10px;
+    border-bottom-left-radius: 12px;
+    border-left: 1px solid #FFD3D5;
+    border-bottom: 1px solid #FFD3D5;
+
+    display: none; /* caché par défaut */
+  }
   </style>
 </head>
 <body>
