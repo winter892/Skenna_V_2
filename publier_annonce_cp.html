@@ -6,43 +6,58 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Publier une annonce - Sknna.ma</title>
   <link rel="stylesheet" href="style_publier_annonce.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="header.css">
   <script src="js_publier_annonces.js" defer></script>
 </head>
 <body>
-  <header>
-  <a href="aceuill.html"><img src="IMAGES/Logo_mode_light.png" alt="Logo Sknna.ma" class="logo"></a>
-  
-    <label for="menuToggle" class="hamburger">
-        <span></span><span></span><span></span>
-    </label>
-  <nav>
-    <ul class="menu">
-      <li><a href="logements.html">Logements</a></li>
-      <li><a href="Colocation.html">Colocation</a></li>
-      <li><a href="publier_annonce.html">Publier une annonce</a></li>
-      <li><a href="publier_demande.html">Lancer une demande</a></li>
-      <li><a href="Demandes.html">Demandes</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="presentation.html">Présentation</a></li>
-      <li><a href="Se_Connecter.html">Se connecter</a></li>
-      <li><a href="creation_Compt.html">S'inscrire</a></li>
-    </ul>
-  </nav>
-  <div class="menu-toggle">
-    <i class="fas fa-bars"></i>
-  </div>
-  
-</header>
+     <!-- header --> 
+<header>
+        <a href="aceuill.html" class="logo-container">
+            <img id="siteLogo" src="IMAGES/Logo_mode_light.png" alt="Logo Sknna.ma" class="logo">
+        </a>
+
+        <!-- Bouton Burger -->
+        <button class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Overlay pour fermer le menu -->
+        <div class="nav-overlay"></div>
+
+        <!-- MENU -->
+        <nav>
+            <ul class="menu">
+                <li><a href="logements.html">Logements</a></li>
+                <li><a href="Colocation.html">Colocation</a></li>
+                <li><a href="publier_annonce.html">Publier annonce</a></li>
+                <li><a href="publier_demande.html">Lancer demande</a></li>
+                <li><a href="Demandes.html">Demandes</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="presentation.html">Présentation</a></li>
+                <li><a href="Se_Connecter.html">Connexion</a></li>
+                <li><a href="creation_Compt.html">Inscription</a></li>
+
+                <!-- Dark mode dans le menu mobile - CACHÉ PAR DÉFAUT -->
+                <li class="dark-mode-mobile">
+                    <button id="darkModeToggleMobile" class="dark-mode-mobile-btn">
+                        <i class="fa-regular fa-moon"></i> Mode Sombre
+                    </button>
+                </li>
+            </ul>
+        </nav>
+        <!-- Dark mode desktop (toujours visible sur grand écran) -->
+        <button id="darkModeToggle" class="dark-mode-desktop">
+            <i class="fa-regular fa-moon"></i>
+        </button>
+    </header>
 
   <center>
-    <!-- Bouton mode sombre / clair -->
-    <button id="toggleTheme" style="margin-bottom:20px; padding:10px 20px; border:none; border-radius:12px; cursor:pointer; background:#540863; color:#FFD3D5;">
-       Mode Sombre / Clair
-    </button>
 
     <h1>Publier une annonce</h1>
-    <p><a href="aceuill.html">← Retour à l'accueil</a></p>
+    <br>
     <hr width="70%">
+    <br>
     <img src="IMAGES/1.png" alt="Photo 1" class="photo" width="200px">
      <img src="IMAGES/2.png" alt="Photo 2" class="photo" width="200px">
     <form action="logements.html" method="post">
@@ -115,5 +130,6 @@
     <p><em>Seuls les utilisateurs inscrits peuvent publier des annonces.</em></p>
     <p><small>&copy; 2025 Sknna.ma</small></p>
   </center>
+  <script src="header.js"></script>
 </body>
 </html>

@@ -18,12 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
     form.classList.add("show");
   }, 300);
 
-  // ===== Mode sombre / clair =====
-  if(toggleTheme) {
-    toggleTheme.addEventListener("click", () => {
-      body.classList.toggle("dark");
-    });
-  }
 
   // ===== Prévisualisation de l'image =====
   photoInput.addEventListener("change", (event) => {
