@@ -7,7 +7,7 @@
 }
 
 body {
-  background-color: #ffffffff !important; 
+  background-color: #f7f7f7 !important; 
   margin: 0;
   padding: 0; /* On enlève le padding qui causait l’espace */
 }
@@ -366,4 +366,17 @@ body.dark-mode footer {
     body.dark-mode nav ul.menu {
         background: #470550ff;
     }
+}
+
+
+.input-error {
+  border-color: #ff0033 !important;
+  box-shadow: 0 0 4px rgba(255, 0, 0, 0.3);
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: -10px;
+  margin-bottom: 10px;
 }

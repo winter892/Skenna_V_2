@@ -44,19 +44,23 @@
       <!-- Section formulaire -->
       <div class="form-section">
 
-        <form action="aceuill.html" method="post">
+        <form action="aceuill.html" method="post"novalidate>
 
           <label for="nom">Nom :</label>
           <input type="text" id="nom" name="nom" required>
+          <div class="error-message" id="error-message"></div>
 
           <label for="email">Email :</label>
           <input type="email" id="email" name="email" required>
-
+          <div class="error-message" id="error-message"></div>
+          
           <label for="sujet">Sujet :</label>
           <input type="text" id="sujet" name="sujet" placeholder="Objet de votre message" required>
+          <div class="error-message" id="error-message"></div>
 
           <label for="message">Message :</label>
           <textarea id="message" name="message" rows="5" required placeholder="Votre message..."></textarea>
+          <div class="error-message" id="error-message"></div>
 
           <button id="btn" type="submit">Envoyer</button>
           <button id="resetBtn" type="reset">Effacer</button>
@@ -72,6 +76,7 @@
     </div>
 </main>
   <footer>
+  <p>Suivez-nous sur : <a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">LinkedIn</a></p>
   <p>© 2025 Sknna.ma – Tous droits réservés.</p>
 </footer>
 
@@ -129,6 +134,85 @@ document.addEventListener('DOMContentLoaded', function() {
             : "IMAGES/Logo_mode_light.png";
     });
 });
+
+// ================= VALIDATION FORMULAIRE CONTACT =================
+document.addEventListener("DOMContentLoaded", function () {
+
+  const form = document.querySelector("form");
+  const nom = document.getElementById("nom");
+  const email = document.getElementById("email");
+  const sujet = document.getElementById("sujet");
+  const message = document.getElementById("message");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault(); // Empêche le rechargement
+
+    let valid = true;
+
+    // Fonction pour afficher erreur
+    function showError(input, message) {
+      const errorDiv = input.nextElementSibling;
+      errorDiv.textContent = message;
+      input.style.borderColor = "red";
+      valid = false;
+    }
+
+    // Fonction pour effacer erreur
+    function clearError(input) {
+      const errorDiv = input.nextElementSibling;
+      errorDiv.textContent = "";
+      input.style.borderColor = "#92487A"; // ta couleur d'origine
+    }
+
+    // Validation NOM
+    if (nom.value.trim() === "") {
+      showError(nom, "Veuillez entrer votre nom.");
+    } else {
+      clearError(nom);
+    }
+
+    // Validation EMAIL
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (email.value.trim() === "") {
+      showError(email, "Veuillez entrer votre email.");
+    } else if (!emailRegex.test(email.value)) {
+      showError(email, "Veuillez entrer un email valide.");
+    } else {
+      clearError(email);
+    }
+
+    // Validation SUJET
+    if (sujet.value.trim() === "") {
+      showError(sujet, "Veuillez entrer le sujet.");
+    } else {
+      clearError(sujet);
+    }
+
+    // Validation MESSAGE
+    if (message.value.trim() === "") {
+      showError(message, "Veuillez écrire votre message.");
+    } else {
+      clearError(message);
+    }
+
+    // Si tout est OK → envoyer
+    if (valid) {
+      alert("Votre message a été envoyé avec succès !");
+      form.reset();
+    }
+  });
+
+  // Supprimer erreurs quand l’utilisateur corrige
+  [nom, email, sujet, message].forEach(input => {
+    input.addEventListener("input", () => {
+      const errorDiv = input.nextElementSibling;
+      errorDiv.textContent = "";
+      input.style.borderColor = "#92487A";
+    });
+  });
+
+});
+
 </script>
 </body>
 </html>
