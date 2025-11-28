@@ -1,0 +1,311 @@
+/* =====================================================
+   RESET & BASE
+===================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* =====================================================
+   HEADER PRINCIPAL OPTIMISÉ
+===================================================== */
+header {
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    min-height: 70px;
+}
+
+.logo {
+    height: 45px;
+    transition: 0.3s;
+    flex-shrink: 0;
+}
+
+/* NAVIGATION OPTIMISÉE */
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    white-space: nowrap;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    
+    /* Taille optimisée pour économiser l'espace */
+    font-size: clamp(11px, 1.1vw, 14px);
+}
+
+nav ul li a:hover {
+    background-color: #f7d6ea;
+    transform: translateY(-1px);
+}
+
+/* Bouton dark mode desktop optimisé */
+.dark-mode-desktop {
+    background: #f7d6ea;
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: clamp(11px, 1.1vw, 14px);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 8px;
+    flex-shrink: 0;
+}
+
+.dark-mode-desktop:hover {
+    background: #540863;
+    color: white;
+}
+
+/* ===================== BURGER ===================== */
+.menu-toggle {
+    display: none;
+    font-size: 22px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #540863;
+    padding: 6px;
+    transition: 0.3s;
+    flex-shrink: 0;
+}
+
+.menu-toggle:hover {
+    color: #92487A;
+}
+
+/* =====================================================
+   TRANSITIONS RESPONSIVES OPTIMISÉES
+===================================================== */
+
+/* Grands écrans - optimisation de l'espace */
+@media (min-width: 1200px) {
+    nav ul {
+        gap: 15px;
+    }
+    
+    nav ul li a {
+        font-size: 14px;
+        padding: 7px 11px;
+    }
+    
+    .dark-mode-desktop {
+        font-size: 14px;
+        padding: 7px 11px;
+    }
+}
+
+/* Écrans moyens - réduction progressive */
+@media (max-width: 1199px) and (min-width: 992px) {
+    nav ul {
+        gap: 10px;
+    }
+    
+    nav ul li a {
+        font-size: 13px;
+        padding: 6px 9px;
+    }
+    
+    .dark-mode-desktop {
+        font-size: 13px;
+        padding: 6px 9px;
+    }
+}
+
+/* Écrans plus petits - réduction avancée */
+@media (max-width: 991px) and (min-width: 851px) {
+    nav ul {
+        gap: 8px;
+    }
+    
+    nav ul li a {
+        font-size: 12px;
+        padding: 5px 8px;
+    }
+    
+    .dark-mode-desktop {
+        font-size: 12px;
+        padding: 5px 8px;
+    }
+    
+    .logo {
+        height: 40px;
+    }
+}
+
+/* POINT DE BASCULEMENT - MENU BURGER */
+@media (max-width: 1053px) {
+    /* Cacher la navigation desktop */
+    nav {
+        display: none;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 300px;
+        height: 100vh;
+        background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+        box-shadow: -5px 0 25px rgba(0,0,0,0.15);
+        padding: 80px 25px 30px 25px;
+        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 999;
+        overflow-y: auto;
+    }
+
+    nav.active {
+        display: block;
+        right: 0;
+    }
+
+    /* Menu mobile stylisé */
+    nav ul {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 6px;
+    }
+
+    nav ul li a {
+        font-size: 15px;
+        padding: 12px 16px;
+        border: 1px solid #f0f0f0;
+        text-align: left;
+        display: block;
+        border-radius: 8px;
+        background: white;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        transition: all 0.3s ease;
+    }
+
+    nav ul li a:hover {
+        background: #540863;
+        color: white;
+        transform: translateX(5px);
+        border-color: #540863;
+    }
+
+    /* Afficher le bouton burger */
+    .menu-toggle {
+        display: block;
+        z-index: 1049;
+        position: relative;
+    }
+
+    /* Cacher le dark mode desktop */
+    .dark-mode-desktop {
+        display: none;
+    }
+
+    /* Dark mode dans le menu mobile */
+    .dark-mode-mobile {
+        display: block;
+        margin-top: 20px;
+        padding-top: 15px;
+        border-top: 2px solid #f0f0f0;
+    }
+
+    .dark-mode-mobile-btn {
+        background: linear-gradient(135deg, #540863, #92487A);
+        color: white;
+        padding: 12px 16px;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        font-size: 15px;
+        width: 100%;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(84, 8, 99, 0.3);
+    }
+
+    .dark-mode-mobile-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(84, 8, 99, 0.4);
+    }
+
+    /* Overlay pour fermer le menu */
+    .nav-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 998;
+    }
+
+    .nav-overlay.active {
+        display: block;
+    }
+}
+
+/* =====================================================
+   DARK MODE STYLES
+===================================================== */
+body.dark-mode header {
+    background-color: #000000ff;
+    box-shadow: 3px 15px 30px rgba(88, 21, 121, 0.54);
+}
+
+body.dark-mode nav {
+    background: #000000;
+}
+
+body.dark-mode nav ul li a {
+    color: #f5f5f5;
+    background-color: #00000057;
+}
+
+body.dark-mode nav ul li a:hover {
+    background: #e6a1ee9e;
+    color: rgb(0, 0, 0);
+}
+
+body.dark-mode .dark-mode-desktop {
+    background: #92487A;
+    color: white;
+}
+
+body.dark-mode .menu-toggle {
+    color: #f5f5f5;
+}
+
+body.dark-mode .nav-overlay {
+    background: rgba(0,0,0,0.7);
+}
+
+body.dark-mode .dark-mode-mobile-btn {
+    background: linear-gradient(135deg, #92487A, #540863);
+}
