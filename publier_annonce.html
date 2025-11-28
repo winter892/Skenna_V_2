@@ -12,134 +12,234 @@
       --rose-light:#FFD3D5;
       --rose-mid:#E49BA6;
       --violet-mid:#92487A;
-      --violet-dark:#540863;
+      --violet-dark:#6a027f;
       --text:black;
       --bg:white;
+      --card-bg: #fff;
+      --shadow: rgba(84, 8, 99, 0.15);
     }
     .dark-mode {
       --text:white;
-      --bg:#1a1a1a;
-      --violet-dark:#92487A;
+      --bg: linear-gradient(120deg, #000000ff, #812494ff);
+      --violet-dark:#6a027f;
+      --card-bg: #000000;
+      --shadow: rgba(0,0,0,0.5);
     }
     body {
       background:var(--bg);
       color:var(--text);
-      font-family:Arial, sans-serif;
+      font-family: 'Segoe UI', Arial, sans-serif; /* Police plus moderne */
       margin:0;
       padding:0;
+      transition: background 0.3s, color 0.3s;
     }
 
-    /* PAGE DE CHOIX */
+    /* --- CONTENEUR PRINCIPAL --- */
     #page-choix {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      gap: 20px;
+      min-height: calc(100vh - 80px); /* Prend toute la hauteur moins le header */
+      padding: 40px 20px;
+      gap: 40px;
     }
-    .choix-bouton {
-      width: 260px;
+
+    h1.main-title {
+      color: var(--text);
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 20px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* --- DESIGN DES CARTES --- */
+    .cards-container {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      flex-wrap: wrap; /* Pour le mobile */
+    }
+
+    .role-card {
+      background: var(--card-bg);
+      width: 300px;
+      height: 400px;
+      border-radius: 20px;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 10px 30px var(--shadow);
+      transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.3s;
+      display: flex;
+      flex-direction: column;
+      border: 2px solid transparent;
+      position: relative;
+    }
+
+    /* Animation au survol */
+    .role-card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 20px 40px rgba(146, 72, 122, 0.3); /* Ombre violette */
+      border-color: var(--violet-mid);
+    }
+
+    /* Zone Image */
+    .card-image-wrapper {
+      width: 100%;
+      height: 65%;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .card-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    /* Zoom image au survol */
+    .role-card:hover .card-image-wrapper img {
+      transform: scale(1.1);
+    }
+
+    /* Overlay couleur sur l'image */
+    .image-overlay {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(to bottom, transparent 60%, var(--card-bg) 100%);
+    }
+
+    /* Contenu Texte */
+    .card-content {
+      height: 35%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       padding: 20px;
       text-align: center;
-      border:3px solid var(--violet-dark);
-      border-radius:12px;
-      cursor:pointer;
-      font-size:22px;
-      font-weight:bold;
-      background:var(--rose-light);
-      color:var(--violet-dark);
-    }
-    .choix-bouton:hover {
-      background:var(--rose-mid);
+      background: var(--card-bg);
+      z-index: 2;
     }
 
-    /* SOUS-FORMULAIRE */
-    #sous-formulaire {
-      display: none;
-      text-align: center;
-      padding: 40px 20px;
-    }
-    #sous-formulaire input, #sous-formulaire textarea {
-      width: 80%;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 8px;
-      border: 2px solid var(--violet-dark);
-    }
-    #sous-formulaire button {
-      padding: 10px 20px;
-      border:none;
-      border-radius:12px;
-      background: var(--violet-dark);
-      color: var(--rose-light);
-      cursor:pointer;
-      font-size:18px;
-    }
-    #sous-formulaire button:hover {
-      background: var(--violet-mid);
-    }
-
-    h1 {
+    .card-content h2 {
+      margin: 0;
       color: var(--violet-dark);
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .card-content p {
+      margin: 0;
+      font-size: 1rem;
+      opacity: 0.8;
+      color: var(--text);
+    }
+
+    /* Indicateur visuel (bouton factice) */
+    .action-icon {
+      margin-top: 15px;
+      width: 40px;
+      height: 40px;
+      background: var(--rose-light);
+      color: var(--violet-dark);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .role-card:hover .action-icon {
+      background: var(--violet-dark);
+      color: white;
+    }
+
+    /* RESPONSIVE MOBILE */
+    @media (max-width: 768px) {
+      .cards-container {
+        flex-direction: column;
+      }
+      .role-card {
+        width: 100%;
+        max-width: 340px;
+        height: 350px;
+      }
+      h1.main-title {
+        font-size: 1.8rem;
+      }
     }
   </style>
 </head>
 <body>
-    <!-- header --> 
+
 <header>
-        <a href="aceuill.html" class="logo-container">
-            <img id="siteLogo" src="IMAGES/Logo_mode_light.png" alt="Logo Sknna.ma" class="logo">
-        </a>
+    <a href="aceuill.html" class="logo-container">
+        <img id="siteLogo" src="IMAGES/Logo_mode_light.png" alt="Logo Sknna.ma" class="logo">
+    </a>
 
-        <!-- Bouton Burger -->
-        <button class="menu-toggle">
-            <i class="fas fa-bars"></i>
-        </button>
+    <button class="menu-toggle">
+        <i class="fas fa-bars"></i>
+    </button>
 
-        <!-- Overlay pour fermer le menu -->
-        <div class="nav-overlay"></div>
+    <div class="nav-overlay"></div>
 
-        <!-- MENU -->
-        <nav>
-            <ul class="menu">
-                <li><a href="logements.html">Logements</a></li>
-                <li><a href="Colocation.html">Colocation</a></li>
-                <li><a href="publier_annonce.html">Publier annonce</a></li>
-                <li><a href="publier_demande.html">Lancer demande</a></li>
-                <li><a href="Demandes.html">Demandes</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="presentation.html">Présentation</a></li>
-                <li><a href="Se_Connecter.html">Connexion</a></li>
-                <li><a href="creation_Compt.html">Inscription</a></li>
+    <nav>
+        <ul class="menu">
+            <li><a href="logements.html">Logements</a></li>
+            <li><a href="Colocation.html">Colocation</a></li>
+            <li><a href="publier_annonce.html">Publier annonce</a></li>
+            <li><a href="publier_demande.html">Lancer demande</a></li>
+            <li><a href="Demandes.html">Demandes</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="presentation.html">Présentation</a></li>
+            <li><a href="Se_Connecter.html">Connexion</a></li>
+            <li><a href="creation_Compt.html">Inscription</a></li>
 
-                <!-- Dark mode dans le menu mobile - CACHÉ PAR DÉFAUT -->
-                <li class="dark-mode-mobile">
-                    <button id="darkModeToggleMobile" class="dark-mode-mobile-btn">
-                        <i class="fa-regular fa-moon"></i> Mode Sombre
-                    </button>
-                </li>
-            </ul>
-        </nav>
-        <!-- Dark mode desktop (toujours visible sur grand écran) -->
-        <button id="darkModeToggle" class="dark-mode-desktop">
-            <i class="fa-regular fa-moon"></i>
-        </button>
-    </header>
-  <!-- PAGE 1 : Choix utilisateur -->
-  <div id="page-choix">
-    <h1>Êtes-vous un propriétaire ou un étudiant ?</h1>
-<div class="choix-bouton" onclick="window.location.href='publier_annonce_cp.html?role=proprietaire'">
-  Propriétaire
-</div>
+            <li class="dark-mode-mobile">
+                <button id="darkModeToggleMobile" class="dark-mode-mobile-btn">
+                    <i class="fa-regular fa-moon"></i> Mode Sombre
+                </button>
+            </li>
+        </ul>
+    </nav>
+    <button id="darkModeToggle" class="dark-mode-desktop">
+        <i class="fa-regular fa-moon"></i>
+    </button>
+</header>
+<div id="page-choix">
+  <h1 class="main-title">Quel est votre profil ?</h1>
+  
+  <div class="cards-container">
+    
+    <div class="role-card" onclick="window.location.href='publier_annonce_cp.html?role=proprietaire'">
+      <div class="card-image-wrapper">
+        <img src="IMAGES/Proprietaire.png" alt="Je suis propriétaire">
+        <div class="image-overlay"></div>
+      </div>
+      <div class="card-content">
+        <h2>Propriétaire</h2>
+        <p>Je souhaite louer mon bien</p>
+      </div>
+    </div>
 
-<div class="choix-bouton" onclick="window.location.href='publier_annonce_cp.html?role=etudiant'">
-  Étudiant
-</div>
+    <div class="role-card" onclick="window.location.href='publier_annonce_cp.html?role=etudiant'">
+      <div class="card-image-wrapper">
+         <img src="IMAGES/Etudiant.png" alt="Je suis étudiant">
+        <div class="image-overlay"></div>
+      </div>
+      <div class="card-content">
+        <h2>Étudiant</h2>
+        <p>Je cherche un logement</p>
+      </div>
+    </div>
+
   </div>
-
+</div>
 
 <script src="header.js"></script>
 </body>
 </html>
-   
