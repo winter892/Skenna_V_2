@@ -62,9 +62,8 @@ Enfin, j’ai participé à la mise en cohérence et au style des différentes p
 
     <div class="member">
       <img src="IMAGES/photo3.jpg" alt="Photo membre 3">
-      <h3>AHARDOU Malika</h3>
-      <p>Je suis élève ingénieure en DLA, et j’ai été chargée du développement des pages “Contact” et “Présentation d’équipe”, en assurant leur structure HTML ainsi que leur mise en forme en CSS. J’ai également intégré un mode sombre et un mode clair sur ces deux pages, afin d’améliorer l’accessibilité et le confort d’utilisation. 
-En travaillant sur leur style et leur ergonomie, j’ai veillé à ce qu’elles restent parfaitement cohérentes avec l’identité visuelle du site et harmonieuses avec les autres pages développées par l’équipe.</p>
+      <h3>AHARDOU MALIKA</h3>
+      <p>Je suis élève ingénieure en DLA, et j’ai été chargée du développement des pages “Contact” et “Présentation d’équipe”, en assurant leur structure, leur mise en page et leur interactivité. J’ai également intégré un mode sombre et un mode clair sur ces deux pages, afin d’améliorer l’accessibilité et le confort d’utilisation. En travaillant sur leur style et leur ergonomie, j’ai veillé à ce qu’elles restent parfaitement cohérentes avec l’identité visuelle du site et harmonieuses avec les autres pages développées par l’équipe.</p>
     </div>
 
     <div class="member">
@@ -164,7 +163,35 @@ document.addEventListener("DOMContentLoaded", () => {
             : "IMAGES/Logo_mode_light.png";
     });
 });
-</script>
 
+// ========== MENU BURGER FONCTIONNEL ==========
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav');
+    const menu = document.querySelector('.menu');
+
+    // Menu burger functionality
+    if (menuToggle && nav) {
+        menuToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            nav.classList.toggle('active');
+        });
+
+        // Fermer le menu en cliquant ailleurs
+        document.addEventListener('click', function(e) {
+            if (!nav.contains(e.target)) {
+                nav.classList.remove('active');
+            }
+        });
+
+        // Empêcher la fermeture quand on clique dans le menu
+        if (menu) {
+            menu.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        }
+    }
+}); 
+</script>
 </body>
 </html>
