@@ -111,31 +111,4 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
-document.addEventListener("DOMContentLoaded", () => {
 
-    const header = document.querySelector("header"); 
-    const modeBtn = document.createElement("button");
-    modeBtn.id = "darkModeToggle";
-
-    // Icône + texte
-    modeBtn.innerHTML = `<i class="fa-regular fa-moon"></i> `;
-    modeBtn.style.marginLeft = "15px";
-    header.appendChild(modeBtn);
-
-    const logo = document.getElementById("siteLogo");
-
-    modeBtn.addEventListener("click", () => {
-        document.body.classList.toggle("dark-mode");
-        const isDark = document.body.classList.contains("dark-mode");
-
-        // Icônes professionnelles
-        modeBtn.innerHTML = isDark 
-            ? `<i class="fa-regular fa-sun"></i> `
-            : `<i class="fa-regular fa-moon"></i> `;
-
-        // Logo dynamique
-        logo.src = isDark
-            ? "IMAGES/Logo_mode_dark.png"
-            : "IMAGES/Logo_mode_light.png";
-    });
-});

@@ -1,250 +1,124 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Choix utilisateur → Sous-formulaire</title>
-  <style>
-    /* PALETTE : #FFD3D5, #92487A, #540863, #E49BA6, black, white */
-    :root {
-      --rose-light:#FFD3D5;
-      --rose-mid:#E49BA6;
-      --violet-mid:#92487A;
-      --violet-dark:#540863;
-      --text:black;
-      --bg:white;
-    }
-    .dark {
-      --text:white;
-      --bg:#1a1a1a;
-      --violet-dark:#92487A;
-    }
-    body {
-      background:var(--bg);
-      color:var(--text);
-      font-family:Arial, sans-serif;
-      margin:0;
-      padding:0;
-    }
-
-    /* PAGE DE CHOIX */
-    #page-choix {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      gap: 20px;
-    }
-    .choix-bouton {
-      width: 260px;
-      padding: 20px;
-      text-align: center;
-      border:3px solid var(--violet-dark);
-      border-radius:12px;
-      cursor:pointer;
-      font-size:22px;
-      font-weight:bold;
-      background:var(--rose-light);
-      color:var(--violet-dark);
-    }
-    .choix-bouton:hover {
-      background:var(--rose-mid);
-    }
-
-    /* SOUS-FORMULAIRE */
-    #sous-formulaire {
-      display: none;
-      text-align: center;
-      padding: 40px 20px;
-    }
-    #sous-formulaire input, #sous-formulaire textarea {
-      width: 80%;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 8px;
-      border: 2px solid var(--violet-dark);
-    }
-    #sous-formulaire button {
-      padding: 10px 20px;
-      border:none;
-      border-radius:12px;
-      background: var(--violet-dark);
-      color: var(--rose-light);
-      cursor:pointer;
-      font-size:18px;
-    }
-    #sous-formulaire button:hover {
-      background: var(--violet-mid);
-    }
-
-    h1 {
-      color: var(--violet-dark);
-    }
-    
-/* ------------------------------ */
-/* HEADER                         */
-/* ------------------------------ */
-
-header {
-  width: 100%;
-  padding: 12px 5%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
-  border-bottom: 2px solid #FFD3D5;
-  position: sticky;
-  top: 0;
-  z-index: 999;
-
-  /* Effet glow IA */
-  box-shadow: 0 0 18px #92487A;
-  transition: background 0.3s, box-shadow 0.3s;
-}
-/* TITRES DES INPUTS */
-label{
-    font-weight: bold;
-    display: block;
-    margin-bottom: 5px;
-}
-
-/* INPUTS + SELECT + TEXTAREA */
-
-select,
-textarea{
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #92487A;
-    border-radius: 6px;
-    margin-bottom: 20px;
-    font-size: 14px;
-}
-
-/* Mode sombre header */
-body.dark header {
-  background: rgba(40, 0, 50, 0.7);
-  border-bottom: 2px solid #92487A;
-  box-shadow: 0 0 18px #540863;
-}
-
-.logo {
-  height: 55px;
-  transition: transform 0.3s;
-}
-
-.logo:hover {
-  transform: scale(1.05);
-}
-
-/* MENU */
-nav ul.menu {
-  list-style: none;
-  display: flex;
-  gap: 18px;
-}
-
-nav ul.menu li a {
-  text-decoration: none;
-  color: #540863;
-  padding: 8px 14px;
-  border-radius: 8px;
-  transition: 0.3s;
-
-  /* petit glow sélection IA */
-  position: relative;
-}
-
-body.dark nav ul.menu li a {
-  color: #E49BA6;
-}
-
-nav ul.menu li a:hover {
-  background: #FFD3D5;
-  color: #540863;
-  box-shadow: 0 0 10px #92487A;
-}
-
-body.dark nav ul.menu li a:hover {
-  background: #540863;
-  color: white;
-  box-shadow: 0 0 10px #92487A;
-}
-
-/* MENU BURGER */
-.menu-toggle {
-  display: none;
-  font-size: 30px;
-  cursor: pointer;
-  color: #540863;
-}
-
-body.dark .menu-toggle {
-  color: #E49BA6;
-}
-
-/* ------------------------------ */
-/* RESPONSIVE HEADER              */
-/* ------------------------------ */
-
-@media (max-width: 880px) {
-
-  nav ul.menu {
-    position: absolute;
-    top: 80px;
-    right: 0;
-    width: 65%;
-    background: white;
-    flex-direction: column;
-    padding: 20px;
-    gap: 10px;
-    border-bottom-left-radius: 12px;
-    border-left: 1px solid #FFD3D5;
-    border-bottom: 1px solid #FFD3D5;
-
-    display: none; /* caché par défaut */
-  }
-  </style>
-</head>
-<body>
-  <header>
-<a href="aceuill.html">
-    <img id="siteLogo" src="IMAGES/Logo_mode_light.png" alt="Logo Sknna.ma" class="logo">
-</a>
-
-  <nav>
-    <ul class="menu">
-      <li><a href="logements.html">Logements</a></li>
-      <li><a href="Colocation.html">Colocation</a></li>
-      <li><a href="publier_annonce.html">Publier une annonce</a></li>
-      <li><a href="publier_demande.html">Lancer une demande</a></li>
-      <li><a href="Demandes.html">Demandes</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="presentation.html">Présentation</a></li>
-      <li><a href="Se_Connecter.html">Se connecter</a></li>
-      <li><a href="creation_Compt.html">S'inscrire</a></li>
-    </ul>
-  </nav>
-  <div class="menu-toggle">
-    <i class="fas fa-bars"></i>
-  </div>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Publier une annonce - Sknna.ma</title>
+  <link rel="stylesheet" href="style_publier_annonce.css">
+  <link rel="stylesheet" href="header.css">
   
-</header>
+  <script src="js_publier_annonces.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- PAGE 1 : Choix utilisateur -->
-  <div id="page-choix">
-    <h1>Êtes-vous un propriétaire ou un étudiant ?</h1>
-<div class="choix-bouton" onclick="window.location.href='publier_annonce_cp.html?role=proprietaire'">
-  Propriétaire
-</div>
+</head>
+    <!-- header --> 
+<header>
+        <a href="aceuill.html" class="logo-container">
+            <img id="siteLogo" src="IMAGES/Logo_mode_light.png" alt="Logo Sknna.ma" class="logo">
+        </a>
 
-<div class="choix-bouton" onclick="window.location.href='publier_annonce_cp.html?role=etudiant'">
-  Étudiant
-</div>
-  </div>
+        <!-- Bouton Burger -->
+        <button class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
 
+        <!-- Overlay pour fermer le menu -->
+        <div class="nav-overlay"></div>
 
+        <!-- MENU -->
+        <nav>
+            <ul class="menu">
+                <li><a href="logements.html">Logements</a></li>
+                <li><a href="Colocation.html">Colocation</a></li>
+                <li><a href="publier_annonce.html">Publier annonce</a></li>
+                <li><a href="publier_demande.html">Lancer demande</a></li>
+                <li><a href="Demandes.html">Demandes</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="presentation.html">Présentation</a></li>
+                <li><a href="Se_Connecter.html">Connexion</a></li>
+                <li><a href="creation_Compt.html">Inscription</a></li>
 
+                <!-- Dark mode dans le menu mobile - CACHÉ PAR DÉFAUT -->
+                <li class="dark-mode-mobile">
+                    <button id="darkModeToggleMobile" class="dark-mode-mobile-btn">
+                        <i class="fa-regular fa-moon"></i> Mode Sombre
+                    </button>
+                </li>
+            </ul>
+        </nav>
+        <!-- Dark mode desktop (toujours visible sur grand écran) -->
+        <button id="darkModeToggle" class="dark-mode-desktop">
+            <i class="fa-regular fa-moon"></i>
+        </button>
+    </header>
+<body>
+  <center>
+
+    <h1>Publier une annonce</h1>
+    <hr width="70%">
+
+    <form action="logements.html" method="post">
+      <table cellpadding="8">
+        <tr>
+          <td><label for="titre"><strong>Titre de l’annonce :</strong></label></td>
+          <td><input type="text" id="titre" name="titre" placeholder="Ex: Chambre proche de l'université" required></td>
+        </tr>
+        <tr>
+          <td><label for="ville"><strong>Ville :</strong></label></td>
+          <td>
+            <select id="ville" name="ville" required>
+              <option value="">--Choisir--</option>
+              <option value="agadir">Agadir</option>
+              <option value="rabat">Rabat</option>
+              <option value="casablanca">Casablanca</option>
+              <option value="marrakech">Marrakech</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="type"><strong>Type de logement :</strong></label></td>
+          <td>
+            <select id="type" name="type" required>
+              <option value="">--Choisir--</option>
+              <option value="chambre">Chambre</option>
+              <option value="studio">Studio</option>
+              <option value="colocation">Colocation</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="prix"><strong>Prix (MAD/mois) :</strong></label></td>
+          <td><input type="number" id="prix" name="prix" min="0" required></td>
+        </tr>
+        <tr>
+          <td><label for="dispo"><strong>Disponibilité :</strong></label></td>
+          <td><input type="date" id="dispo" name="dispo" required></td>
+        </tr>
+        <tr>
+          <td><label for="desc"><strong>Description :</strong></label></td>
+          <td>
+            <textarea id="desc" name="desc" rows="5" cols="40" placeholder="Décrivez brièvement le logement..." required></textarea>
+            <!-- Span pour compteur de caractères -->
+            <br><span id="charCount" style="font-size:14px; color:#540863;">0/200</span>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="photo"><strong>Photo (optionnelle) :</strong></label></td>
+          <td><input type="file" id="photo" name="photo" accept="image/*"></td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center">
+            <button type="submit">Publier</button>
+            <button type="reset">Annuler</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+
+    <hr width="70%">
+    <p><em>Seuls les utilisateurs inscrits peuvent publier des annonces.</em></p>
+    <p><small>&copy; 2025 Sknna.ma</small></p>
+  </center>
+  <script src="header.js"></script>
 </body>
 </html>

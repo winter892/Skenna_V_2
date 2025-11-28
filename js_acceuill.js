@@ -20,64 +20,125 @@ showTestimonial(index);
 setInterval(() => {
     index = (index + 1) % testimonials.length;
     showTestimonial(index);
-}, 5000);
+}, 2000);
 
-document.addEventListener("DOMContentLoaded", () => {
+ // MENU BURGER AVEC GESTION OPTIMISÉE
+        const toggle = document.querySelector(".menu-toggle");
+        const nav = document.querySelector("nav");
+        const overlay = document.querySelector(".nav-overlay");
+        const darkModeToggle = document.getElementById("darkModeToggle");
+        const darkModeToggleMobile = document.getElementById("darkModeToggleMobile");
+        const logo = document.getElementById("siteLogo");
 
-    const header = document.querySelector("header"); 
-    const modeBtn = document.createElement("button");
-    modeBtn.id = "darkModeToggle";
+        // Fonction pour gérer l'affichage du dark mode mobile
+        function handleDarkModeMobile() {
+            const darkModeMobile = document.querySelector('.dark-mode-mobile');
+            if (window.innerWidth <= 1053) {
+                // Mode téléphone - afficher le dark mode mobile
+                darkModeMobile.style.display = 'block';
+            } else {
+                // Mode desktop - cacher le dark mode mobile
+                darkModeMobile.style.display = 'none';
+            }
+        }
 
-    // Icône + texte
-    modeBtn.innerHTML = `<i class="fa-regular fa-moon"></i> `;
-    modeBtn.style.marginLeft = "15px";
-    header.appendChild(modeBtn);
-
-    const logo = document.getElementById("siteLogo");
-
-    modeBtn.addEventListener("click", () => {
-        document.body.classList.toggle("dark-mode");
-        const isDark = document.body.classList.contains("dark-mode");
-
-        // Icônes professionnelles
-        modeBtn.innerHTML = isDark 
-            ? `<i class="fa-regular fa-sun"></i> `
-            : `<i class="fa-regular fa-moon"></i> `;
-
-        // Logo dynamique
-        logo.src = isDark
-            ? "IMAGES/Logo_mode_dark.png"
-            : "IMAGES/Logo_mode_light.png";
-    });
-});
-
-
-    // ========== MENU BURGER ==========
-    const toggle = document.querySelector(".menu-toggle");
-    const nav = document.querySelector("nav");
-
-    toggle.addEventListener("click", () => {
-        nav.classList.toggle("active");
-    });
-
-
-// Ajoutez ce code JavaScript
-document.addEventListener('DOMContentLoaded', function() {
-    const menuButton = document.querySelector('.menu-button');
-    const menuList = document.querySelector('.menu-list');
-    
-    if (menuButton && menuList) {
-        menuButton.addEventListener('click', function(e) {
-            e.preventDefault();
-            menuList.classList.toggle('show');
+        // Ouvrir/fermer le menu
+        toggle.addEventListener("click", (e) => {
+            e.stopPropagation();
+            nav.classList.toggle("active");
+            overlay.classList.toggle("active");
+            document.body.style.overflow = nav.classList.contains("active") ? "hidden" : "";
         });
-        
-        // Fermer le menu en cliquant ailleurs
-        document.addEventListener('click', function(e) {
-            if (!menuButton.contains(e.target) && !menuList.contains(e.target)) {
-                menuList.classList.remove('show');
+
+        // Fermer le menu en cliquant sur l'overlay
+        overlay.addEventListener("click", () => {
+            nav.classList.remove("active");
+            overlay.classList.remove("active");
+            document.body.style.overflow = "";
+        });
+
+        // Fermer le menu en cliquant sur un lien
+        document.querySelectorAll("nav a").forEach(link => {
+            link.addEventListener("click", () => {
+                nav.classList.remove("active");
+                overlay.classList.remove("active");
+                document.body.style.overflow = "";
+            });
+        });
+
+        // Gestion du Dark Mode
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+            const isDark = document.body.classList.contains("dark-mode");
+            
+            // Mettre à jour les icônes
+            const iconClass = isDark ? "fa-sun" : "fa-moon";
+            const text = isDark ? "Clair" : "Sombre";
+            
+            darkModeToggle.innerHTML = `<i class="fa-regular ${iconClass}"></i>`;
+            if (darkModeToggleMobile) {
+                darkModeToggleMobile.innerHTML = `<i class="fa-regular ${iconClass}"></i> Mode ${text}`;
+            }
+            
+            // Changer le logo
+            if (logo) {
+                logo.src = isDark ? "IMAGES/Logo_mode_dark.png" : "IMAGES/Logo_mode_light.png";
+            }
+            
+            // Sauvegarder la préférence
+            localStorage.setItem("darkMode", isDark);
+        }
+
+        darkModeToggle.addEventListener("click", toggleDarkMode);
+        if (darkModeToggleMobile) {
+            darkModeToggleMobile.addEventListener("click", toggleDarkMode);
+        }
+
+        // Restaurer le mode sombre
+        if (localStorage.getItem("darkMode") === "true") {
+            document.body.classList.add("dark-mode");
+            const iconClass = "fa-sun";
+            const text = "Clair";
+            
+            darkModeToggle.innerHTML = `<i class="fa-regular ${iconClass}"></i>`;
+            if (darkModeToggleMobile) {
+                darkModeToggleMobile.innerHTML = `<i class="fa-regular ${iconClass}"></i> Mode ${text}`;
+            }
+            
+            if (logo) {
+                logo.src = "IMAGES/Logo_mode_dark.png";
+            }
+        }
+
+        // Fermer le menu avec la touche Échap
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && nav.classList.contains("active")) {
+                nav.classList.remove("active");
+                overlay.classList.remove("active");
+                document.body.style.overflow = "";
             }
         });
-    }
-});
 
+        // Gérer l'affichage du dark mode mobile au chargement et au redimensionnement
+        window.addEventListener('load', handleDarkModeMobile);
+        window.addEventListener('resize', handleDarkModeMobile);
+
+        // Optimisation : vérifier l'espace disponible
+        function checkNavSpace() {
+            const header = document.querySelector('header');
+            const nav = document.querySelector('nav');
+            const logo = document.querySelector('.logo');
+            
+            if (header && nav && logo) {
+                const headerWidth = header.offsetWidth;
+                const logoWidth = logo.offsetWidth;
+                const navWidth = nav.offsetWidth;
+                const availableSpace = headerWidth - logoWidth - 100; // 100px pour les boutons
+                
+                console.log(`Espace disponible: ${availableSpace}px, Nav besoin: ${navWidth}px`);
+            }
+        }
+
+        // Vérifier lors du redimensionnement
+        window.addEventListener('resize', checkNavSpace);
+        window.addEventListener('load', checkNavSpace);

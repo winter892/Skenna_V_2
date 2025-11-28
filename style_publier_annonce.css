@@ -15,9 +15,9 @@ body {
 }
 
 /* Mode sombre */
-body.dark {
-  background:  #2c1a3b;
-  color: #92487A;
+body.dark-mode {
+  background: linear-gradient(120deg, #000000ff, #812494ff);
+    color: #FFD3D5;
 }
 
 /* ------------------------------ */

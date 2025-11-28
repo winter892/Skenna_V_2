@@ -1,29 +1,3 @@
-// Dark mode functionality
-document.addEventListener("DOMContentLoaded", () => {
-
-    const header = document.querySelector("header"); 
-    const modeBtn = document.createElement("button");
-    modeBtn.id = "darkModeToggle";
-    modeBtn.classList.add("dark-toggle-btn"); // ← important !
-    modeBtn.innerHTML = `<i class="fa-regular fa-moon"></i>`;
-    modeBtn.style.marginLeft = "15px";
-    header.appendChild(modeBtn);
-
-    const logo = document.getElementById("siteLogo");
-
-    modeBtn.addEventListener("click", () => {
-        document.body.classList.toggle("dark-mode");
-        const isDark = document.body.classList.contains("dark-mode");
-
-        modeBtn.innerHTML = isDark 
-            ? `<i class="fa-regular fa-sun"></i>`
-            : `<i class="fa-regular fa-moon"></i>`;
-
-        logo.src = isDark
-            ? "IMAGES/Logo_mode_dark.png"
-            : "IMAGES/Logo_mode_light.png";
-    });
-});
 
 // Scroll reveal functionality
 const rEls = document.querySelectorAll(".reveal");
@@ -105,20 +79,3 @@ document.querySelectorAll('.carousel').forEach(carousel => {
         autoSlide = setInterval(nextSlide, 5000);
     });
 });
-
-// Mobile menu toggle
-const menuToggle = document.querySelector('.menu-toggle');
-const menu = document.querySelector('.menu');
-
-if (menuToggle && menu) {
-    menuToggle.addEventListener('click', () => {
-        menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
-        menu.style.flexDirection = 'column';
-        menu.style.position = 'absolute';
-        menu.style.top = '100%';
-        menu.style.left = '0';
-        menu.style.right = '0';
-        menu.style.background = 'var(--c1)';
-        menu.style.padding = '20px';
-    });
-}

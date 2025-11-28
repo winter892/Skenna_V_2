@@ -4,36 +4,52 @@
 <meta charset="UTF-8">
 <title>Logements - Sknna.ma</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel ="stylesheet" href="style_acceuill.css">
   <link rel="stylesheet" href="style_longement.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+  <link rel="stylesheet" href="header.css">
 </head>
 
 <body>
-<header>
-<a href="aceuill.html">
-    <img id="siteLogo" src="IMAGES/Logo_mode_light.png" alt="Logo Sknna.ma" class="logo">
-</a>
+<!-- header --> 
+ <header>
+        <a href="aceuill.html" class="logo-container">
+            <img id="siteLogo" src="IMAGES/Logo_mode_light.png" alt="Logo Sknna.ma" class="logo">
+        </a>
 
-  <nav>
-    <ul class="menu">
-      <li><a href="logements.html">Logements</a></li>
-      <li><a href="Colocation.html">Colocation</a></li>
-      <li><a href="publier_annonce.html">Publier une annonce</a></li>
-      <li><a href="publier_demande.html">Lancer une demande</a></li>
-      <li><a href="Demandes.html">Demandes</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="presentation.html">Présentation</a></li>
-      <li><a href="Se_Connecter.html">Se connecter</a></li>
-      <li><a href="creation_Compt.html">S'inscrire</a></li>
-    </ul>
-  </nav>
-  <div class="menu-toggle">
-    <i class="fas fa-bars"></i>
-  </div>
-  
-</header>
+        <!-- Bouton Burger -->
+        <button class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Overlay pour fermer le menu -->
+        <div class="nav-overlay"></div>
+
+        <!-- MENU -->
+        <nav>
+            <ul class="menu">
+                <li><a href="logements.html">Logements</a></li>
+                <li><a href="Colocation.html">Colocation</a></li>
+                <li><a href="publier_annonce.html">Publier annonce</a></li>
+                <li><a href="publier_demande.html">Lancer demande</a></li>
+                <li><a href="Demandes.html">Demandes</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="presentation.html">Présentation</a></li>
+                <li><a href="Se_Connecter.html">Connexion</a></li>
+                <li><a href="creation_Compt.html">Inscription</a></li>
+
+                <!-- Dark mode dans le menu mobile - CACHÉ PAR DÉFAUT -->
+                <li class="dark-mode-mobile">
+                    <button id="darkModeToggleMobile" class="dark-mode-mobile-btn">
+                        <i class="fa-regular fa-moon"></i> Mode Sombre
+                    </button>
+                </li>
+            </ul>
+        </nav>
+        <!-- Dark mode desktop (toujours visible sur grand écran) -->
+        <button id="darkModeToggle" class="dark-mode-desktop">
+            <i class="fa-regular fa-moon"></i>
+        </button>
+    </header>
 
 
 <h3 class="section-title">Appartements et studios récents</h3>
@@ -191,36 +207,8 @@ let ii = 0;
     setTimeout(type2, 80);
   }
 })();
-
-  document.addEventListener("DOMContentLoaded", () => {
-
-    const header = document.querySelector("header"); 
-    const modeBtn = document.createElement("button");
-    modeBtn.id = "darkModeToggle";
-
-    // Icône + texte
-    modeBtn.innerHTML = `<i class="fa-regular fa-moon"></i> `;
-    modeBtn.style.marginLeft = "15px";
-    header.appendChild(modeBtn);
-
-    const logo = document.getElementById("siteLogo");
-
-    modeBtn.addEventListener("click", () => {
-        document.body.classList.toggle("dark-mode");
-        const isDark = document.body.classList.contains("dark-mode");
-
-        // Icônes professionnelles
-        modeBtn.innerHTML = isDark 
-            ? `<i class="fa-regular fa-sun"></i> `
-            : `<i class="fa-regular fa-moon"></i> `;
-
-        // Logo dynamique
-        logo.src = isDark
-            ? "IMAGES/Logo_mode_dark.png"
-            : "IMAGES/Logo_mode_light.png";
-    });
-});
 </script>
+<script src="header.js"></script>
 <script>
 document.querySelectorAll(".photos").forEach(container => {
   const imgs = container.querySelectorAll("img");
