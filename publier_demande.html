@@ -3,128 +3,279 @@
 <head>
     <meta charset="UTF-8">
     <title>Lancer une demande - Sknna.ma</title>
-    <link rel ="stylesheet" href="style_acceuill.css">
     <link rel="stylesheet" href="style_puplier_demande.css">
+    <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
 </head>
 
 <body>
 
+    <!-- header --> 
 <header>
-<a href="aceuill.html">
-    <img id="siteLogo" src="IMAGES/Logo_mode_light.png" alt="Logo Sknna.ma" class="logo">
-</a>
+        <a href="aceuill.html" class="logo-container">
+            <img id="siteLogo" src="IMAGES/Logo_mode_light.png" alt="Logo Sknna.ma" class="logo">
+        </a>
 
-  <nav>
-    <ul class="menu">
-      <li><a href="logements.html">Logements</a></li>
-      <li><a href="Colocation.html">Colocation</a></li>
-      <li><a href="publier_annonce.html">Publier une annonce</a></li>
-      <li><a href="publier_demande.html">Lancer une demande</a></li>
-      <li><a href="Demandes.html">Demandes</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="presentation.html">Présentation</a></li>
-      <li><a href="Se_Connecter.html">Se connecter</a></li>
-      <li><a href="creation_Compt.html">S'inscrire</a></li>
-    </ul>
-  </nav>
-  <div class="menu-toggle">
-    <i class="fas fa-bars"></i>
-  </div>
-  
-</header>
+        <!-- Bouton Burger -->
+        <button class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Overlay pour fermer le menu -->
+        <div class="nav-overlay"></div>
+
+        <!-- MENU -->
+        <nav>
+            <ul class="menu">
+                <li><a href="logements.html">Logements</a></li>
+                <li><a href="Colocation.html">Colocation</a></li>
+                <li><a href="publier_annonce.html">Publier annonce</a></li>
+                <li><a href="publier_demande.html">Lancer demande</a></li>
+                <li><a href="Demandes.html">Demandes</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="presentation.html">Présentation</a></li>
+                <li><a href="Se_Connecter.html">Connexion</a></li>
+                <li><a href="creation_Compt.html">Inscription</a></li>
+
+                <!-- Dark mode dans le menu mobile - CACHÉ PAR DÉFAUT -->
+                <li class="dark-mode-mobile">
+                    <button id="darkModeToggleMobile" class="dark-mode-mobile-btn">
+                        <i class="fa-regular fa-moon"></i> Mode Sombre
+                    </button>
+                </li>
+            </ul>
+        </nav>
+        <!-- Dark mode desktop (toujours visible sur grand écran) -->
+        <button id="darkModeToggle" class="dark-mode-desktop">
+            <i class="fa-regular fa-moon"></i>
+        </button>
+    </header>
 
 <section class="container">
-
     <h1>Lancer une demande de colocation</h1>
     <p class="subtitle">Remplissez ce formulaire pour trouver des colocataires compatibles.</p>
 
     <form class="demande-form">
+        <div class="form-columns">
+            <!-- Colonne gauche - Informations personnelles -->
+            <div class="form-column">
+                <h2>Informations personnelles</h2>
 
-        <h2>Informations personnelles</h2>
+                <div class="form-group">
+                    <label>Prénom :</label>
+                    <input type="text" name="prenom" required>
+                </div>
 
-        <label>Prénom :</label>
-        <input type="text" name="prenom" required>
+                <div class="form-group">
+                    <label>Âge :</label>
+                    <input type="number" name="age" min="16" max="50" required>
+                </div>
 
-        <label>Âge :</label>
-        <input type="number" name="age" min="16" max="50" required>
+                <div class="form-group">
+                    <label>Genre :</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="genre" value="Femme" required> 
+                            <span class="radio-custom"></span>
+                            Femme
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="genre" value="Homme"> 
+                            <span class="radio-custom"></span>
+                            Homme
+                        </label>
+                    </div>
+                </div>
 
-        <label>Genre :</label>
-        <label><input type="radio" name="genre" value="Femme" required> Femme</label>
-        <label><input type="radio" name="genre" value="Homme"> Homme</label>
+                <div class="form-group">
+                    <label>Email :</label>
+                    <input type="email" name="email" required>
+                </div>
 
-        <label>Email :</label>
-        <input type="email" name="email" required>
+                <div class="form-group">
+                    <label>Téléphone :</label>
+                    <input type="text" name="telephone" required>
+                </div>
 
-        <label>Téléphone :</label>
-        <input type="text" name="telephone" required>
+                <div class="form-group">
+                    <label>Ville de recherche :</label>
+                    <input type="text" name="ville" required>
+                </div>
 
-        <label>Ville de recherche :</label>
-        <input type="text" name="ville" required>
+                <div class="form-group">
+                    <label>École :</label>
+                    <input type="text" name="ecole" required>
+                </div>
+            </div>
 
-        <label>École :</label>
-        <input type="text" name="ecole" required>
+            <!-- Colonne droite - Préférences -->
+            <div class="form-column">
+                <h2>Préférences de colocation</h2>
 
-        <h2>Préférences de colocation</h2>
+                <div class="form-group">
+                    <label>Budget maximum (DH) :</label>
+                    <input type="number" name="budget" required>
+                </div>
 
-        <label>Budget maximum (DH) :</label>
-        <input type="number" name="budget" required>
+                <div class="form-group">
+                    <label>Type de logement recherché :</label>
+                    <select name="typeLogement" required>
+                        <option value="">Choisir...</option>
+                        <option value="Studio">Studio</option>
+                        <option value="Appartement">Appartement</option>
+                        <option value="Chambre en colocation">Chambre en colocation</option>
+                    </select>
+                </div>
 
-        <label>Type de logement recherché :</label>
-        <select name="typeLogement" required>
-            <option>Studio</option>
-            <option>Appartement</option>
-            <option>Chambre en colocation</option>
-        </select>
+                <div class="form-group">
+                    <label>Nombre de colocataires souhaités :</label>
+                    <input type="number" name="nbColoc" min="1" required>
+                </div>
 
-        <label>Nombre de colocataires souhaités :</label>
-        <input type="number" name="nbColoc" min="1" required>
+                <div class="form-group">
+                    <label>Vos préférences :</label>
+                    <div class="multi-select-grid">
+                        <!-- Colonne 1 -->
+                        <div class="checkbox-column">
+                            <label class="checkbox-label">
+                                <input type="checkbox" value="calme">
+                                <span class="checkbox-custom"></span>
+                                Calme
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" value="non-fumeur">
+                                <span class="checkbox-custom"></span>
+                                Non-fumeur
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" value="fumeur">
+                                <span class="checkbox-custom"></span>
+                                Fumeur
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" value="etudiants">
+                                <span class="checkbox-custom"></span>
+                                Étudiant(e)s uniquement
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" value="mixte">
+                                <span class="checkbox-custom"></span>
+                                Mixte
+                            </label>
+                        </div>
 
-        <label>Vos préférences :</label>
-        <div class="multi-select">
-            <label><input type="checkbox" value="calme"> Calme</label>
-            <label><input type="checkbox" value="non-fumeur"> Non-fumeur</label>
-            <label><input type="checkbox" value="fumeur"> Fumeur</label>
-            <label><input type="checkbox" value="etudiants"> Étudiant(e)s uniquement</label>
-            <label><input type="checkbox" value="mixte"> Mixte</label>
-            <label><input type="checkbox" value="appartement-equipe"> Appartement équipé</label>
-            <label><input type="checkbox" value="meuble"> Meublé</label>
-            <label><input type="checkbox" value="ascenseur"> Ascenseur</label>
-            <label><input type="checkbox" value="parking"> Parking</label>
-            <label><input type="checkbox" value="climatisation"> Climatisation</label>
-            <label><input type="checkbox" value="chauffage"> Chauffage</label>
-            <label><input type="checkbox" value="internet"> Internet / Fibre</label>
-            <label><input type="checkbox" value="machine-a-laver"> Machine à laver</label>
-            <label><input type="checkbox" value="balcon"> Balcon / Terrasse</label>
-            <label><input type="checkbox" value="proche-transports"> Proche des transports</label>
-            <label><input type="checkbox" value="proche-centre"> Proche du centre-ville</label>
-            <label><input type="checkbox" value="animaux-ok"> Animaux acceptés</label>
-            <label><input type="checkbox" value="animaux-ko"> Pas d’animaux</label>
-            <label><input type="checkbox" value="cuisine-equipee"> Cuisine équipée</label>
-            <label><input type="checkbox" value="court-sejour"> Court séjour possible</label>
-            <label><input type="checkbox" value="long-sejour"> Long séjour</label>
+                        <!-- Colonne 2 -->
+                        <div class="checkbox-column">
+                            <label class="checkbox-label">
+                                <input type="checkbox" value="appartement-equipe">
+                                <span class="checkbox-custom"></span>
+                                Appartement équipé
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" value="meuble">
+                                <span class="checkbox-custom"></span>
+                                Meublé
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" value="ascenseur">
+                                <span class="checkbox-custom"></span>
+                                Ascenseur
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" value="parking">
+                                <span class="checkbox-custom"></span>
+                                Parking
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" value="climatisation">
+                                <span class="checkbox-custom"></span>
+                                Climatisation
+                            </label>
+                        </div>
+
+                        <!-- Colonne 3 -->
+                        <div class="checkbox-column">
+                            <label class="checkbox-label">
+                                <input type="checkbox" value="chauffage">
+                                <span class="checkbox-custom"></span>
+                                Chauffage
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" value="internet">
+                                <span class="checkbox-custom"></span>
+                                Internet / Fibre
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" value="machine-a-laver">
+                                <span class="checkbox-custom"></span>
+                                Machine à laver
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" value="balcon">
+                                <span class="checkbox-custom"></span>
+                                Balcon / Terrasse
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" value="proche-transports">
+                                <span class="checkbox-custom"></span>
+                                Proche des transports
+                            </label>
+                        </div>
+
+                        <!-- Colonne 4 -->
+                        <div class="checkbox-column">
+                            <label class="checkbox-label">
+                                <input type="checkbox" value="proche-centre">
+                                <span class="checkbox-custom"></span>
+                                Proche du centre-ville
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" value="animaux-ok">
+                                <span class="checkbox-custom"></span>
+                                Animaux acceptés
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" value="animaux-ko">
+                                <span class="checkbox-custom"></span>
+                                Pas d'animaux
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" value="cuisine-equipee">
+                                <span class="checkbox-custom"></span>
+                                Cuisine équipée
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" value="court-sejour">
+                                <span class="checkbox-custom"></span>
+                                Court séjour possible
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" value="long-sejour">
+                                <span class="checkbox-custom"></span>
+                                Long séjour
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Description :</label>
+                    <textarea name="description" rows="5" placeholder="Décrivez vos attentes, style de vie, horaires..."></textarea>
+                </div>
+            </div>
         </div>
 
-        <label>Description :</label>
-        <textarea name="description" rows="5" max="500" placeholder="Décrivez vos attentes, style de vie, horaires..."></textarea>
-
-        <button type="submit" class="submit-btn">Envoyer la demande</button>
-
+        <!-- Bouton en pleine largeur -->
+        <div class="form-full-width">
+            <button type="submit" class="submit-btn">Envoyer la demande</button>
+        </div>
     </form>
-
 </section>
 
 <script>
-    // Menu toggle
-    const toggle = document.querySelector(".menu-toggle");
-    const nav = document.querySelector("nav");
 
-    toggle.addEventListener("click", () => {
-        nav.classList.toggle("active");
-    });
 
-    // Gestion du formulaire statique
+    // Gestion du formulaire
     const form = document.querySelector(".demande-form");
 
     form.addEventListener("submit", (e) => {
@@ -136,6 +287,8 @@
         form.querySelectorAll('input[type="checkbox"]:checked').forEach(cb => preferences.push(cb.value));
 
         const demande = {
+            id: Date.now(),
+            date: new Date().toISOString(),
             prenom: formData.get("prenom"),
             age: formData.get("age"),
             genre: formData.get("genre"),
@@ -158,34 +311,7 @@
         alert("Votre demande a été enregistrée !");
         form.reset();
     });
-    document.addEventListener("DOMContentLoaded", () => {
-
-    const header = document.querySelector("header"); 
-    const modeBtn = document.createElement("button");
-    modeBtn.id = "darkModeToggle";
-
-    // Icône + texte
-    modeBtn.innerHTML = `<i class="fa-regular fa-moon"></i> `;
-    modeBtn.style.marginLeft = "15px";
-    header.appendChild(modeBtn);
-
-    const logo = document.getElementById("siteLogo");
-
-    modeBtn.addEventListener("click", () => {
-        document.body.classList.toggle("dark-mode");
-        const isDark = document.body.classList.contains("dark-mode");
-
-        // Icônes professionnelles
-        modeBtn.innerHTML = isDark 
-            ? `<i class="fa-regular fa-sun"></i> `
-            : `<i class="fa-regular fa-moon"></i> `;
-
-        // Logo dynamique
-        logo.src = isDark
-            ? "IMAGES/Logo_mode_dark.png"
-            : "IMAGES/Logo_mode_light.png";
-    });
-});
 </script>
+<script src="header.js"></script>
 </body>
 </html>

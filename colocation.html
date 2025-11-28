@@ -4,33 +4,52 @@
     <meta charset="UTF-8">
     <title>Colocations - Sknna.ma</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style_acceuill.css">
     <link rel="stylesheet" href="style_colocation.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="header.css">
+
 </head>
 
 <body>
-    <header>
-        <a href="aceuill.html">
+    <!-- header --> 
+<header>
+        <a href="aceuill.html" class="logo-container">
             <img id="siteLogo" src="IMAGES/Logo_mode_light.png" alt="Logo Sknna.ma" class="logo">
         </a>
 
+        <!-- Bouton Burger -->
+        <button class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Overlay pour fermer le menu -->
+        <div class="nav-overlay"></div>
+
+        <!-- MENU -->
         <nav>
             <ul class="menu">
                 <li><a href="logements.html">Logements</a></li>
                 <li><a href="Colocation.html">Colocation</a></li>
-                <li><a href="publier_annonce.html">Publier une annonce</a></li>
-                <li><a href="publier_demande.html">Lancer une demande</a></li>
+                <li><a href="publier_annonce.html">Publier annonce</a></li>
+                <li><a href="publier_demande.html">Lancer demande</a></li>
                 <li><a href="Demandes.html">Demandes</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li><a href="presentation.html">Présentation</a></li>
-                <li><a href="Se_Connecter.html">Se connecter</a></li>
-                <li><a href="creation_Compt.html">S'inscrire</a></li>
+                <li><a href="Se_Connecter.html">Connexion</a></li>
+                <li><a href="creation_Compt.html">Inscription</a></li>
+
+                <!-- Dark mode dans le menu mobile - CACHÉ PAR DÉFAUT -->
+                <li class="dark-mode-mobile">
+                    <button id="darkModeToggleMobile" class="dark-mode-mobile-btn">
+                        <i class="fa-regular fa-moon"></i> Mode Sombre
+                    </button>
+                </li>
             </ul>
         </nav>
-        <div class="menu-toggle">
-            <i class="fas fa-bars"></i>
-        </div>
+        <!-- Dark mode desktop (toujours visible sur grand écran) -->
+        <button id="darkModeToggle" class="dark-mode-desktop">
+            <i class="fa-regular fa-moon"></i>
+        </button>
     </header>
 
     <h2 class="page-subtitle">Recherche de colocataires supplémentaires</h2>
@@ -169,5 +188,6 @@
     </footer>
 
     <script src="js_colocation.js"></script>
+    <script src="header.js"></script>
 </body>
 </html>

@@ -89,7 +89,9 @@ body.dark-mode .logo {
   margin: 2px 0;
 }
 body.dark-mode header {
-  background-color: #470550ff;
+  background-color: #000000ff;
+  box-shadow: 3px 15px 30px rgba(88, 21, 121, 0.54); 
+
 }
 
 /* ===== MAIN CONTENT ===== */
