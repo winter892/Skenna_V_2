@@ -39,91 +39,6 @@ h3.section-title {
 }
 
 /* ===========================
-   NAVBAR RESPONSIVE
-=========================== */
-.navbar {
-  background: var(--c1);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 25px;
-  position: sticky;
-  top: 0;
-  z-index: 999;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-}
-
-.dark-mode .navbar {
-  background: #2b2b2b;
-}
-
-.nav-logo {
-  color: white;
-  font-size: 22px;
-  font-weight: bold;
-}
-
-/* Menu desktop */
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 25px;
-}
-
-.nav-links a {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-  transition: 0.3s;
-}
-
-.nav-links a:hover {
-  color: var(--c4);
-}
-
-/* Hamburger icon */
-.menu-toggle {
-  display: none;
-  font-size: 32px;
-  color: white;
-  cursor: pointer;
-}
-
-/* Mobile */
-@media (max-width: 820px) {
-
-  .menu-toggle {
-    display: block;
-  }
-
-  .nav-links {
-    position: absolute;
-    top: 70px;
-    right: 0;
-    width: 220px;
-    background: var(--c1);
-    padding: 20px;
-    flex-direction: column;
-    gap: 20px;
-    opacity: 0;
-    pointer-events: none;
-    transform: translateX(20px);
-    transition: 0.4s ease;
-    border-radius: 10px 0 0 10px;
-  }
-
-  .dark-mode .nav-links {
-    background: #222;
-  }
-
-  .nav-links.open {
-    opacity: 1;
-    transform: translateX(0);
-    pointer-events: auto;
-  }
-}
-
-/* ===========================
    LOGEMENTS GRID
 =========================== */
 .logement-container {
@@ -235,7 +150,7 @@ video {
    ADMIN INFO
 =========================== */
 .admin-info {
-  background: var(--c4);
+  background: #ffffff7d;
   color: #000;
   padding: 12px;
   border-radius: 10px;

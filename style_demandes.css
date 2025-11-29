@@ -297,7 +297,7 @@ body.dark-mode h1 {
 }
 
 body.dark-mode h1:after {
-  background: linear-gradient(90deg, #8b5cf6, #6366f1);
+  background: linear-gradient(90deg, #689e10ff, #6366f1);
 }
 
 /* Demand Items */

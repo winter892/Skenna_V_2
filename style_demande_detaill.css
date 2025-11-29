@@ -19,10 +19,10 @@ body {
   padding: 0 20px;
 }
 
+/* ===== STYLES COMMUNS ===== */
 .back-link {
   display: inline-flex;
   align-items: center;
-  color: #872ba6ff;
   text-decoration: none;
   margin-bottom: 20px;
   font-weight: 500;
@@ -38,7 +38,6 @@ body {
   margin-right: 8px;
 }
 
-/* ===== DEMANDE CARD ===== */
 .demande-card {
   background-color: #fff;
   border-radius: 12px;
@@ -47,19 +46,10 @@ body {
   border: 1px solid #eaeaea;
 }
 
-/* Header avec gradient selon le genre */
 .demande-header {
   color: white;
   padding: 25px;
   text-align: center;
-}
-
-.demande-header.homme {
-  background: linear-gradient(135deg, #651d74ff, #bc6bccff);
-}
-
-.demande-header.femme {
-  background: linear-gradient(135deg, #d683d2ff, #FFD3D5);
 }
 
 .demande-header h1 {
@@ -75,12 +65,10 @@ body {
   font-weight: 400;
 }
 
-/* Contenu de la demande */
 .demande-content {
   padding: 30px;
 }
 
-/* Sections d'information */
 .info-section {
   margin-bottom: 25px;
   padding-bottom: 20px;
@@ -91,8 +79,7 @@ body {
   border-bottom: none;
 }
 
-.section-title.femme {
-  color: #d846e5ff;
+.section-title {
   font-size: 1.25rem;
   margin-bottom: 15px;
   display: flex;
@@ -104,7 +91,6 @@ body {
   margin-right: 10px;
 }
 
-/* Grille d'information */
 .info-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -118,7 +104,6 @@ body {
 }
 
 .info-item i {
-  color: #872ba6ff;
   margin-right: 10px;
   margin-top: 3px;
   width: 20px;
@@ -131,14 +116,12 @@ body {
   min-width: 180px;
 }
 
-/* Correction du problème d'affichage email/téléphone */
 .info-item div:last-child {
   word-break: break-all;
   overflow-wrap: break-word;
   flex: 1;
 }
 
-/* ===== SECTION BUDGET AMÉLIORÉE ===== */
 .budget-section {
   background: linear-gradient(135deg, #f8f9fa, #e9ecef);
   border-radius: 10px;
@@ -151,7 +134,6 @@ body {
 .budget-amount {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #872ba6ff;
   margin-bottom: 5px;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }
@@ -193,7 +175,6 @@ body {
   color: #333;
 }
 
-/* ===== PRÉFÉRENCES ===== */
 .preferences {
   display: flex;
   flex-wrap: wrap;
@@ -202,16 +183,14 @@ body {
 }
 
 .preference-tag {
-  background: #872ba6ff;
   color: white;
   padding: 8px 16px;
   border-radius: 20px;
   font-size: 0.85rem;
   font-weight: 500;
-  box-shadow: 0 2px 4px rgba(79, 70, 229, 0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* ===== DESCRIPTION CORRIGÉE ===== */
 .description-box {
   background-color: #f9f9f9;
   border-radius: 8px;
@@ -234,7 +213,6 @@ body {
   overflow-wrap: break-word;
 }
 
-/* Scrollbar personnalisée pour la description */
 .description-box::-webkit-scrollbar {
   width: 6px;
 }
@@ -244,16 +222,6 @@ body {
   border-radius: 3px;
 }
 
-.description-box::-webkit-scrollbar-thumb {
-  background: #872ba6ff;
-  border-radius: 3px;
-}
-
-.description-box::-webkit-scrollbar-thumb:hover {
-  background: #590f71ff;
-}
-
-/* ===== SECTION CONTACT ===== */
 .contact-section {
   text-align: center;
   margin-top: 30px;
@@ -263,32 +231,116 @@ body {
 .contact-btn {
   display: inline-flex;
   align-items: center;
-  background-color: #872ba6ff;
   color: white;
+  background-color: #fffdff55;
   padding: 12px 25px;
   border-radius: 8px;
   text-decoration: none;
   font-weight: 600;
   font-size: 1rem;
   transition: all 0.3s;
-  box-shadow: 0 4px 10px rgba(79, 70, 229, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .contact-btn:hover {
-  background-color: #621a7cff;
   transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(200, 70, 229, 0.3);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
 .contact-btn i {
   margin-right: 8px;
 }
 
+/* ===== STYLES FEMME (#b94c84ff) ===== */
+.back-link.femme {
+  color: #b94c84ff;
+}
+
+.demande-header.femme {
+  background: linear-gradient(135deg, #b94c84ff, #d683d2ff);
+}
+
+.section-title.femme {
+  color: #b94c84ff;
+}
+
+.info-item.femme i {
+  color: #b94c84ff;
+}
+
+.budget-amount.femme {
+  color: #b94c84ff;
+}
+
+.preference-tag.femme {
+  background: #b94c84ff;
+}
+
+.description-box.femme::-webkit-scrollbar-thumb {
+  background: #b94c84ff;
+  border-radius: 3px;
+}
+
+.description-box.femme::-webkit-scrollbar-thumb:hover {
+  background: #a13a72ff;
+}
+
+.contact-btn.femme {
+  background-color: #b94c84ff;
+}
+
+.contact-btn.femme:hover {
+  background-color: #a13a72ff;
+}
+
+/* ===== STYLES HOMME (#9653d4ff) ===== */
+.back-link.homme {
+  color: #9653d4ff;
+}
+
+.demande-header.homme {
+  background: linear-gradient(135deg, #651d74ff, #9653d4ff);
+}
+
+.section-title.homme {
+  color: #9653d4ff;
+}
+
+.info-item.homme i {
+  color: #9653d4ff;
+}
+
+.budget-amount.homme {
+  color: #9653d4ff;
+}
+
+.preference-tag.homme {
+  background: #9653d4ff;
+}
+
+.description-box.homme::-webkit-scrollbar-thumb {
+  background: #9653d4ff;
+  border-radius: 3px;
+}
+
+.description-box.homme::-webkit-scrollbar-thumb:hover {
+  background: #7e3bb5ff;
+}
+
+.contact-btn.homme {
+  background-color: #9653d4ff;
+}
+
+.contact-btn.homme:hover {
+  background-color: #7e3bb5ff;
+}
+
 /* ===== MODE SOMBRE PROFESSIONNEL ===== */
-body.dark-mode {
+body.dark-mode{
   background: linear-gradient(120deg, #000000ff, #812494ff);
   color: #e0e0e0;
 }
+
 
 body.dark-mode .demande-card {
   background-color: #000000ff;
@@ -296,38 +348,13 @@ body.dark-mode .demande-card {
   box-shadow: 0 10px 12px rgba(0, 0, 0, 0.3);
 }
 
-body.dark-mode .demande-header.homme {
-  background: linear-gradient(135deg, #702080ff, #a036b5ff);
-}
-
-body.dark-mode .demande-header.femme {
-  background: linear-gradient(135deg, #d683d2ff, #FFD3D5);
-}
-
 body.dark-mode .info-section {
   border-bottom: 1px solid #333;
-}
-
-body.dark-mode .section-title {
-  color: #d55cf6ff;
-}
-
-body.dark-mode .info-item i {
-  color: #872ba6ff;
-}
-
-body.dark-mode .info-label {
-  color: #872ba6ff;
 }
 
 body.dark-mode .budget-section {
   background: #2a2a2a65;
   border: 1px solid #333;
-}
-
-body.dark-mode .budget-amount
-body.dark-mode label {
-  color: #8b5cf6;
 }
 
 body.dark-mode .budget-item {
@@ -337,10 +364,6 @@ body.dark-mode .budget-item {
 
 body.dark-mode .budget-item .value {
   color: #e0e0e0;
-}
-
-body.dark-mode .preference-tag {
-  background: #872ba6ff;
 }
 
 body.dark-mode .description-box {
@@ -353,23 +376,89 @@ body.dark-mode .description-box::-webkit-scrollbar-track {
   background: #1e1e1e;
 }
 
-body.dark-mode .description-box::-webkit-scrollbar-thumb {
-  background: #5b21b6;
-}
-
-body.dark-mode .description-box::-webkit-scrollbar-thumb:hover {
-  background: #7c3aed;
-}
-
 body.dark-mode .contact-section {
   border-top: 1px solid #333;
 }
 
-body.dark-mode .contact-btn {
-  background-color: #872ba6ff;
+/* ===== MODE SOMBRE FEMME ===== */
+body.dark-mode .demande-header.femme {
+  background: linear-gradient(135deg, #a13a72ff, #c56ab8ff);
 }
 
-body.dark-mode .contact-btn:hover {
+body.dark-mode .section-title.femme {
+  color: #d55cf6ff;
+}
+
+body.dark-mode .info-item.femme i {
+  color: #b94c84ff;
+}
+
+body.dark-mode .info-label.femme {
+  color: #b94c84ff;
+}
+
+body.dark-mode .budget-amount.femme {
+  color: #b94c84ff;
+}
+
+body.dark-mode .preference-tag.femme {
+  background: #b94c84ff;
+}
+
+body.dark-mode .description-box.femme::-webkit-scrollbar-thumb {
+  background: #b94c84ff;
+}
+
+body.dark-mode .description-box.femme::-webkit-scrollbar-thumb:hover {
+  background: #a13a72ff;
+}
+
+body.dark-mode .contact-btn.femme {
+  background-color: #b94c84ff;
+}
+
+body.dark-mode .contact-btn.femme:hover {
+  background-color: #000000ff;
+}
+
+/* ===== MODE SOMBRE HOMME ===== */
+body.dark-mode .demande-header.homme {
+  background: linear-gradient(135deg, #702080ff, #7e3bb5ff);
+}
+
+body.dark-mode .section-title.homme {
+  color: #9653d4ff;
+}
+
+body.dark-mode .info-item.homme i {
+  color: #9653d4ff;
+}
+
+body.dark-mode .info-label.homme {
+  color: #9653d4ff;
+}
+
+body.dark-mode .budget-amount.homme {
+  color: #9653d4ff;
+}
+
+body.dark-mode .preference-tag.homme {
+  background: #9653d4ff;
+}
+
+body.dark-mode .description-box.homme::-webkit-scrollbar-thumb {
+  background: #9653d4ff;
+}
+
+body.dark-mode .description-box.homme::-webkit-scrollbar-thumb:hover {
+  background: #7e3bb5ff;
+}
+
+body.dark-mode .contact-btn.homme {
+  background-color: #9653d4ff;
+}
+
+body.dark-mode .contact-btn .homme:hover {
   background-color: #000000ff;
 }
 
