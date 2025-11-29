@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -11,125 +10,168 @@
   <script src="js_publier_annonces.js" defer></script>
 </head>
 <body>
-     <!-- header --> 
-<header>
-        <a href="aceuill.html" class="logo-container">
-            <img id="siteLogo" src="IMAGES/Logo_mode_light.png" alt="Logo Sknna.ma" class="logo">
-        </a>
+  <!-- header --> 
+  <header>
+    <a href="aceuill.html" class="logo-container">
+      <img id="siteLogo" src="IMAGES/Logo_mode_light.png" alt="Logo Sknna.ma" class="logo">
+    </a>
 
-        <!-- Bouton Burger -->
-        <button class="menu-toggle">
-            <i class="fas fa-bars"></i>
-        </button>
+    <!-- Bouton Burger -->
+    <button class="menu-toggle">
+      <i class="fas fa-bars"></i>
+    </button>
 
-        <!-- Overlay pour fermer le menu -->
-        <div class="nav-overlay"></div>
+    <!-- Overlay pour fermer le menu -->
+    <div class="nav-overlay"></div>
 
-        <!-- MENU -->
-        <nav>
-            <ul class="menu">
-                <li><a href="logements.html">Logements</a></li>
-                <li><a href="Colocation.html">Colocation</a></li>
-                <li><a href="publier_annonce.html">Publier annonce</a></li>
-                <li><a href="publier_demande.html">Lancer demande</a></li>
-                <li><a href="Demandes.html">Demandes</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="presentation.html">Présentation</a></li>
-                <li><a href="Se_Connecter.html">Connexion</a></li>
-                <li><a href="creation_Compt.html">Inscription</a></li>
+    <!-- MENU -->
+    <nav>
+      <ul class="menu">
+        <li><a href="logements.html">Logements</a></li>
+        <li><a href="Colocation.html">Colocation</a></li>
+        <li><a href="publier_annonce.html">Publier annonce</a></li>
+        <li><a href="publier_demande.html">Lancer demande</a></li>
+        <li><a href="Demandes.html">Demandes</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="presentation.html">Présentation</a></li>
+        <li><a href="Se_Connecter.html">Connexion</a></li>
+        <li><a href="creation_Compt.html">Inscription</a></li>
 
-                <!-- Dark mode dans le menu mobile - CACHÉ PAR DÉFAUT -->
-                <li class="dark-mode-mobile">
-                    <button id="darkModeToggleMobile" class="dark-mode-mobile-btn">
-                        <i class="fa-regular fa-moon"></i> Mode Sombre
-                    </button>
-                </li>
-            </ul>
-        </nav>
-        <!-- Dark mode desktop (toujours visible sur grand écran) -->
-        <button id="darkModeToggle" class="dark-mode-desktop">
-            <i class="fa-regular fa-moon"></i>
-        </button>
-    </header>
+        <!-- Dark mode dans le menu mobile - CACHÉ PAR DÉFAUT -->
+        <li class="dark-mode-mobile">
+          <button id="darkModeToggleMobile" class="dark-mode-mobile-btn">
+            <i class="fa-regular fa-moon"></i> Mode Sombre
+          </button>
+        </li>
+      </ul>
+    </nav>
+    <!-- Dark mode desktop (toujours visible sur grand écran) -->
+    <button id="darkModeToggle" class="dark-mode-desktop">
+      <i class="fa-regular fa-moon"></i>
+    </button>
+  </header>
 
-  <center>
+  <div class="main-container">
+    <div class="page-header">
+      <h1 class="page-title">Publier une annonce</h1>
+      <p class="page-subtitle">Partagez votre logement avec la communauté étudiante</p>
+      <div class="separator"></div>
+    </div>
 
-    <h1>Publier une annonce</h1>
-    <br>
-    <hr width="70%">
-    <br>
-    <img src="IMAGES/1.png" alt="Photo 1" class="photo" width="200px">
-     <img src="IMAGES/2.png" alt="Photo 2" class="photo" width="200px">
-    <form action="logements.html" method="post">
-      <table cellpadding="8">
-        <tr>
-          <td><label for="titre"><strong>Titre de l’annonce :</strong></label></td>
-          <td><input type="text" id="titre" name="titre" placeholder="Ex: Chambre proche de l'université" required></td>
-        </tr>
-        <tr>
-          <td><label for="ville"><strong>Ville :</strong></label></td>
-          <td>
-            <select id="ville" name="ville" required>
-              <option value="">--Choisir--</option>
+    <div class="decorative-images">
+      <img src="IMAGES/1.png" alt="Appartement moderne" class="decorative-image">
+      <img src="IMAGES/2.png" alt="Chambre étudiante" class="decorative-image">
+    </div>
+
+    <div class="form-container">
+      <form action="logements.html" method="post" class="form-grid">
+        <div class="form-group">
+          <label for="titre" class="form-label">
+            <i class="fas fa-heading"></i>Titre de l'annonce
+          </label>
+          <input type="text" id="titre" name="titre" class="form-input" 
+                 placeholder="Ex: Chambre proche de l'université" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ville" class="form-label">
+              <i class="fas fa-city"></i>Ville
+            </label>
+            <select id="ville" name="ville" class="form-select" required>
+              <option value="">-- Choisir une ville --</option>
               <option value="agadir">Agadir</option>
               <option value="rabat">Rabat</option>
               <option value="casablanca">Casablanca</option>
               <option value="marrakech">Marrakech</option>
             </select>
-          </td>
-        </tr>
-        <tr>
-          <td><label for="type"><strong>Type de logement :</strong></label></td>
-          <td>
-            <select id="type" name="type" required>
-              <option value="">--Choisir--</option>
-              <option value="chambre">Cshambre</option>
+          </div>
+
+          <div class="form-group">
+            <label for="type" class="form-label">
+              <i class="fas fa-home"></i>Type de logement
+            </label>
+            <select id="type" name="type" class="form-select" required>
+              <option value="">-- Choisir un type --</option>
+              <option value="chambre">Chambre</option>
               <option value="studio">Studio</option>
               <option value="colocation">Colocation</option>
             </select>
-          </td>
-        </tr>
-        <tr>
-          <td><label for="prix"><strong>Prix (MAD/mois) :</strong></label></td>
-          <td><input type="number" id="prix" name="prix" min="0" required></td>
-        </tr>
-        <tr>
-          <td><label for="email"><strong>adresse email :</strong></label></td>
-          <td><input type="email" id="email" name="email" required></td>
-        </tr>
-        <tr>
-          <td><label for="tel"><strong>numero de téléphone :</strong></label></td>
-          <td><input type="tel" id="tel" name="tel"></td>
-        </tr>
-        <tr>
-          <td><label for="dispo"><strong>Disponibilité :</strong></label></td>
-          <td><input type="date" id="dispo" name="dispo" required></td>
-        </tr>
-        <tr>
-          <td><label for="desc"><strong>Description :</strong></label></td>
-          <td>
-            <textarea id="desc" name="desc" rows="5" cols="40" placeholder="Décrivez brièvement le logement..." required></textarea>
-            <!-- Span pour compteur de caractères -->
-            <br><span id="charCount" style="font-size:14px; color:#540863;">0/200</span>
-          </td>
-        </tr>
-        <tr>
-          <td><label for="photo"><strong>Photo (optionnelle) :</strong></label></td>
-          <td><input type="file" id="photo" name="photo" accept="image/*"></td>
-        </tr>
-        <tr>
-          <td colspan="2" align="center">
-            <button type="submit">Publier</button>
-            <button type="reset">Annuler</button>
-          </td>
-        </tr>
-      </table>
-    </form>
+          </div>
+        </div>
 
-    <hr width="70%">
-    <p><em>Seuls les utilisateurs inscrits peuvent publier des annonces.</em></p>
-    <p><small>&copy; 2025 Sknna.ma</small></p>
-  </center>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="prix" class="form-label">
+              <i class="fas fa-tag"></i>Prix (MAD/mois)
+            </label>
+            <input type="number" id="prix" name="prix" class="form-input" 
+                   min="0" placeholder="1500" required>
+          </div>
+
+          <div class="form-group">
+            <label for="dispo" class="form-label">
+              <i class="fas fa-calendar-alt"></i>Disponibilité
+            </label>
+            <input type="date" id="dispo" name="dispo" class="form-input" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email" class="form-label">
+              <i class="fas fa-envelope"></i>Adresse email
+            </label>
+            <input type="email" id="email" name="email" class="form-input" 
+                   placeholder="votre@email.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="tel" class="form-label">
+              <i class="fas fa-phone"></i>Numéro de téléphone
+            </label>
+            <input type="tel" id="tel" name="tel" class="form-input" 
+                   placeholder="06 12 34 56 78">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="desc" class="form-label">
+            <i class="fas fa-file-alt"></i>Description
+          </label>
+          <textarea id="desc" name="desc" class="form-textarea" 
+                    placeholder="Décrivez brièvement le logement, ses avantages, équipements..." 
+                    maxlength="200" required></textarea>
+          <div class="char-counter" id="charCount">0/200 caractères</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">
+            <i class="fas fa-camera"></i>Photo (optionnelle)
+          </label>
+          <div class="file-upload">
+            <input type="file" id="photo" name="photo" accept="image/*">
+            <p style="margin-top: 8px; color: #666;">Cliquez pour ajouter une photo</p>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-paper-plane"></i>Publier l'annonce
+          </button>
+          <button type="reset" class="btn btn-secondary">
+            <i class="fas fa-times"></i>Annuler
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div class="page-footer">
+      <p><em>Seuls les utilisateurs inscrits peuvent publier des annonces.</em></p>
+      <p><small>&copy; 2025 Sknna.ma - Plateforme de logement étudiant</small></p>
+    </div>
+  </div>
+
   <script src="header.js"></script>
 </body>
 </html>

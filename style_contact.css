@@ -78,6 +78,7 @@ label {
 input, textarea {
   width: 100%;
   padding: 12px;
+  background-color: #ece8ee65;
   margin-top: 5px;
   margin-bottom: 15px;
   border: 1.5px solid #92487A;
@@ -181,7 +182,9 @@ body.dark-mode a{
 body.dark-mode footer {
   background-color: #111;
 }
-
+body.dark-mode input,textarea{
+  background-color: #ece8ee65;
+}
  /*code css de validation du formulaire*/
 .input-error {
   border-color: #ff0033 !important;

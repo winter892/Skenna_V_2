@@ -15,8 +15,8 @@
 }
 
 body.dark-mode {
-  --text: #eee;
-  --bg: #121212;
+ background: linear-gradient(120deg, #000000ff, #812494ff);
+  color: #e0e0e0;
 }
 
 /* ===========================
@@ -77,7 +77,7 @@ h3.section-title {
 }
 
 body.dark-mode .logement-card {
-  background: var(--card-bg-dark);
+  background: #000;
 }
 
 .logement-card:hover {
@@ -158,7 +158,7 @@ video {
 }
 
 body.dark-mode .admin-info {
-  background: #3a3a3a;
+  background: #3a3a3a51;
   color: #fff;
 }
 

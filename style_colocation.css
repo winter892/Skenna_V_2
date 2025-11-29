@@ -9,8 +9,8 @@
 }
 
 .dark-mode {
-  --text: #f1f1f1;
-  --bg: #1a1a1a;
+ background: linear-gradient(120deg, #000000ff, #812494ff);
+  color: #e0e0e0;
 }
 
 body {
@@ -92,7 +92,7 @@ h2 {
 }
 
 .dark-mode .coloc-card {
-  background: #2b2b2b;
+  background: #000000ff;
 }
 
 .coloc-card:hover {
