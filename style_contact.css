@@ -181,3 +181,16 @@ body.dark-mode a{
 body.dark-mode footer {
   background-color: #111;
 }
+
+ /*code css de validation du formulaire*/
+.input-error {
+  border-color: #ff0033 !important;
+  box-shadow: 0 0 4px rgba(255, 0, 0, 0.3);
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
