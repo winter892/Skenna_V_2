@@ -12,54 +12,6 @@ body {
   line-height: 1.6;
 }
 
-/* ===== HEADER ===== */
-header {
-  background-color: #fff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 15px 5%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.logo {
-  height: 50px;
-}
-
-/* Navigation */
-nav ul {
-  display: flex;
-  list-style: none;
-}
-
-nav ul li {
-  margin-left: 20px;
-}
-
-nav ul li a {
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
-  padding: 5px 10px;
-  border-radius: 4px;
-  transition: all 0.3s ease;
-}
-
-nav ul li a:hover {
-  color: #E49BA6;
-  background-color: #f9f9f9;
-}
-
-.menu-toggle {
-  display: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: #E49BA6;
-}
-
 /* ===== LAYOUT ===== */
 .container {
   max-width: 800px;
@@ -70,7 +22,7 @@ nav ul li a:hover {
 .back-link {
   display: inline-flex;
   align-items: center;
-  color: #E49BA6;
+  color: #872ba6ff;
   text-decoration: none;
   margin-bottom: 20px;
   font-weight: 500;
@@ -89,9 +41,10 @@ nav ul li a:hover {
 /* ===== DEMANDE CARD ===== */
 .demande-card {
   background-color: #fff;
-  border-radius: 15px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   overflow: hidden;
+  border: 1px solid #eaeaea;
 }
 
 /* Header avec gradient selon le genre */
@@ -102,22 +55,24 @@ nav ul li a:hover {
 }
 
 .demande-header.homme {
-  background: linear-gradient(135deg, rgb(118, 35, 170), rgb(110, 45, 164));
+  background: linear-gradient(135deg, #651d74ff, #bc6bccff);
 }
 
 .demande-header.femme {
-  background: linear-gradient(135deg, rgb(170, 35, 136), rgb(231, 118, 210));
+  background: linear-gradient(135deg, #d683d2ff, #FFD3D5);
 }
 
 .demande-header h1 {
   font-size: 2rem;
   margin-bottom: 5px;
   color: white;
+  font-weight: 600;
 }
 
 .demande-header .age {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   opacity: 0.9;
+  font-weight: 400;
 }
 
 /* Contenu de la demande */
@@ -129,19 +84,20 @@ nav ul li a:hover {
 .info-section {
   margin-bottom: 25px;
   padding-bottom: 20px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #eaeaea;
 }
 
 .info-section:last-of-type {
   border-bottom: none;
 }
 
-.section-title {
-  color: #E49BA6;
-  font-size: 1.3rem;
+.section-title.femme {
+  color: #d846e5ff;
+  font-size: 1.25rem;
   margin-bottom: 15px;
   display: flex;
   align-items: center;
+  font-weight: 600;
 }
 
 .section-title i {
@@ -158,11 +114,11 @@ nav ul li a:hover {
 .info-item {
   display: flex;
   align-items: flex-start;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .info-item i {
-  color: #E49BA6;
+  color: #872ba6ff;
   margin-right: 10px;
   margin-top: 3px;
   width: 20px;
@@ -175,10 +131,17 @@ nav ul li a:hover {
   min-width: 180px;
 }
 
+/* Correction du problème d'affichage email/téléphone */
+.info-item div:last-child {
+  word-break: break-all;
+  overflow-wrap: break-word;
+  flex: 1;
+}
+
 /* ===== SECTION BUDGET AMÉLIORÉE ===== */
 .budget-section {
   background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-  border-radius: 12px;
+  border-radius: 10px;
   padding: 25px;
   margin: 25px 0;
   border: 1px solid #e9ecef;
@@ -188,13 +151,13 @@ nav ul li a:hover {
 .budget-amount {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #E49BA6;
+  color: #872ba6ff;
   margin-bottom: 5px;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }
 
 .budget-label {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #666;
   margin-bottom: 25px;
   font-weight: 500;
@@ -211,16 +174,17 @@ nav ul li a:hover {
   background: white;
   padding: 15px;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
   border: 1px solid #f1f3f4;
 }
 
 .budget-item .label {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: #888;
   margin-bottom: 5px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  font-weight: 600;
 }
 
 .budget-item .value {
@@ -238,19 +202,19 @@ nav ul li a:hover {
 }
 
 .preference-tag {
-  background: linear-gradient(135deg, #E49BA6, #d88a96);
+  background: #872ba6ff;
   color: white;
   padding: 8px 16px;
   border-radius: 20px;
   font-size: 0.85rem;
   font-weight: 500;
-  box-shadow: 0 2px 4px rgba(228, 155, 166, 0.3);
+  box-shadow: 0 2px 4px rgba(79, 70, 229, 0.2);
 }
 
 /* ===== DESCRIPTION CORRIGÉE ===== */
 .description-box {
   background-color: #f9f9f9;
-  border-radius: 10px;
+  border-radius: 8px;
   padding: 20px;
   margin-top: 10px;
   line-height: 1.7;
@@ -281,12 +245,12 @@ nav ul li a:hover {
 }
 
 .description-box::-webkit-scrollbar-thumb {
-  background: #E49BA6;
+  background: #872ba6ff;
   border-radius: 3px;
 }
 
 .description-box::-webkit-scrollbar-thumb:hover {
-  background: #d88a96;
+  background: #590f71ff;
 }
 
 /* ===== SECTION CONTACT ===== */
@@ -294,69 +258,123 @@ nav ul li a:hover {
   text-align: center;
   margin-top: 30px;
   padding-top: 20px;
-  border-top: 1px solid #eee;
 }
 
 .contact-btn {
   display: inline-flex;
   align-items: center;
-  background-color: #E49BA6;
+  background-color: #872ba6ff;
   color: white;
   padding: 12px 25px;
-  border-radius: 30px;
+  border-radius: 8px;
   text-decoration: none;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1rem;
   transition: all 0.3s;
-  box-shadow: 0 4px 10px rgba(228, 155, 166, 0.3);
+  box-shadow: 0 4px 10px rgba(79, 70, 229, 0.2);
 }
 
 .contact-btn:hover {
-  background-color: #d87a8a;
+  background-color: #621a7cff;
   transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(228, 155, 166, 0.4);
+  box-shadow: 0 6px 15px rgba(200, 70, 229, 0.3);
 }
 
 .contact-btn i {
   margin-right: 8px;
 }
 
+/* ===== MODE SOMBRE PROFESSIONNEL ===== */
+body.dark-mode {
+  background: linear-gradient(120deg, #000000ff, #812494ff);
+  color: #e0e0e0;
+}
+
+body.dark-mode .demande-card {
+  background-color: #000000ff;
+  border-color: #4f0064ff;
+  box-shadow: 0 10px 12px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .demande-header.homme {
+  background: linear-gradient(135deg, #702080ff, #a036b5ff);
+}
+
+body.dark-mode .demande-header.femme {
+  background: linear-gradient(135deg, #d683d2ff, #FFD3D5);
+}
+
+body.dark-mode .info-section {
+  border-bottom: 1px solid #333;
+}
+
+body.dark-mode .section-title {
+  color: #d55cf6ff;
+}
+
+body.dark-mode .info-item i {
+  color: #872ba6ff;
+}
+
+body.dark-mode .info-label {
+  color: #872ba6ff;
+}
+
+body.dark-mode .budget-section {
+  background: #2a2a2a65;
+  border: 1px solid #333;
+}
+
+body.dark-mode .budget-amount
+body.dark-mode label {
+  color: #8b5cf6;
+}
+
+body.dark-mode .budget-item {
+  background: #252525;
+  border: 1px solid #333;
+}
+
+body.dark-mode .budget-item .value {
+  color: #e0e0e0;
+}
+
+body.dark-mode .preference-tag {
+  background: #872ba6ff;
+}
+
+body.dark-mode .description-box {
+  background-color: #2a2a2a65;
+  border: 1px solid #333;
+  color: #e0e0e0;
+}
+
+body.dark-mode .description-box::-webkit-scrollbar-track {
+  background: #1e1e1e;
+}
+
+body.dark-mode .description-box::-webkit-scrollbar-thumb {
+  background: #5b21b6;
+}
+
+body.dark-mode .description-box::-webkit-scrollbar-thumb:hover {
+  background: #7c3aed;
+}
+
+body.dark-mode .contact-section {
+  border-top: 1px solid #333;
+}
+
+body.dark-mode .contact-btn {
+  background-color: #872ba6ff;
+}
+
+body.dark-mode .contact-btn:hover {
+  background-color: #000000ff;
+}
+
 /* ===== RESPONSIVE ===== */
-
-/* Mobile */
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-  }
-
-  nav {
-    position: absolute;
-    top: 80px;
-    left: 0;
-    width: 100%;
-    background-color: #fff;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    transform: translateY(-100%);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s;
-  }
-
-  nav.active {
-    transform: translateY(0);
-    opacity: 1;
-    visibility: visible;
-  }
-
-  nav ul {
-    flex-direction: column;
-    padding: 20px;
-  }
-
-  nav ul li {
-    margin: 10px 0;
-  }
-  
+@media (max-width: 900px) {
   .budget-details {
     grid-template-columns: 1fr;
     gap: 15px;
@@ -388,86 +406,8 @@ nav ul li a:hover {
   .description-box {
     max-height: 300px;
   }
-}
-/* =====================================================
-   CORRECTION POSITION MENU BURGER ET HAUTEUR HEADER
-===================================================== */
-@media (max-width: 1000px) {
-    header {
-        position: relative; /* Important pour le positionnement absolu des enfants */
-        padding: 15px 15px; /* Plus de padding pour plus de hauteur */
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        min-height: 70px; /* Hauteur minimale garantie */
-        height: auto; /* Hauteur automatique */
-    }
-    
-    .menu-toggle {
-        position: absolute;
-        right: 60px; /* Menu burger à gauche du bouton dark mode */
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 24px;
-        color: #540863;
-        cursor: pointer;
-        background: none;
-        border: none;
-        padding: 10px;
-        z-index: 1001;
-        height: 40px;
-        width: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    #darkModeToggle {
-        position: absolute;
-        right: 15px; /* Bouton dark mode à l'extrême droite */
-        top: 50%;
-        transform: translateY(-50%);
-        margin-left: 0;
-        z-index: 1001;
-        padding: 8px 12px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    .logo {
-        position: absolute;
-        left: 15px; /* Position à gauche */
-        top: 50%;
-        transform: translateY(-50%);
-        height: 40px; /* Hauteur fixe pour le logo */
-        width: auto;
-    }
-    
-    body.dark-mode .menu-toggle {
-        color: #f5f5f5;
-    }
-    
-    /* Ajustement du menu déroulant */
-    nav ul.menu {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: white;
-        flex-direction: column;
-        padding: 20px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        z-index: 1000;
-    }
-    
-    nav.active ul.menu {
-        display: flex !important;
-    }
-    
-    body.dark-mode nav ul.menu {
-        background: #470550ff;
-    }
+  
+  .info-label {
+    min-width: 140px;
+  }
 }
