@@ -183,7 +183,7 @@ body {
 }
 
 .preference-tag {
-  color: white;
+  color: #000000ff;
   padding: 8px 16px;
   border-radius: 20px;
   font-size: 0.85rem;
@@ -228,10 +228,10 @@ body {
   padding-top: 20px;
 }
 
-.contact-btn {
+.contact-btn{
   display: inline-flex;
   align-items: center;
-  color: white;
+  color: #000000ff;
   background-color: #fffdff55;
   padding: 12px 25px;
   border-radius: 8px;
@@ -340,7 +340,15 @@ body.dark-mode{
   background: linear-gradient(120deg, #000000ff, #812494ff);
   color: #e0e0e0;
 }
+body.dark-mode .contact-btn{
+  color : #fff;
+}
 
+body.dark-mode .preference-tag{
+  color : #fff;
+    box-shadow: 0 3px 4px rgba(255, 253, 253, 0.33);
+
+}
 
 body.dark-mode .demande-card {
   background-color: #000000ff;
