@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Contact - Sknna.ma</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style_contact.css">
   <link rel="stylesheet" href="header.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -64,21 +65,21 @@
 
         <form action="aceuill.html" method="post"novalidate>
 
-          <label for="nom">Nom :</label>
-          <input type="text" id="nom" name="nom" required>
-          <div class="error-message" id="error-message"></div>
+              <label for="nom">Nom :</label>
+              <input type="text" id="nom" name="nom" required>
+              <div class="error-message" id="error-nom"></div>
 
-          <label for="email">Email :</label>
-          <input type="email" id="email" name="email" required>
-          <div class="error-message" id="error-message"></div>
-          
-          <label for="sujet">Sujet :</label>
-          <input type="text" id="sujet" name="sujet" placeholder="Objet de votre message" required>
-          <div class="error-message" id="error-message"></div>
+              <label for="email">Email :</label>
+              <input type="email" id="email" name="email" required>
+              <div class="error-message" id="error-email"></div>
 
-          <label for="message">Message :</label>
-          <textarea id="message" name="message" rows="5" required placeholder="Votre message..."></textarea>
-          <div class="error-message" id="error-message"></div>
+              <label for="sujet">Sujet :</label>
+              <input type="text" id="sujet" name="sujet" placeholder="Objet de votre message" required>
+              <div class="error-message" id="error-sujet"></div>
+
+              <label for="message">Message :</label>
+              <textarea id="message" name="message" rows="5" required placeholder="Votre message..."></textarea>
+              <div class="error-message" id="error-message"></div>
 
           <button id="btn" type="submit">Envoyer</button>
           <button id="resetBtn" type="reset">Effacer</button>

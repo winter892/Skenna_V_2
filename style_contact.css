@@ -9,7 +9,8 @@
 body {
   background-color: #f7f7f7 !important; 
   margin: 0;
-  padding: 0; /* On enlève le padding qui causait l’espace */
+  padding: 0;
+  overflow-x: hidden; /* Ajoutez cette ligne */
 }
 
 
@@ -42,15 +43,14 @@ body {
 
 .container {
   max-width: 900px;
-  width: 100%;
-  padding: 25px;
+  width: 95%; /* Changez de 100% à 95% */
+  padding: 20px; /* Réduisez le padding */
   border-radius: 12px;
   background-color: rgba(255, 211, 213, 0.6);
   border: 2px solid #da43bbff;
   box-shadow: 10px 10px 20px rgba(138, 21, 144, 0.47);
-  margin: 20px auto;  /* ← espace autour du bloc au lieu du body */
+  margin: 10px auto; /* Réduisez la marge */
 }
-
 
 /* Layout form + image */
 .form-image-wrapper {
@@ -140,10 +140,34 @@ button#btn:hover, button#resetBtn:hover {
 @media(max-width: 768px) {
   .form-image-wrapper {
     flex-direction: column;
+    gap: 15px; /* Réduisez l'espace */
   }
 
   .image-section {
-    margin-top: 20px;
+    margin-top: 15px;
+  }
+
+  .container {
+    padding: 15px; /* Encore moins de padding sur mobile */
+    margin: 5px auto; /* Moins de marge */
+    width: 98%; /* Presque toute la largeur */
+  }
+
+  h1 {
+    font-size: 1.5rem; /* Taille de police adaptée */
+    margin-bottom: 15px;
+  }
+}
+
+/* Pour les très petits écrans */
+@media(max-width: 480px) {
+  .container {
+    padding: 10px;
+    border-radius: 8px;
+  }
+  
+  input, textarea, button {
+    font-size: 16px; /* Évite le zoom sur iOS */
   }
 }
 
