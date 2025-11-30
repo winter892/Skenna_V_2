@@ -9,65 +9,117 @@
   <link rel="stylesheet" href="header.css">
   <script src="js_publier_annonces.js" defer></script>
   <style>
-    /* Styles supplémentaires pour le formulaire de recherche de colocataires */
+    /* === STYLES MOBILE FIRST === */
+    
+    /* Reset pour mobile */
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    .main-container {
+      width: 100%;
+      max-width: 100%;
+      min-width: 360px;
+      padding: 10px;
+    }
+
+    .form-container {
+      width: 100%;
+      padding: 0;
+    }
+
+    /* Styles pour le formulaire de recherche de colocataires */
     .preferences-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
+      grid-template-columns: 1fr;
+      gap: 12px;
       margin-top: 10px;
-      padding: 20px;
+      padding: 15px;
       background: #f8f9fa;
-      border-radius: 10px;
+      border-radius: 8px;
       border: 1px solid #E49BA6;
     }
     
     .preference-item {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
+      padding: 8px 0;
     }
     
-    .preference-item input[type="checkbox"] {
-      width: 18px;
-      height: 18px;
-    }
-    
+    .preference-item input[type="checkbox"],
     .preference-item input[type="radio"] {
-      width: 18px;
-      height: 18px;
+      width: 20px;
+      height: 20px;
+      min-width: 20px;
     }
     
     .budget-range {
       display: flex;
-      align-items: center;
-      gap: 10px;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 5px;
     }
     
     .budget-range input {
-      flex: 1;
+      width: 100%;
+      padding: 12px;
+      font-size: 16px; /* Évite le zoom sur iOS */
     }
     
+    .budget-range span {
+      text-align: center;
+    }
+
+    /* Layout des formulaires pour mobile */
+    .form-row {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .form-group {
+      width: 100%;
+    }
+
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      padding: 14px;
+      font-size: 16px; /* Évite le zoom sur iOS */
+      min-height: 50px; /* Taille tactile */
+    }
+
+    .form-textarea {
+      min-height: 120px;
+    }
+
+    /* Photos pour mobile */
     .photo-upload-section {
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
 
     .photo-upload-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 20px;
-      margin-top: 15px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 10px;
     }
     
     .photo-preview {
       position: relative;
       width: 100%;
-      height: 150px;
+      height: 140px;
       border: 2px dashed #E49BA6;
-      border-radius: 12px;
+      border-radius: 10px;
       background: #f8f9fa;
       cursor: pointer;
       overflow: hidden;
-      transition: all 0.3s ease;
     }
 
     .photo-preview.required {
@@ -85,20 +137,15 @@
       border-style: solid;
     }
 
-    .photo-preview:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
     .photo-label {
       position: absolute;
-      top: 8px;
-      left: 8px;
+      top: 6px;
+      left: 6px;
       background: rgba(84, 8, 99, 0.9);
       color: white;
-      padding: 4px 8px;
-      border-radius: 6px;
-      font-size: 0.75rem;
+      padding: 3px 6px;
+      border-radius: 4px;
+      font-size: 0.7rem;
       font-weight: bold;
       z-index: 2;
     }
@@ -110,23 +157,20 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 6px;
       color: #540863;
+      padding: 10px;
     }
 
     .photo-content i {
-      font-size: 2rem;
+      font-size: 1.5rem;
       color: #E49BA6;
     }
 
-    .photo-preview.add-more .photo-content i {
-      color: #92487A;
-    }
-
     .photo-content span {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       text-align: center;
-      padding: 0 10px;
+      line-height: 1.2;
     }
 
     .photo-preview img {
@@ -137,10 +181,10 @@
 
     .remove-photo-btn {
       position: absolute;
-      top: 8px;
-      right: 8px;
-      width: 24px;
-      height: 24px;
+      top: 6px;
+      right: 6px;
+      width: 22px;
+      height: 22px;
       background: rgba(255, 0, 0, 0.8);
       color: white;
       border: none;
@@ -149,50 +193,108 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.8rem;
+      font-size: 0.7rem;
       z-index: 2;
-      transition: all 0.3s ease;
-    }
-
-    .remove-photo-btn:hover {
-      background: rgba(255, 0, 0, 1);
-      transform: scale(1.1);
     }
 
     .photo-limits {
       text-align: center;
-      margin-top: 10px;
+      margin-top: 8px;
       color: #666;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
     }
     
+    /* Section À propos de moi */
     .about-me-section {
       background: #f8f9fa;
-      padding: 20px;
-      border-radius: 10px;
-      margin-bottom: 20px;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 15px;
     }
     
     .lifestyle-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 10px;
+      gap: 8px;
+      margin-top: 8px;
     }
     
     .tag {
       background: #E49BA6;
       color: white;
-      padding: 5px 12px;
+      padding: 8px 12px;
       border-radius: 20px;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       cursor: pointer;
-      transition: all 0.3s ease;
+      min-height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     
     .tag.selected {
       background: #540863;
-      transform: scale(1.05);
+    }
+
+    /* Boutons */
+    .form-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 16px;
+      margin-bottom: 10px;
+      font-size: 16px;
+      min-height: 54px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background: #540863;
+      color: white;
+    }
+
+    .btn-secondary {
+      background: #E49BA6;
+      color: white;
+    }
+
+    /* Compteur de caractères */
+    .char-counter {
+      font-size: 0.8rem;
+      color: #666;
+      text-align: right;
+      margin-top: 5px;
+    }
+
+    /* En-tête de page */
+    .page-header {
+      text-align: center;
+      padding: 15px 10px;
+    }
+
+    .page-title {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+    }
+
+    .page-subtitle {
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
+
+    .decorative-images {
+      display: none; /* Caché sur mobile pour économiser l'espace */
     }
 
     /* Dark mode support */
@@ -216,25 +318,119 @@
       background: linear-gradient(135deg, #2c1a3a, #3d2352);
     }
 
-    /* Responsive */
-    @media (max-width: 768px) {
-      .photo-upload-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
+    /* === MEDIA QUERIES POUR TABLETTES ET DESKTOP === */
+    
+    @media (min-width: 768px) {
+      .main-container {
+        padding: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
       }
-      
-      .photo-preview {
-        height: 130px;
-      }
-      
+
       .preferences-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        padding: 20px;
+      }
+
+      .form-row {
+        flex-direction: row;
+        gap: 20px;
+      }
+
+      .form-group {
+        flex: 1;
+      }
+
+      .budget-range {
+        flex-direction: row;
+        align-items: center;
+      }
+
+      .budget-range input {
+        flex: 1;
+      }
+
+      .photo-upload-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 20px;
+      }
+
+      .photo-preview {
+        height: 150px;
+      }
+
+      .form-actions {
+        flex-direction: row;
+      }
+
+      .btn {
+        width: auto;
+        min-width: 200px;
+      }
+
+      .page-title {
+        font-size: 2rem;
+      }
+
+      .decorative-images {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin: 20px 0;
+      }
+
+      .decorative-image {
+        max-width: 200px;
+        border-radius: 10px;
       }
     }
 
-    @media (max-width: 480px) {
+    @media (min-width: 1024px) {
+      .photo-upload-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    /* Très petits mobiles */
+    @media (max-width: 360px) {
       .photo-upload-grid {
         grid-template-columns: 1fr;
+      }
+      
+      .photo-preview {
+        height: 120px;
+      }
+      
+      .tag {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+      }
+    }
+
+    /* Orientation paysage */
+    @media (max-height: 500px) and (orientation: landscape) {
+      .main-container {
+        padding: 10px;
+      }
+      
+      .photo-preview {
+        height: 100px;
+      }
+      
+      .form-input, .form-select {
+        padding: 10px;
+        min-height: 44px;
+      }
+    }
+
+    /* Support tactile amélioré */
+    @media (hover: none) and (pointer: coarse) {
+      .btn, .tag, .photo-preview, .preference-item {
+        min-height: 44px;
+      }
+      
+      input, select, textarea {
+        font-size: 16px !important; /* Essential pour iOS */
       }
     }
   </style>
@@ -355,7 +551,7 @@
 
         <!-- SECTION 2: Recherche de Colocation -->
         <div class="form-section">
-          <h2><i class="fas fa-search"></i> Recherche des Colocataires/h2>
+          <h2><i class="fas fa-search"></i> Recherche des Colocataires</h2>
           
           <div class="form-row">
             <div class="form-group">
@@ -540,7 +736,7 @@
           <div class="photo-upload-grid" id="photoGrid">
             <!-- Photos fixes requises -->
             <div class="photo-preview required">
-              <div class="photo-label">Photo principale*</div>
+              <div class="photo-label">Photo 1*</div>
               <div class="photo-content" onclick="document.getElementById('photo_principale').click()">
                 <i class="fas fa-plus"></i>
                 <span>Photo de vous</span>
@@ -567,8 +763,6 @@
             </div>
             
             <!-- Photos supplémentaires dynamiques -->
-        
-            
             <div class="photo-preview optional" id="photoOptionnelle2">
               <div class="photo-label">Photo 4</div>
               <div class="photo-content" onclick="document.getElementById('photo_extra2').click()">
@@ -648,15 +842,14 @@
 
   <script src="header.js"></script>
   <script>
-    let photoCounter = 3; // Commence après les 3 photos fixes
+    // Le script JavaScript reste le même que précédemment
+    let photoCounter = 3;
 
-    // Gestion du compteur de caractères
     document.getElementById('description_personnelle').addEventListener('input', function() {
       const counter = document.getElementById('charCountPerso');
       counter.textContent = this.value.length + '/500 caractères';
     });
 
-    // Gestion des tags de style de vie
     const tags = document.querySelectorAll('.tag');
     const selectedTagsInput = document.getElementById('selected_tags');
     let selectedTags = [];
@@ -676,7 +869,6 @@
       });
     });
 
-    // Fonction pour ajouter des champs photo dynamiquement
     function addPhotoField() {
       if (document.querySelectorAll('.photo-preview:not(.add-more)').length >= 10) {
         alert('Maximum 10 photos autorisées');
@@ -706,7 +898,6 @@
       photoGrid.insertBefore(newPhotoField, addButton);
     }
 
-    // Fonction pour supprimer une photo optionnelle
     function removePhoto(photoId) {
       const photoElement = document.getElementById(photoId);
       if (photoElement) {
@@ -714,7 +905,6 @@
       }
     }
 
-    // Prévisualisation des images
     function previewImage(input) {
       const preview = input.parentElement.querySelector('.photo-content');
       if (input.files && input.files[0]) {
@@ -726,7 +916,6 @@
       }
     }
 
-    // Validation des photos
     function validatePhotos() {
       const requiredPhotos = document.querySelectorAll('.photo-preview.required input[type="file"]');
       let filledRequiredPhotos = 0;
@@ -745,16 +934,13 @@
       return true;
     }
 
-    // Validation du formulaire
     document.getElementById('colocForm').addEventListener('submit', function(e) {
       e.preventDefault();
       
-      // Validation des photos
       if (!validatePhotos()) {
         return;
       }
       
-      // Validation du budget
       const budgetMin = parseInt(document.getElementById('budget_min').value);
       const budgetMax = parseInt(document.getElementById('budget_max').value);
       
@@ -763,7 +949,6 @@
         return;
       }
       
-      // Soumission du formulaire
       alert('Votre recherche de colocataires a été publiée avec succès !');
       this.submit();
     });
