@@ -2,16 +2,17 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Lancer une demande - Sknna.ma</title>
-    <link rel="stylesheet" href="style_puplier_demande.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lancer une demande de colocation - Sknna.ma</title>
+    <link rel="stylesheet" href="style_publier_demande.css">
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
 
-    <!-- header --> 
-<header>
+    <!-- Header --> 
+    <header>
         <a href="aceuill.html" class="logo-container">
             <img id="siteLogo" src="IMAGES/Logo_mode_light.png" alt="Logo Sknna.ma" class="logo">
         </a>
@@ -37,7 +38,7 @@
                 <li><a href="Se_Connecter.html">Connexion</a></li>
                 <li><a href="creation_Compt.html">Inscription</a></li>
 
-                <!-- Dark mode dans le menu mobile - CACHÉ PAR DÉFAUT -->
+                <!-- Dark mode dans le menu mobile -->
                 <li class="dark-mode-mobile">
                     <button id="darkModeToggleMobile" class="dark-mode-mobile-btn">
                         <i class="fa-regular fa-moon"></i> Mode Sombre
@@ -45,273 +46,302 @@
                 </li>
             </ul>
         </nav>
-        <!-- Dark mode desktop (toujours visible sur grand écran) -->
+        
+        <!-- Dark mode desktop -->
         <button id="darkModeToggle" class="dark-mode-desktop">
             <i class="fa-regular fa-moon"></i>
         </button>
     </header>
 
-<section class="container">
-    <h1>Lancer une demande de colocation</h1>
-    <p class="subtitle">Remplissez ce formulaire pour trouver des colocataires compatibles.</p>
+    <section class="container">
+        <h1>Lancer une demande de colocation</h1>
+        <p class="subtitle">Remplissez ce formulaire pour trouver des colocataires compatibles.</p>
 
-    <form class="demande-form">
-        <div class="form-columns">
-            <!-- Colonne gauche - Informations personnelles -->
-            <div class="form-column">
-                <h2>Informations personnelles</h2>
+        <form class="demande-form" id="demandeForm">
+            <div class="form-columns">
+                
+                <!-- Colonne gauche - Informations personnelles -->
+                <div class="form-column">
+                    <h2>Informations personnelles</h2>
 
-                <div class="form-group">
-                    <label>Prénom :</label>
-                    <input type="text" name="prenom" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Âge :</label>
-                    <input type="number" name="age" min="16" max="50" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Genre :</label>
-                    <div class="radio-group">
-                        <label class="radio-label">
-                            <input type="radio" name="genre" value="Femme" required> 
-                            <span class="radio-custom"></span>
-                            Femme
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="genre" value="Homme"> 
-                            <span class="radio-custom"></span>
-                            Homme
-                        </label>
+                    <div class="form-group">
+                        <label for="prenom">Prénom :</label>
+                        <input type="text" id="prenom" name="prenom" required>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label>Email :</label>
-                    <input type="email" name="email" required>
-                </div>
+                    <div class="form-group">
+                        <label for="age">Âge :</label>
+                        <input type="number" id="age" name="age" min="16" max="50" required>
+                    </div>
 
-                <div class="form-group">
-                    <label>Téléphone :</label>
-                    <input type="text" name="telephone" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Ville de recherche :</label>
-                    <input type="text" name="ville" required>
-                </div>
-
-                <div class="form-group">
-                    <label>École :</label>
-                    <input type="text" name="ecole" required>
-                </div>
-            </div>
-
-            <!-- Colonne droite - Préférences -->
-            <div class="form-column">
-                <h2>Préférences de colocation</h2>
-
-                <div class="form-group">
-                    <label>Budget maximum (DH) :</label>
-                    <input type="number" name="budget" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Type de logement recherché :</label>
-                    <select name="typeLogement" required>
-                        <option value="">Choisir...</option>
-                        <option value="Studio">Studio</option>
-                        <option value="Appartement">Appartement</option>
-                        <option value="Chambre en colocation">Chambre en colocation</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>Nombre de colocataires souhaités :</label>
-                    <input type="number" name="nbColoc" min="1" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Vos préférences :</label>
-                    <div class="multi-select-grid">
-                        <!-- Colonne 1 -->
-                        <div class="checkbox-column">
-                            <label class="checkbox-label">
-                                <input type="checkbox" value="calme">
-                                <span class="checkbox-custom"></span>
-                                Calme
+                    <div class="form-group">
+                        <label>Genre :</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="genre" value="Femme" required> 
+                                <span class="radio-custom"></span>
+                                Femme
                             </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" value="non-fumeur">
-                                <span class="checkbox-custom"></span>
-                                Non-fumeur
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" value="fumeur">
-                                <span class="checkbox-custom"></span>
-                                Fumeur
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" value="etudiants">
-                                <span class="checkbox-custom"></span>
-                                Étudiant(e)s uniquement
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" value="mixte">
-                                <span class="checkbox-custom"></span>
-                                Mixte
-                            </label>
-                        </div>
-
-                        <!-- Colonne 2 -->
-                        <div class="checkbox-column">
-                            <label class="checkbox-label">
-                                <input type="checkbox" value="appartement-equipe">
-                                <span class="checkbox-custom"></span>
-                                Appartement équipé
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" value="meuble">
-                                <span class="checkbox-custom"></span>
-                                Meublé
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" value="ascenseur">
-                                <span class="checkbox-custom"></span>
-                                Ascenseur
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" value="parking">
-                                <span class="checkbox-custom"></span>
-                                Parking
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" value="climatisation">
-                                <span class="checkbox-custom"></span>
-                                Climatisation
-                            </label>
-                        </div>
-
-                        <!-- Colonne 3 -->
-                        <div class="checkbox-column">
-                            <label class="checkbox-label">
-                                <input type="checkbox" value="chauffage">
-                                <span class="checkbox-custom"></span>
-                                Chauffage
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" value="internet">
-                                <span class="checkbox-custom"></span>
-                                Internet / Fibre
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" value="machine-a-laver">
-                                <span class="checkbox-custom"></span>
-                                Machine à laver
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" value="balcon">
-                                <span class="checkbox-custom"></span>
-                                Balcon / Terrasse
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" value="proche-transports">
-                                <span class="checkbox-custom"></span>
-                                Proche des transports
-                            </label>
-                        </div>
-
-                        <!-- Colonne 4 -->
-                        <div class="checkbox-column">
-                            <label class="checkbox-label">
-                                <input type="checkbox" value="proche-centre">
-                                <span class="checkbox-custom"></span>
-                                Proche du centre-ville
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" value="animaux-ok">
-                                <span class="checkbox-custom"></span>
-                                Animaux acceptés
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" value="animaux-ko">
-                                <span class="checkbox-custom"></span>
-                                Pas d'animaux
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" value="cuisine-equipee">
-                                <span class="checkbox-custom"></span>
-                                Cuisine équipée
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" value="court-sejour">
-                                <span class="checkbox-custom"></span>
-                                Court séjour possible
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" value="long-sejour">
-                                <span class="checkbox-custom"></span>
-                                Long séjour
+                            <label class="radio-label">
+                                <input type="radio" name="genre" value="Homme"> 
+                                <span class="radio-custom"></span>
+                                Homme
                             </label>
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <label for="email">Email :</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telephone">Téléphone :</label>
+                        <input type="tel" id="telephone" name="telephone" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ville">Ville de recherche :</label>
+                        <input type="text" id="ville" name="ville" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ecole">École :</label>
+                        <input type="text" id="ecole" name="ecole" required>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label>Description :</label>
-                    <textarea name="description" rows="5" placeholder="Décrivez vos attentes, style de vie, horaires..."></textarea>
+                <!-- Colonne droite - Préférences -->
+                <div class="form-column">
+                    <h2>Préférences de colocation</h2>
+
+                    <div class="form-group">
+                        <label for="budget">Budget maximum (DH) :</label>
+                        <input type="number" id="budget" name="budget" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="typeLogement">Type de logement recherché :</label>
+                        <select id="typeLogement" name="typeLogement" required>
+                            <option value="">Choisir...</option>
+                            <option value="Studio">Studio</option>
+                            <option value="Appartement">Appartement</option>
+                            <option value="Chambre en colocation">Chambre en colocation</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nbColoc">Nombre de colocataires souhaités :</label>
+                        <input type="number" id="nbColoc" name="nbColoc" min="1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Vos préférences :</label>
+                        <div class="preferences-grid">
+                            <!-- Ligne 1 -->
+                            <div class="checkbox-row">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="preferences" value="calme">
+                                    <span class="checkbox-custom"></span>
+                                    Calme
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="preferences" value="non-fumeur">
+                                    <span class="checkbox-custom"></span>
+                                    Non-fumeur
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="preferences" value="fumeur">
+                                    <span class="checkbox-custom"></span>
+                                    Fumeur
+                                </label>
+                            </div>
+
+                            <!-- Ligne 2 -->
+                            <div class="checkbox-row">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="preferences" value="etudiants">
+                                    <span class="checkbox-custom"></span>
+                                    Étudiant(e)s uniquement
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="preferences" value="mixte">
+                                    <span class="checkbox-custom"></span>
+                                    Mixte
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="preferences" value="appartement-equipe">
+                                    <span class="checkbox-custom"></span>
+                                    Appartement équipé
+                                </label>
+                            </div>
+
+                            <!-- Ligne 3 -->
+                            <div class="checkbox-row">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="preferences" value="meuble">
+                                    <span class="checkbox-custom"></span>
+                                    Meublé
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="preferences" value="ascenseur">
+                                    <span class="checkbox-custom"></span>
+                                    Ascenseur
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="preferences" value="parking">
+                                    <span class="checkbox-custom"></span>
+                                    Parking
+                                </label>
+                            </div>
+
+                            <!-- Ligne 4 -->
+                            <div class="checkbox-row">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="preferences" value="climatisation">
+                                    <span class="checkbox-custom"></span>
+                                    Climatisation
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="preferences" value="chauffage">
+                                    <span class="checkbox-custom"></span>
+                                    Chauffage
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="preferences" value="internet">
+                                    <span class="checkbox-custom"></span>
+                                    Internet / Fibre
+                                </label>
+                            </div>
+
+                            <!-- Ligne 5 -->
+                            <div class="checkbox-row">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="preferences" value="machine-a-laver">
+                                    <span class="checkbox-custom"></span>
+                                    Machine à laver
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="preferences" value="balcon">
+                                    <span class="checkbox-custom"></span>
+                                    Balcon / Terrasse
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="preferences" value="proche-transports">
+                                    <span class="checkbox-custom"></span>
+                                    Proche des transports
+                                </label>
+                            </div>
+
+                            <!-- Ligne 6 -->
+                            <div class="checkbox-row">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="preferences" value="proche-centre">
+                                    <span class="checkbox-custom"></span>
+                                    Proche du centre-ville
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="preferences" value="animaux-ok">
+                                    <span class="checkbox-custom"></span>
+                                    Animaux acceptés
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="preferences" value="animaux-ko">
+                                    <span class="checkbox-custom"></span>
+                                    Pas d'animaux
+                                </label>
+                            </div>
+
+                            <!-- Ligne 7 -->
+                            <div class="checkbox-row">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="preferences" value="cuisine-equipee">
+                                    <span class="checkbox-custom"></span>
+                                    Cuisine équipée
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="preferences" value="court-sejour">
+                                    <span class="checkbox-custom"></span>
+                                    Court séjour possible
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="preferences" value="long-sejour">
+                                    <span class="checkbox-custom"></span>
+                                    Long séjour
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description :</label>
+                        <textarea id="description" name="description" rows="5" placeholder="Décrivez vos attentes, style de vie, horaires..."></textarea>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Bouton en pleine largeur -->
-        <div class="form-full-width">
-            <button type="submit" class="submit-btn">Envoyer la demande</button>
-        </div>
-    </form>
-</section>
+            <!-- Bouton de soumission -->
+            <div class="form-actions">
+                <button type="submit" class="submit-btn">Envoyer la demande</button>
+            </div>
+        </form>
+    </section>
 
-<script>
-
-
-    // Gestion du formulaire
-    const form = document.querySelector(".demande-form");
-
-    form.addEventListener("submit", (e) => {
-        e.preventDefault();
-
-        // Récupérer les valeurs
-        const formData = new FormData(form);
-        const preferences = [];
-        form.querySelectorAll('input[type="checkbox"]:checked').forEach(cb => preferences.push(cb.value));
-
-        const demande = {
-            id: Date.now(),
-            date: new Date().toISOString(),
-            prenom: formData.get("prenom"),
-            age: formData.get("age"),
-            genre: formData.get("genre"),
-            email: formData.get("email"),
-            telephone: formData.get("telephone"),
-            ville: formData.get("ville"),
-            ecole: formData.get("ecole"), 
-            budget: formData.get("budget"),
-            typeLogement: formData.get("typeLogement"),
-            nbColoc: formData.get("nbColoc"),
-            preferences: preferences,
-            description: formData.get("description")
-        };
-
-        // Stocker dans le localStorage
-        const demandes = JSON.parse(localStorage.getItem("demandes") || "[]");
-        demandes.push(demande);
-        localStorage.setItem("demandes", JSON.stringify(demandes));
-
-        alert("Votre demande a été enregistrée !");
-        form.reset();
-    });
-</script>
-<script src="header.js"></script>
+    <script src="header.js"></script>
+    <script>
+        // Gestion du formulaire
+        document.getElementById('demandeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validation des champs requis
+            const requiredFields = this.querySelectorAll('[required]');
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.style.borderColor = 'red';
+                } else {
+                    field.style.borderColor = '';
+                }
+            });
+            
+            if (isValid) {
+                // Récupération des données
+                const formData = new FormData(this);
+                const preferences = [];
+                this.querySelectorAll('input[name="preferences"]:checked').forEach(checkbox => {
+                    preferences.push(checkbox.value);
+                });
+                
+                const demande = {
+                    id: Date.now(),
+                    date: new Date().toLocaleDateString('fr-FR'),
+                    prenom: formData.get('prenom'),
+                    age: formData.get('age'),
+                    genre: formData.get('genre'),
+                    email: formData.get('email'),
+                    telephone: formData.get('telephone'),
+                    ville: formData.get('ville'),
+                    ecole: formData.get('ecole'),
+                    budget: formData.get('budget'),
+                    typeLogement: formData.get('typeLogement'),
+                    nbColoc: formData.get('nbColoc'),
+                    preferences: preferences,
+                    description: formData.get('description')
+                };
+                
+                // Sauvegarde dans le localStorage
+                let demandes = JSON.parse(localStorage.getItem('demandes') || '[]');
+                demandes.push(demande);
+                localStorage.setItem('demandes', JSON.stringify(demandes));
+                
+                alert('Votre demande a été enregistrée avec succès !');
+                this.reset();
+            } else {
+                alert('Veuillez remplir tous les champs obligatoires.');
+            }
+        });
+    </script>
 </body>
 </html>
