@@ -8,53 +8,58 @@
 
 body {
   background-color: #ffffff;
-   line-height: 1.6;
+  line-height: 1.6;
   transition: background-color 0.4s, color 0.4s;
+  overflow-x: hidden;
 }
 
-
-/* Container principal */
+/* Container principal - MOBILE FIRST */
 .container {
   max-width: 900px;
-  width: 100%;
-  padding: 25px;
-  margin: 60px auto;
+  width: 95%;
+  padding: 20px;
+  margin: 30px auto;
   border-radius: 12px;
   border: 2px solid #E49BA6;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  
 }
 
 /* Layout form + image */
 .form-image-wrapper {
   display: flex;
-  gap: 30px;
+  flex-direction: column; /* Mobile: colonne par défaut */
+  gap: 20px;
 }
 
 /* Section Form */
 .form-section {
   flex: 1;
+  width: 100%;
 }
 
 h1 {
   color: #540863;
   margin-bottom: 20px;
+  font-size: 1.8rem;
+  text-align: center;
 }
 
 label {
   font-weight: bold;
   color: #540863;
+  font-size: 14px;
 }
 
 input, select {
   width: 100%;
-  padding: 12px;
+  padding: 14px; /* Plus grand pour mobile */
   margin-top: 5px;
   margin-bottom: 15px;
   border: 1.5px solid #92487A;
   border-radius: 6px;
-  font-size: 14px;
+  font-size: 16px; /* Évite le zoom sur iOS */
   outline: none;
+  background: #fff;
 }
 
 input:focus, select:focus {
@@ -64,7 +69,7 @@ input:focus, select:focus {
 
 button#btn {
   width: 100%;
-  padding: 12px;
+  padding: 16px; /* Plus grand pour mobile */
   background-color: #540863;
   color: white;
   font-size: 16px;
@@ -73,6 +78,7 @@ button#btn {
   cursor: pointer;
   transition: 0.3s;
   margin-top: 10px;
+  font-weight: bold;
 }
 
 button#btn:hover {
@@ -86,6 +92,7 @@ button#btn:hover {
 .center-text {
   text-align: center;
   margin-top: 20px;
+  font-size: 14px;
 }
 
 /* Section Image */
@@ -94,48 +101,36 @@ button#btn:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  order: -1; /* Image en premier sur mobile */
 }
 
 .image-section img {
   max-width: 100%;
   border-radius: 12px;
+  height: auto;
 }
 
-/* Responsive */
-@media(max-width: 768px) {
-  .form-image-wrapper {
-    flex-direction: column;
-  }
-  .image-section {
-    margin-top: 20px;
-  }
-  .carousel-track img {
-    width: 150px;
-    height: 90px;
-  }
-}
-// les images au dessous du formulaire
+/* Images carousel - Optimisé mobile */
 .image-carousel {
   display: block;
   overflow: hidden;
   width: 100%;
-  margin-top: 60px;
+  margin-top: 40px;
   border-radius: 10px;
-  
   border: 2px solid #E49BA6;
 }
 
 .carousel-track {
   display: flex;
-  animation: scroll 15s linear infinite;
+  animation: scroll 20s linear infinite; /* Plus lent sur mobile */
 }
 
 .carousel-track img {
-  width: 400px;
-  height: 250px;
+  width: 280px; /* Plus petit sur mobile */
+  height: 180px;
   object-fit: cover;
-  margin-top:20px;
-  margin-right: 10px;
+  margin-top: 15px;
+  margin-right: 8px;
   border-radius: 8px;
 }
 
@@ -146,6 +141,7 @@ footer {
   color: white;
   animation: fadeUp 1s ease forwards;
   opacity: 0;
+  font-size: 14px;
 }
 
 /* Animation auto-scroll */
@@ -164,15 +160,124 @@ body.dark-mode .container {
   background: #ffffff68;
   border: 2px solid #000000ff;
 }
+
 body.dark-mode p{
   color : #5b0456ff;
 }
+
 body.dark-mode a,
 body.dark-mode h1,
 body.dark-mode label {
   color : #fff;
 }
+
 body.dark-mode footer {
   background-color: #111;
 }
 
+body.dark-mode input,
+body.dark-mode select {
+  background: #ffffff47;
+  color: #f5f5f5;
+  border-color: #92487A;
+}
+
+/* ============ MEDIA QUERIES ============ */
+
+/* Tablettes */
+@media (min-width: 768px) {
+  .container {
+    width: 90%;
+    padding: 25px;
+    margin: 40px auto;
+  }
+  
+  .form-image-wrapper {
+    flex-direction: row;
+    gap: 30px;
+  }
+  
+  .image-section {
+    order: 0; /* Remet l'image à droite */
+  }
+  
+  h1 {
+    font-size: 2rem;
+    text-align: left;
+  }
+  
+  .carousel-track img {
+    width: 350px;
+    height: 220px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .container {
+    width: 85%;
+    margin: 60px auto;
+  }
+  
+  .carousel-track img {
+    width: 400px;
+    height: 250px;
+  }
+}
+
+/* Très petits mobiles */
+@media (max-width: 360px) {
+  .container {
+    width: 98%;
+    padding: 15px;
+    margin: 20px auto;
+  }
+  
+  h1 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+  }
+  
+  input, select {
+    padding: 12px;
+    font-size: 14px;
+  }
+  
+  button#btn {
+    padding: 14px;
+    font-size: 15px;
+  }
+  
+  .carousel-track img {
+    width: 250px;
+    height: 160px;
+  }
+}
+
+/* Orientation paysage sur mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .container {
+    margin: 15px auto;
+    padding: 15px;
+  }
+  
+  .form-image-wrapper {
+    flex-direction: row;
+    gap: 20px;
+  }
+  
+  .image-section {
+    order: 0;
+  }
+}
+
+/* Support tactile amélioré */
+@media (hover: none) and (pointer: coarse) {
+  button#btn {
+    min-height: 44px; /* Taille minimale pour les doigts */
+  }
+  
+  input, select {
+    min-height: 44px; /* Taille minimale pour les doigts */
+  }
+}
