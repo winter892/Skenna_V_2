@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chercher des Colocataires - Sknna.ma</title>
+  <link rel="stylesheet" href="style_publier_annonce.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="header.css">
+  <script src="js_publier_annonces.js" defer></script>
+  <style>
+    /* Styles supplémentaires pour le formulaire de recherche de colocataires */
+    .preferences-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 10px;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 10px;
+      border: 1px solid #E49BA6;
+    }
+    
+    .preference-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .preference-item input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+    }
+    
+    .preference-item input[type="radio"] {
+      width: 18px;
+      height: 18px;
+    }
+    
+    .budget-range {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .budget-range input {
+      flex: 1;
+    }
+    
+    .photo-upload-section {
+      margin-bottom: 30px;
+    }
+
+    .photo-upload-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      margin-top: 15px;
+    }
+    
+    .photo-preview {
+      position: relative;
+      width: 100%;
+      height: 150px;
+      border: 2px dashed #E49BA6;
+      border-radius: 12px;
+      background: #f8f9fa;
+      cursor: pointer;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .photo-preview.required {
+      border-color: #540863;
+      background: #fff5f7;
+    }
+
+    .photo-preview.optional {
+      border-color: #E49BA6;
+    }
+
+    .photo-preview.add-more {
+      border-color: #92487A;
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+      border-style: solid;
+    }
+
+    .photo-preview:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .photo-label {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      background: rgba(84, 8, 99, 0.9);
+      color: white;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      z-index: 2;
+    }
+
+    .photo-content {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: #540863;
+    }
+
+    .photo-content i {
+      font-size: 2rem;
+      color: #E49BA6;
+    }
+
+    .photo-preview.add-more .photo-content i {
+      color: #92487A;
+    }
+
+    .photo-content span {
+      font-size: 0.85rem;
+      text-align: center;
+      padding: 0 10px;
+    }
+
+    .photo-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .remove-photo-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 24px;
+      height: 24px;
+      background: rgba(255, 0, 0, 0.8);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      z-index: 2;
+      transition: all 0.3s ease;
+    }
+
+    .remove-photo-btn:hover {
+      background: rgba(255, 0, 0, 1);
+      transform: scale(1.1);
+    }
+
+    .photo-limits {
+      text-align: center;
+      margin-top: 10px;
+      color: #666;
+      font-size: 0.85rem;
+    }
+    
+    .about-me-section {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    
+    .lifestyle-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    
+    .tag {
+      background: #E49BA6;
+      color: white;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .tag.selected {
+      background: #540863;
+      transform: scale(1.05);
+    }
+
+    /* Dark mode support */
+    body.dark-mode .preferences-grid,
+    body.dark-mode .about-me-section {
+      background: #2c1a3a5d;
+      border-color: #540863;
+    }
+
+    body.dark-mode .photo-preview {
+      background: #2c1a3a5d;
+      border-color: #92487A;
+    }
+
+    body.dark-mode .photo-preview.required {
+      background: #3d23525d;
+      border-color: #E49BA6;
+    }
+
+    body.dark-mode .photo-preview.add-more {
+      background: linear-gradient(135deg, #2c1a3a, #3d2352);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .photo-upload-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+      }
+      
+      .photo-preview {
+        height: 130px;
+      }
+      
+      .preferences-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .photo-upload-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- header --> 
+  <header>
+    <a href="aceuill.html" class="logo-container">
+      <img id="siteLogo" src="IMAGES/Logo_mode_light.png" alt="Logo Sknna.ma" class="logo">
+    </a>
+
+    <!-- Bouton Burger -->
+    <button class="menu-toggle">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Overlay pour fermer le menu -->
+    <div class="nav-overlay"></div>
+
+    <!-- MENU -->
+    <nav>
+      <ul class="menu">
+        <li><a href="logements.html">Logements</a></li>
+        <li><a href="colocation.html">Colocation</a></li>
+        <li><a href="publier_annonce.html">Publier annonce</a></li>
+        <li><a href="publier_demande.html">Lancer demande</a></li>
+        <li><a href="Demandes.html">Demandes</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="presentation.html">Présentation</a></li>
+        <li><a href="Se_Connecter.html">Connexion</a></li>
+        <li><a href="creation_Compt.html">Inscription</a></li>
+
+        <!-- Dark mode dans le menu mobile - CACHÉ PAR DÉFAUT -->
+        <li class="dark-mode-mobile">
+          <button id="darkModeToggleMobile" class="dark-mode-mobile-btn">
+            <i class="fa-regular fa-moon"></i> Mode Sombre
+          </button>
+        </li>
+      </ul>
+    </nav>
+    <!-- Dark mode desktop (toujours visible sur grand écran) -->
+    <button id="darkModeToggle" class="dark-mode-desktop">
+      <i class="fa-regular fa-moon"></i>
+    </button>
+  </header>
+
+  <div class="main-container">
+    <div class="page-header">
+      <h1 class="page-title">Chercher des Colocataires</h1>
+      <p class="page-subtitle">Trouvez des colocataires compatibles avec votre style de vie</p>
+      <div class="separator"></div>
+    </div>
+
+    <div class="decorative-images">
+      <img src="IMAGES/1.png" alt="Colocation étudiante" class="decorative-image">
+      <img src="IMAGES/2.png" alt="Vie en colocation" class="decorative-image">
+    </div>
+
+    <div class="form-container">
+      <form action="colocation.html" method="post" class="form-grid" id="colocForm">
+        
+        <!-- SECTION 1: Informations Personnelles -->
+        <div class="form-section">
+          <h2><i class="fas fa-user"></i> Informations Personnelles</h2>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="prenom" class="form-label">
+                <i class="fas fa-signature"></i>Prénom
+              </label>
+              <input type="text" id="prenom" name="prenom" class="form-input" 
+                     placeholder="Votre prénom" required>
+            </div>
+
+            <div class="form-group">
+              <label for="age" class="form-label">
+                <i class="fas fa-birthday-cake"></i>Âge
+              </label>
+              <input type="number" id="age" name="age" class="form-input" 
+                     min="16" max="35" placeholder="22" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="genre" class="form-label">
+                <i class="fas fa-venus-mars"></i>Genre
+              </label>
+              <select id="genre" name="genre" class="form-select" required>
+                <option value="">-- Choisir --</option>
+                <option value="homme">Homme</option>
+                <option value="femme">Femme</option>
+                <option value="autre">Autre</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="statut" class="form-label">
+                <i class="fas fa-graduation-cap"></i>Statut
+              </label>
+              <select id="statut" name="statut" class="form-select" required>
+                <option value="">-- Choisir --</option>
+                <option value="etudiant">Étudiant</option>
+                <option value="jeune_pro">Jeune professionnel</option>
+                <option value="stagiaire">Stagiaire</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="ecole" class="form-label">
+              <i class="fas fa-university"></i>Établissement
+            </label>
+            <input type="text" id="ecole" name="ecole" class="form-input" 
+                   placeholder="Nom de votre université/école" required>
+          </div>
+        </div>
+
+        <!-- SECTION 2: Recherche de Colocation -->
+        <div class="form-section">
+          <h2><i class="fas fa-search"></i> Recherche des Colocataires/h2>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="ville_recherche" class="form-label">
+                <i class="fas fa-map-marker-alt"></i>Ville recherchée
+              </label>
+              <select id="ville_recherche" name="ville_recherche" class="form-select" required>
+                <option value="">-- Choisir une ville --</option>
+                <option value="agadir">Agadir</option>
+                <option value="rabat">Rabat</option>
+                <option value="casablanca">Casablanca</option>
+                <option value="marrakech">Marrakech</option>
+                <option value="tanger">Tanger</option>
+                <option value="fes">Fès</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="quartier" class="form-label">
+                <i class="fas fa-location-arrow"></i>Quartier préféré
+              </label>
+              <input type="text" id="quartier" name="quartier" class="form-input" 
+                     placeholder="Quartier spécifique (optionnel)">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="budget_min" class="form-label">
+                <i class="fas fa-wallet"></i>Budget mensuel
+              </label>
+              <div class="budget-range">
+                <input type="number" id="budget_min" name="budget_min" class="form-input" 
+                       placeholder="Min" min="0" required>
+                <span>à</span>
+                <input type="number" id="budget_max" name="budget_max" class="form-input" 
+                       placeholder="Max" min="0" required>
+                <span>MAD</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="nb_colocataires" class="form-label">
+                <i class="fas fa-users"></i>Nombre de colocataires souhaité
+              </label>
+              <select id="nb_colocataires" name="nb_colocataires" class="form-select" required>
+                <option value="">-- Choisir --</option>
+                <option value="1">1 colocataire</option>
+                <option value="2">2 colocataires</option>
+                <option value="3">3 colocataires</option>
+                <option value="4">4+ colocataires</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="date_entree" class="form-label">
+              <i class="fas fa-calendar-plus"></i>Date d'entrée souhaitée
+            </label>
+            <input type="date" id="date_entree" name="date_entree" class="form-input" required>
+          </div>
+        </div>
+
+        <!-- SECTION 3: Préférences de Logement -->
+        <div class="form-section">
+          <h2><i class="fas fa-home"></i> Préférences de Logement</h2>
+          
+          <div class="form-group">
+            <label class="form-label">Type de logement</label>
+            <div class="preferences-grid">
+              <label class="preference-item">
+                <input type="radio" name="type_logement" value="appartement" required>
+                Appartement
+              </label>
+              <label class="preference-item">
+                <input type="radio" name="type_logement" value="maison">
+                Maison
+              </label>
+              <label class="preference-item">
+                <input type="radio" name="type_logement" value="studio">
+                Studio
+              </label>
+              <label class="preference-item">
+                <input type="radio" name="type_logement" value="duplex">
+                Duplex
+              </label>
+              <label class="preference-item">
+                <input type="radio" name="type_logement" value="autre">
+                Autre
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Équipements</label>
+            <div class="preferences-grid">
+              <label class="preference-item">
+                <input type="checkbox" name="equipements" value="meuble">
+                Meublé
+              </label>
+              <label class="preference-item">
+                <input type="checkbox" name="equipements" value="internet">
+                Internet
+              </label>
+              <label class="preference-item">
+                <input type="checkbox" name="equipements" value="lave_linge">
+                Machine à laver
+              </label>
+              <label class="preference-item">
+                <input type="checkbox" name="equipements" value="climatisation">
+                Climatisation
+              </label>
+              <label class="preference-item">
+                <input type="checkbox" name="equipements" value="chauffage">
+                Chauffage
+              </label>
+              <label class="preference-item">
+                <input type="checkbox" name="equipements" value="parking">
+                Parking
+              </label>
+              <label class="preference-item">
+                <input type="checkbox" name="equipements" value="ascenseur">
+                Ascenseur
+              </label>
+              <label class="preference-item">
+                <input type="checkbox" name="equipements" value="balcon">
+                Balcon/Terrasse
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 4: À propos de moi -->
+        <div class="form-section about-me-section">
+          <h2><i class="fas fa-heart"></i> À propos de moi</h2>
+          
+          <div class="form-group">
+            <label for="description_personnelle" class="form-label">
+              <i class="fas fa-edit"></i>Présentez-vous
+            </label>
+            <textarea id="description_personnelle" name="description_personnelle" class="form-textarea" 
+                      placeholder="Parlez de vous : vos études, centres d'intérêt, personnalité, habitudes de vie..."
+                      maxlength="500" required></textarea>
+            <div class="char-counter" id="charCountPerso">0/500 caractères</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Style de vie</label>
+            <div class="lifestyle-tags" id="lifestyleTags">
+              <span class="tag" data-value="calme">Calme</span>
+              <span class="tag" data-value="sociable">Sociable</span>
+              <span class="tag" data-value="sportif">Sportif</span>
+              <span class="tag" data-value="studieux">Studieux</span>
+              <span class="tag" data-value="fumeur">Fumeur</span>
+              <span class="tag" data-value="non_fumeur">Non-fumeur</span>
+              <span class="tag" data-value="animaux">Avec animaux</span>
+              <span class="tag" data-value="cuisine">Aime cuisiner</span>
+              <span class="tag" data-value="menage">Ordonné</span>
+              <span class="tag" data-value="soirees">Aime les soirées</span>
+            </div>
+            <input type="hidden" id="selected_tags" name="selected_tags">
+          </div>
+
+          <div class="form-group">
+            <label for="horaires" class="form-label">
+              <i class="fas fa-clock"></i>Horaires typiques souhaités
+            </label>
+            <select id="horaires" name="horaires" class="form-select">
+              <option value="">-- Choisir --</option>
+              <option value="matinal">Matinal (couche tôt, lève tôt)</option>
+              <option value="nocturne">Nocturne (couche tard, lève tard)</option>
+              <option value="variable">Variable selon les jours</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- SECTION 5: Photos -->
+        <div class="form-section photo-upload-section">
+          <h2><i class="fas fa-images"></i> Photos</h2>
+          <p class="form-help-text">Ajoutez des photos (minimum 3 photos requises)</p>
+          
+          <div class="photo-upload-grid" id="photoGrid">
+            <!-- Photos fixes requises -->
+            <div class="photo-preview required">
+              <div class="photo-label">Photo principale*</div>
+              <div class="photo-content" onclick="document.getElementById('photo_principale').click()">
+                <i class="fas fa-plus"></i>
+                <span>Photo de vous</span>
+              </div>
+              <input type="file" id="photo_principale" name="photo_principale" accept="image/*" style="display: none;" required onchange="previewImage(this)">
+            </div>
+            
+            <div class="photo-preview required">
+              <div class="photo-label">Photo 2*</div>
+              <div class="photo-content" onclick="document.getElementById('photo_secondaire').click()">
+                <i class="fas fa-plus"></i>
+                <span>Photo supplémentaire</span>
+              </div>
+              <input type="file" id="photo_secondaire" name="photo_secondaire" accept="image/*" style="display: none;" required onchange="previewImage(this)">
+            </div>
+            
+            <div class="photo-preview required">
+              <div class="photo-label">Photo 3*</div>
+              <div class="photo-content" onclick="document.getElementById('photo_tertiaire').click()">
+                <i class="fas fa-plus"></i>
+                <span>Photo supplémentaire</span>
+              </div>
+              <input type="file" id="photo_tertiaire" name="photo_tertiaire" accept="image/*" style="display: none;" required onchange="previewImage(this)">
+            </div>
+            
+            <!-- Photos supplémentaires dynamiques -->
+        
+            
+            <div class="photo-preview optional" id="photoOptionnelle2">
+              <div class="photo-label">Photo 4</div>
+              <div class="photo-content" onclick="document.getElementById('photo_extra2').click()">
+                <i class="fas fa-plus"></i>
+                <span>Photo optionnelle</span>
+              </div>
+              <input type="file" id="photo_extra2" name="photo_extra2" accept="image/*" style="display: none;" onchange="previewImage(this)">
+              <button class="remove-photo-btn" onclick="removePhoto('photoOptionnelle2')">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+            
+            <!-- Bouton pour ajouter plus de photos -->
+            <div class="photo-preview add-more" onclick="addPhotoField()">
+              <div class="photo-content">
+                <i class="fas fa-plus-circle"></i>
+                <span>Ajouter une photo</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="photo-limits">
+            <small>Maximum 10 photos au total</small>
+          </div>
+        </div>
+
+        <!-- SECTION 6: Contact -->
+        <div class="form-section">
+          <h2><i class="fas fa-address-book"></i> Contact</h2>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email" class="form-label">
+                <i class="fas fa-envelope"></i>Email
+              </label>
+              <input type="email" id="email" name="email" class="form-input" 
+                     placeholder="votre@email.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="telephone" class="form-label">
+                <i class="fas fa-phone"></i>Téléphone
+              </label>
+              <input type="tel" id="telephone" name="telephone" class="form-input" 
+                     placeholder="06 12 34 56 78" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="preference_contact" class="form-label">
+              <i class="fas fa-comments"></i>Préférence de contact
+            </label>
+            <select id="preference_contact" name="preference_contact" class="form-select">
+              <option value="email">Email de préférence</option>
+              <option value="telephone">Téléphone de préférence</option>
+              <option value="les_deux">Les deux</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-user-plus"></i> Publier ma recherche
+          </button>
+          <button type="reset" class="btn btn-secondary">
+            <i class="fas fa-times"></i> Annuler
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div class="page-footer">
+      <p><em>Votre profil sera visible par les personnes cherchant des colocataires</em></p>
+      <p><small>&copy; 2025 Sknna.ma - Trouvez vos futurs colocataires</small></p>
+    </div>
+  </div>
+
+  <script src="header.js"></script>
+  <script>
+    let photoCounter = 3; // Commence après les 3 photos fixes
+
+    // Gestion du compteur de caractères
+    document.getElementById('description_personnelle').addEventListener('input', function() {
+      const counter = document.getElementById('charCountPerso');
+      counter.textContent = this.value.length + '/500 caractères';
+    });
+
+    // Gestion des tags de style de vie
+    const tags = document.querySelectorAll('.tag');
+    const selectedTagsInput = document.getElementById('selected_tags');
+    let selectedTags = [];
+
+    tags.forEach(tag => {
+      tag.addEventListener('click', function() {
+        this.classList.toggle('selected');
+        const value = this.getAttribute('data-value');
+        
+        if (this.classList.contains('selected')) {
+          selectedTags.push(value);
+        } else {
+          selectedTags = selectedTags.filter(tag => tag !== value);
+        }
+        
+        selectedTagsInput.value = selectedTags.join(',');
+      });
+    });
+
+    // Fonction pour ajouter des champs photo dynamiquement
+    function addPhotoField() {
+      if (document.querySelectorAll('.photo-preview:not(.add-more)').length >= 10) {
+        alert('Maximum 10 photos autorisées');
+        return;
+      }
+      
+      photoCounter++;
+      const photoGrid = document.getElementById('photoGrid');
+      const addButton = document.querySelector('.photo-preview.add-more');
+      
+      const newPhotoField = document.createElement('div');
+      newPhotoField.className = 'photo-preview optional';
+      newPhotoField.id = `photoOptionnelle${photoCounter}`;
+      
+      newPhotoField.innerHTML = `
+        <div class="photo-label">Photo ${photoCounter + 1}</div>
+        <div class="photo-content" onclick="document.getElementById('photo_extra${photoCounter}').click()">
+          <i class="fas fa-plus"></i>
+          <span>Photo supplémentaire</span>
+        </div>
+        <input type="file" id="photo_extra${photoCounter}" name="photo_extra${photoCounter}" accept="image/*" style="display: none;" onchange="previewImage(this)">
+        <button class="remove-photo-btn" onclick="removePhoto('photoOptionnelle${photoCounter}')">
+          <i class="fas fa-times"></i>
+        </button>
+      `;
+      
+      photoGrid.insertBefore(newPhotoField, addButton);
+    }
+
+    // Fonction pour supprimer une photo optionnelle
+    function removePhoto(photoId) {
+      const photoElement = document.getElementById(photoId);
+      if (photoElement) {
+        photoElement.remove();
+      }
+    }
+
+    // Prévisualisation des images
+    function previewImage(input) {
+      const preview = input.parentElement.querySelector('.photo-content');
+      if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          preview.innerHTML = `<img src="${e.target.result}" alt="Preview">`;
+        }
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    // Validation des photos
+    function validatePhotos() {
+      const requiredPhotos = document.querySelectorAll('.photo-preview.required input[type="file"]');
+      let filledRequiredPhotos = 0;
+      
+      requiredPhotos.forEach(photo => {
+        if (photo.files.length > 0) {
+          filledRequiredPhotos++;
+        }
+      });
+      
+      if (filledRequiredPhotos < 3) {
+        alert('Veuillez ajouter au moins les 3 photos requises');
+        return false;
+      }
+      
+      return true;
+    }
+
+    // Validation du formulaire
+    document.getElementById('colocForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Validation des photos
+      if (!validatePhotos()) {
+        return;
+      }
+      
+      // Validation du budget
+      const budgetMin = parseInt(document.getElementById('budget_min').value);
+      const budgetMax = parseInt(document.getElementById('budget_max').value);
+      
+      if (budgetMin > budgetMax) {
+        alert('Le budget minimum ne peut pas être supérieur au budget maximum');
+        return;
+      }
+      
+      // Soumission du formulaire
+      alert('Votre recherche de colocataires a été publiée avec succès !');
+      this.submit();
+    });
+  </script>
+</body>
+</html>
