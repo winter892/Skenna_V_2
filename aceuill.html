@@ -9,6 +9,16 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+ <!-- Loader -->
+<div id="loader">
+  <div class="loader-box">
+    <p id="loader-text">0%</p>
+    <div class="progress-bar">
+      <div class="progress"></div>
+    </div>
+  </div>
+</div>
+
 <!-- header --> 
  <header>
         <a href="aceuill.html" class="logo-container">
@@ -82,7 +92,7 @@
 
   <section class="recherche">
     <h2>Trouve ton logement étudiant en toute confiance</h2>
-    <form id="searchForm" action="resultats.html" method="get">
+    <form id="searchForm" action="logements.html" method="get">
       <div class="form-row">
         <label for="budget">Budget :</label>
         <select id="budget" name="budget" required>
