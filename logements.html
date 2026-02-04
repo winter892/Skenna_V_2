@@ -10,15 +10,7 @@
 </head>
 
 <body>
-   <!-- Loader -->
-<div id="loader">
-  <div class="loader-box">
-    <p id="loader-text">0%</p>
-    <div class="progress-bar">
-      <div class="progress"></div>
-    </div>
-  </div>
-</div>
+
 <!-- header --> 
  <header>
         <a href="aceuill.html" class="logo-container">
@@ -238,42 +230,6 @@ document.querySelectorAll(".photos").forEach(container => {
     imgs[index].style.opacity = 0;
     index = (index - 1 + imgs.length) % imgs.length;
     imgs[index].style.opacity = 1;
-  });
-});
-const loader = document.getElementById("loader");
-const progress = document.querySelector(".progress");
-const loaderText = document.getElementById("loader-text");
-
-let percent = 0;
-
-const loading = setInterval(() => {
-  percent += Math.floor(Math.random() * 8) + 1; // سرعة عشوائية
-
-  if (percent >= 100) {
-    percent = 100;
-    clearInterval(loading);
-
-    setTimeout(() => {
-      loader.style.display = "none";
-    }, 300);
-  }
-
-  progress.style.width = percent + "%";
-  loaderText.textContent = percent + "%";
-}, 120);
-document.querySelectorAll("a").forEach(link => {
-  link.addEventListener("click", () => {
-    loader.style.display = "flex";
-    progress.style.width = "0%";
-    loaderText.textContent = "0%";
-  });
-});
-
-document.querySelectorAll("form").forEach(form => {
-  form.addEventListener("submit", () => {
-    loader.style.display = "flex";
-    progress.style.width = "0%";
-    loaderText.textContent = "0%";
   });
 });
 

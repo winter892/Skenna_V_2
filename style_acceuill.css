@@ -275,17 +275,52 @@ body.dark-mode footer {
 #loader {
   position: fixed;
   inset: 0;
-  background: #ffffff;
+  background: linear-gradient(
+    270deg,
+    #000000ff,
+    #8e11bcff,
+    #000000,
+    #8e11bcff
+  );
+  background-size: 600% 600%;
+  animation: gradientMove 8s ease infinite;
+
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 9999;
 }
 
+/* animation ديال الخلفية */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 .loader-box {
-  width: 300px;
+  width: 320px;
   text-align: center;
   font-family: Arial, sans-serif;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+/* icon logement */
+.loader-icon i {
+  font-size: 100px;
+  color: #4f46e5;
+  animation: pulse 1.5s infinite;
+}
+
+
+/* animation خفيفة للـ icon */
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
 }
 
 #loader-text {
@@ -306,6 +341,6 @@ body.dark-mode footer {
 .progress {
   width: 0%;
   height: 100%;
-  background: linear-gradient(90deg, #4f46e5, #7c3aed);
+  background: linear-gradient(90deg, #bb46e5ff, #000000ff);
   transition: width 0.2s ease;
 }
